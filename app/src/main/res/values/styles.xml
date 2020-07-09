@@ -7,4 +7,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ProgressBar">
+        <item name="colorAccent">#7db354</item>
+    </style>
+
+    <style name="TextStyle3">
+        <item name="fontFamily">Roboto-Regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">20sp</item>
+        <item name="android:textColor">#b3000000</item>
+    </style>
 </resources>

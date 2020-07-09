@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SimbirSoftProbation</string>
+    <string name="loading">Загрузка…</string>
 </resources>
