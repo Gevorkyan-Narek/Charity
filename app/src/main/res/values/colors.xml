@@ -9,4 +9,5 @@
     <color name="black38">#61000000</color>
     <color name="switchTrack">#8066A636</color>
     <color name="separator">#aabbbb</color>
+    <color name="shadow">#3d000000</color>
 </resources>

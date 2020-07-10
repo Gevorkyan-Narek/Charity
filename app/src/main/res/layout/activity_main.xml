@@ -45,7 +45,7 @@
             android:id="@+id/fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="90dp" />
+            android:layout_marginBottom="111dp" />
     </androidx.core.widget.NestedScrollView>
 
     <ImageView

@@ -11,4 +11,5 @@
     <string name="push_label">Получать push-уведомления</string>
     <string name="friends_label">Ваши друзья</string>
     <string name="exit_button">Выйти из аккаунта</string>
+    <string name="profile_name">Фамилия Имя</string>
 </resources>
