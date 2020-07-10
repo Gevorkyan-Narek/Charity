@@ -6,4 +6,9 @@
     <string name="help">Помочь</string>
     <string name="history">История</string>
     <string name="profile">Профиль</string>
+    <string name="birthday_label">Дата рождения</string>
+    <string name="profession_label">Сфера деятельности</string>
+    <string name="push_label">Получать push-уведомления</string>
+    <string name="friends_label">Ваши друзья</string>
+    <string name="exit_button">Выйти из аккаунта</string>
 </resources>

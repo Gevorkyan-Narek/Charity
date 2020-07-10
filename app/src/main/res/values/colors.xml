@@ -5,4 +5,8 @@
     <color name="colorAccent">#fe7460</color>
     <color name="splashScreenBackground">#eff3f6</color>
     <color name="gray">#e1e1e1</color>
+    <color name="black87">#de000000</color>
+    <color name="black38">#61000000</color>
+    <color name="switchTrack">#8066A636</color>
+    <color name="separator">#aabbbb</color>
 </resources>
