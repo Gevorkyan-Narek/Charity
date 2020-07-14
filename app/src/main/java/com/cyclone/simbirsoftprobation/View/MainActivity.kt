@@ -24,6 +24,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             transaction.commit()
             true
         }
-        navigation.selectedItemId = R.id.profile
+        navigation.selectedItemId = R.id.help
     }
 }

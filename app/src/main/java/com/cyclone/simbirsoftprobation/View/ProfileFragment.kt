@@ -3,20 +3,16 @@ package com.cyclone.simbirsoftprobation.View
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
 import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.Presenter.Adapter
 import com.cyclone.simbirsoftprobation.R
@@ -24,7 +20,6 @@ import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import kotlin.math.min
 
 class ProfileFragment : Fragment() {
 
@@ -77,7 +72,7 @@ class ProfileFragment : Fragment() {
             true
         )
 
-        view.avatar_profile.setImageBitmap(person.iconBitmap)
+        Glide.with(context!!).load(person.iconUri).centerInside().into(view.avatar_profile)
         view.avatar_profile.setOnClickListener { v ->
             val photoDialogFragment = PhotoDialogFragment()
             photoDialogFragment.setTargetFragment(this, PhotoDialogFragment.PICK_PHOTO)
@@ -102,11 +97,11 @@ class ProfileFragment : Fragment() {
                 val mCurrentPhotoPath = data?.extras?.get("photo") as Uri
                 val inputStream = context?.contentResolver?.openInputStream(mCurrentPhotoPath)
                 val bitmap = BitmapFactory.decodeStream(inputStream)
-                val image = Bitmap.createScaledBitmap(bitmap, bitmap.width / 2, bitmap.height / 2, true)
-                person.iconBitmap = image
+                person.iconUri = bitmap
             }
             PhotoDialogFragment.CREATE_PHOTO -> {
                 val mCurrentPhotoPath = data?.getStringExtra("path")
+
                 BitmapFactory.decodeFile(mCurrentPhotoPath).also { bitmap ->
                     val matrix = Matrix()
                     val orientation = ExifInterface(mCurrentPhotoPath!!).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
@@ -125,15 +120,13 @@ class ProfileFragment : Fragment() {
                     val rotatedBitmap = Bitmap.createBitmap(
                         bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true
                     )
-                    val image = Bitmap.createScaledBitmap(rotatedBitmap, rotatedBitmap.width / 2, rotatedBitmap.height / 2, true)
-                    person.iconBitmap = image
+                    person.iconUri = rotatedBitmap
                 }
             }
             PhotoDialogFragment.DELETE_PHOTO -> {
-                person.iconBitmap =
-                    BitmapFactory.decodeResource(context?.resources, R.drawable.user_icon)
+                person.iconUri = null
             }
         }
-        avatar_profile.setImageBitmap(person.iconBitmap)
+        Glide.with(context!!).load(person.iconUri).centerInside().placeholder(R.drawable.user_icon).into(avatar_profile)
     }
 }

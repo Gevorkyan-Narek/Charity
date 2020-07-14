@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.item_friend.view.*
@@ -26,6 +27,7 @@ class Adapter(private var friends: MutableList<Person>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameFriend.text = friends[position].fullName
-        holder.avatarFriend.setImageBitmap(friends[position].iconBitmap)
+//        holder.avatarFriend.setImageBitmap(friends[position].iconUri)
+        Glide.with(holder.itemView).load(friends[position].iconUri).placeholder(R.drawable.user_icon).into(holder.avatarFriend)
     }
 }
