@@ -1,20 +1,35 @@
 package com.cyclone.simbirsoftprobation.View
 
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.ImageDecoder
+import android.graphics.Matrix
+import android.media.ExifInterface
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.Presenter.Adapter
 import com.cyclone.simbirsoftprobation.R
+import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import kotlin.math.min
 
 class ProfileFragment : Fragment() {
+
+    lateinit var person: Person
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,38 +39,50 @@ class ProfileFragment : Fragment() {
 
         val friendsList = mutableListOf(
             Person(
+                2,
                 "Дмитрий Валерьевич",
                 LocalDate.of(1990, 5, 5),
                 "Стоматолог",
                 mutableListOf(),
-                R.drawable.avatar_3,
+                BitmapFactory.decodeResource(resources, R.drawable.avatar_3),
                 false
             ),
             Person(
+                3,
                 "Евгений Александров",
                 LocalDate.of(1991, 6, 6),
                 "Патологоанатом",
                 mutableListOf(),
-                R.drawable.avatar_2,
+                BitmapFactory.decodeResource(resources, R.drawable.avatar_2),
                 false
             ),
             Person(
+                4,
                 "Виктор Кузнецов",
                 LocalDate.of(1992, 7, 7),
                 "Терапевт",
                 mutableListOf(),
-                R.drawable.avatar_1,
+                BitmapFactory.decodeResource(resources, R.drawable.avatar_1),
                 false
             )
         )
 
-        val person = Person(
+        person = Person(
+            1,
             "Константинов Денис",
             LocalDate.of(1980, 2, 1),
-            "Хирургия, трамвотология", friendsList, R.drawable.image_man, true
+            "Хирургия, трамвотология",
+            friendsList,
+            BitmapFactory.decodeResource(resources, R.drawable.image_man),
+            true
         )
 
-        view.avatar_profile.setImageResource(person.iconID)
+        view.avatar_profile.setImageBitmap(person.iconBitmap)
+        view.avatar_profile.setOnClickListener { v ->
+            val photoDialogFragment = PhotoDialogFragment()
+            photoDialogFragment.setTargetFragment(this, PhotoDialogFragment.PICK_PHOTO)
+            photoDialogFragment.show(fragmentManager!!, "photoPicker")
+        }
         view.profile_name.text = person.fullName
         view.birth_day.text = person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
         view.profession.text = person.profession
@@ -65,5 +92,48 @@ class ProfileFragment : Fragment() {
         recyclerViewFriends.layoutManager = LinearLayoutManager(context)
         recyclerViewFriends.adapter = Adapter(friendsList)
         return view
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (resultCode) {
+            PhotoDialogFragment.PICK_PHOTO -> {
+                val mCurrentPhotoPath = data?.extras?.get("photo") as Uri
+                val inputStream = context?.contentResolver?.openInputStream(mCurrentPhotoPath)
+                val bitmap = BitmapFactory.decodeStream(inputStream)
+                val image = Bitmap.createScaledBitmap(bitmap, bitmap.width / 2, bitmap.height / 2, true)
+                person.iconBitmap = image
+            }
+            PhotoDialogFragment.CREATE_PHOTO -> {
+                val mCurrentPhotoPath = data?.getStringExtra("path")
+                BitmapFactory.decodeFile(mCurrentPhotoPath).also { bitmap ->
+                    val matrix = Matrix()
+                    val orientation = ExifInterface(mCurrentPhotoPath!!).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+                    matrix.postRotate(when (orientation) {
+                        ExifInterface.ORIENTATION_ROTATE_90 -> {
+                            90f
+                        }
+                        ExifInterface.ORIENTATION_ROTATE_180 -> {
+                            180f
+                        }
+                        ExifInterface.ORIENTATION_ROTATE_270 -> {
+                            270f
+                        }
+                        else -> { 0f }
+                    })
+                    val rotatedBitmap = Bitmap.createBitmap(
+                        bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true
+                    )
+                    val image = Bitmap.createScaledBitmap(rotatedBitmap, rotatedBitmap.width / 2, rotatedBitmap.height / 2, true)
+                    person.iconBitmap = image
+                }
+            }
+            PhotoDialogFragment.DELETE_PHOTO -> {
+                person.iconBitmap =
+                    BitmapFactory.decodeResource(context?.resources, R.drawable.user_icon)
+            }
+        }
+        avatar_profile.setImageBitmap(person.iconBitmap)
     }
 }
