@@ -3,161 +3,204 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/avatar_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/image_man" />
-
-    <RelativeLayout
-        android:id="@+id/relative_profile_info"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/avatar_profile"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/Toolbar">
 
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/profile_name"
-            android:textColor="@color/black87"
-            android:textSize="24sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/label_birth_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_name"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="4sp"
-            android:text="@string/birthday_label"
-            android:textColor="@color/black38"
-            android:textSize="12sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/birth_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/label_birth_day"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/birthday_label"
-            android:textColor="@color/black87"
-            android:textSize="16sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/label_profession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/birth_day"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="4sp"
-            android:text="@string/profession_label"
-            android:textColor="@color/black38"
-            android:textSize="12sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/profession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/label_profession"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/profession_label"
-            android:textColor="@color/black87"
-            android:textSize="16sp"
-            android:textStyle="normal" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profession"
-            android:layout_marginTop="28dp">
+            android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/TextStyle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="@string/push_label"
-                android:textColor="@color/black87"
-                android:textSize="16sp"
-                android:textStyle="normal" />
+                android:layout_centerInParent="true"
+                android:text="@string/profile" />
 
-            <Switch
-                android:id="@+id/push"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="58dp"
-                android:checked="true" />
-        </LinearLayout>
-    </RelativeLayout>
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="22dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/edit" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
-    <View
-        android:id="@+id/upper_separator"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_below="@id/relative_profile_info"
-        android:layout_marginTop="18dp"
-        android:background="@color/separator" />
-
-    <RelativeLayout
-        android:id="@+id/relative_friends"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/upper_separator"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_below="@id/toolbar">
 
-        <TextView
-            android:id="@+id/label_friends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="4sp"
-            android:text="@string/friends_label"
-            android:textColor="@color/black38"
-            android:textSize="12sp"
-            android:textStyle="normal" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_friends"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/label_friends"
-            android:layout_marginTop="6dp" />
-    </RelativeLayout>
+            android:layout_marginBottom="57dp">
 
-    <View
-        android:id="@+id/lower_separator"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_below="@id/relative_friends"
-        android:layout_marginTop="18dp"
-        android:background="@color/separator" />
+            <ImageView
+                android:id="@+id/avatar_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/image_man" />
 
-    <Button
-        android:layout_width="166dp"
-        android:layout_height="36dp"
-        android:layout_below="@id/lower_separator"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorPrimaryGreen"
-        android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.04"
-        android:text="@string/exit_button"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:textStyle="normal"/>
+            <RelativeLayout
+                android:id="@+id/relative_profile_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avatar_profile"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp">
 
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/profile_name"
+                    android:textColor="@color/black87"
+                    android:textSize="24sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/label_birth_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_name"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="4sp"
+                    android:text="@string/birthday_label"
+                    android:textColor="@color/black38"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/birth_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_birth_day"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/birthday_label"
+                    android:textColor="@color/black87"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/label_profession"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/birth_day"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="4sp"
+                    android:text="@string/profession_label"
+                    android:textColor="@color/black38"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/profession"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_profession"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/profession_label"
+                    android:textColor="@color/black87"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profession"
+                    android:layout_marginTop="28dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="@string/push_label"
+                        android:textColor="@color/black87"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+
+                    <Switch
+                        android:id="@+id/push"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="58dp"
+                        android:checked="true" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/upper_separator"
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_below="@id/relative_profile_info"
+                android:layout_marginTop="18dp"
+                android:background="@color/separator" />
+
+            <RelativeLayout
+                android:id="@+id/relative_friends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/upper_separator"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/label_friends"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:lineSpacingExtra="4sp"
+                    android:text="@string/friends_label"
+                    android:textColor="@color/black38"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_friends"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/label_friends"
+                    android:layout_marginTop="6dp" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/lower_separator"
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_below="@id/relative_friends"
+                android:layout_marginTop="18dp"
+                android:background="@color/separator" />
+
+            <Button
+                android:layout_width="166dp"
+                android:layout_height="36dp"
+                android:layout_below="@id/lower_separator"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimaryGreen"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.04"
+                android:text="@string/exit_button"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

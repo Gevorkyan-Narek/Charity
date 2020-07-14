@@ -9,8 +9,8 @@ import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.item_friend.view.*
 
-class Adapter(private var friends: MutableList<Person>) :
-    RecyclerView.Adapter<Adapter.ViewHolder>() {
+class FriendsAdapter(private var friends: MutableList<Person>) :
+    RecyclerView.Adapter<FriendsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var avatarFriend = itemView.avatar_friend
@@ -27,7 +27,6 @@ class Adapter(private var friends: MutableList<Person>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameFriend.text = friends[position].fullName
-//        holder.avatarFriend.setImageBitmap(friends[position].iconUri)
         Glide.with(holder.itemView).load(friends[position].iconUri).placeholder(R.drawable.user_icon).into(holder.avatarFriend)
     }
 }

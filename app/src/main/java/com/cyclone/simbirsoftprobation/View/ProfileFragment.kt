@@ -14,8 +14,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Person
-import com.cyclone.simbirsoftprobation.Presenter.Adapter
+import com.cyclone.simbirsoftprobation.Presenter.FriendsAdapter
 import com.cyclone.simbirsoftprobation.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
 import java.time.LocalDate
@@ -31,7 +32,6 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.profile_fragment, container, false)
-
         val friendsList = mutableListOf(
             Person(
                 2,
@@ -85,7 +85,7 @@ class ProfileFragment : Fragment() {
 
         val recyclerViewFriends = view.recycler_friends
         recyclerViewFriends.layoutManager = LinearLayoutManager(context)
-        recyclerViewFriends.adapter = Adapter(friendsList)
+        recyclerViewFriends.adapter = FriendsAdapter(friendsList)
         return view
     }
 

@@ -17,6 +17,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 R.id.profile -> {
                     transaction.replace(R.id.fragment, ProfileFragment())
                 }
+                R.id.help -> {
+                    transaction.replace(R.id.fragment, HelpFragment())
+                }
                 else -> {
                     Toast.makeText(this, "Yet not added", Toast.LENGTH_SHORT).show()
                 }
@@ -25,5 +28,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             true
         }
         navigation.selectedItemId = R.id.help
+
+        floatingButton.setOnClickListener { navigation.selectedItemId = R.id.help }
     }
 }

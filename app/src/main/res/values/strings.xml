@@ -12,4 +12,5 @@
     <string name="friends_label">Ваши друзья</string>
     <string name="exit_button">Выйти из аккаунта</string>
     <string name="profile_name">Фамилия Имя</string>
+    <string name="choose_kind_of_help">Выберите категорию помощи</string>
 </resources>
