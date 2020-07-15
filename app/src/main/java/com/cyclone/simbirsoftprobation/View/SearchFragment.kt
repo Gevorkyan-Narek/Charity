@@ -1,29 +1,18 @@
 package com.cyclone.simbirsoftprobation.View
 
 import android.app.SearchManager
-import android.content.ComponentName
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
-import com.cyclone.simbirsoftprobation.Presenter.DataCreate
 import com.cyclone.simbirsoftprobation.Presenter.PagerAdapter
-import com.cyclone.simbirsoftprobation.Presenter.SearchResultsAdapter
 import com.cyclone.simbirsoftprobation.R
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.android.synthetic.main.search_fragment.view.*
-import kotlinx.android.synthetic.main.search_object_fragment.*
-import java.util.*
 
 class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 

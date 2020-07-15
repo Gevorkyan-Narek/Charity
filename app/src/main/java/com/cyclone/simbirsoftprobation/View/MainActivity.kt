@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                     transaction.replace(R.id.main_view_fragment, ProfileFragment())
                 }
                 R.id.help -> {
-                    transaction.replace(R.id.fragment, HelpFragment())
+                    transaction.replace(R.id.main_view_fragment, HelpFragment())
                 }
                 R.id.search -> {
-                    transaction.replace(R.id.fragment, SearchFragment())
+                    transaction.replace(R.id.main_view_fragment, SearchFragment())
                 }
                 else -> {
                     Toast.makeText(this, "Yet not added", Toast.LENGTH_SHORT).show()
