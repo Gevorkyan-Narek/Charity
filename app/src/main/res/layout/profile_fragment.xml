@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,7 +11,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/image_man" />
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relative_profile_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,75 +34,73 @@
             android:id="@+id/label_birth_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profile_name"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="4sp"
-            android:text="@string/birthday_label"
+            android:text="@string/birthday"
             android:textColor="@color/black38"
             android:textSize="12sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@id/profile_name" />
 
         <TextView
             android:id="@+id/birth_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/label_birth_day"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="8sp"
-            android:text="@string/birthday_label"
+            android:text="@string/birthday"
             android:textColor="@color/black87"
             android:textSize="16sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@id/label_birth_day" />
 
         <TextView
             android:id="@+id/label_profession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/birth_day"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="4sp"
-            android:text="@string/profession_label"
+            android:text="@string/profession"
             android:textColor="@color/black38"
             android:textSize="12sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@id/birth_day" />
 
         <TextView
             android:id="@+id/profession"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/label_profession"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="8sp"
-            android:text="@string/profession_label"
+            android:text="@string/profession"
             android:textColor="@color/black87"
             android:textSize="16sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@id/label_profession" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/label_push"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/profession"
-            android:layout_marginTop="28dp">
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/push"
+            android:textColor="@color/black87"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            app:layout_constraintTop_toBottomOf="@id/profession" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="@string/push_label"
-                android:textColor="@color/black87"
-                android:textSize="16sp"
-                android:textStyle="normal" />
-
-            <Switch
-                android:id="@+id/push"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="58dp"
-                android:checked="true" />
-        </LinearLayout>
-    </RelativeLayout>
+        <Switch
+            android:id="@+id/push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="58dp"
+            android:checked="true"
+            app:layout_constraintStart_toEndOf="@id/label_push"
+            app:layout_constraintTop_toTopOf="@id/label_push" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
         android:id="@+id/upper_separator"
@@ -125,7 +124,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:lineSpacingExtra="4sp"
-            android:text="@string/friends_label"
+            android:text="@string/friends"
             android:textColor="@color/black38"
             android:textSize="12sp"
             android:textStyle="normal" />
@@ -158,6 +157,6 @@
         android:text="@string/exit_button"
         android:textColor="@android:color/white"
         android:textSize="14sp"
-        android:textStyle="normal"/>
+        android:textStyle="normal" />
 
 </RelativeLayout>

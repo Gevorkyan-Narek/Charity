@@ -2,7 +2,6 @@ package com.cyclone.simbirsoftprobation.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View.TEXT_ALIGNMENT_CENTER
 import android.widget.Toast
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             val transaction = supportFragmentManager.beginTransaction()
             when (menuItem.itemId) {
                 R.id.profile -> {
-                    transaction.replace(R.id.fragment, ProfileFragment())
+                    transaction.replace(R.id.main_view_fragment, ProfileFragment())
                 }
                 else -> {
                     Toast.makeText(this, "Yet not added", Toast.LENGTH_SHORT).show()
