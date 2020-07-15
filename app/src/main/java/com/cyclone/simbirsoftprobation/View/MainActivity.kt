@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         navigation.setOnNavigationItemSelectedListener { menuItem ->
             val transaction = supportFragmentManager.beginTransaction()
             when (menuItem.itemId) {
@@ -19,6 +18,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 }
                 R.id.help -> {
                     transaction.replace(R.id.fragment, HelpFragment())
+                }
+                R.id.search -> {
+                    transaction.replace(R.id.fragment, SearchFragment())
                 }
                 else -> {
                     Toast.makeText(this, "Yet not added", Toast.LENGTH_SHORT).show()
