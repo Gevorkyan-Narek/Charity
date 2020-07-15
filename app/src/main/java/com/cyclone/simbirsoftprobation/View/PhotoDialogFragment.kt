@@ -2,29 +2,22 @@ package com.cyclone.simbirsoftprobation.View
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Point
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.fragment.app.DialogFragment
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.photo_dialog.view.*
-import kotlinx.android.synthetic.main.profile_fragment.*
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.math.min
 
 class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
 

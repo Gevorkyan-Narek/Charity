@@ -1,19 +1,14 @@
 package com.cyclone.simbirsoftprobation.View
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.cyclone.simbirsoftprobation.Model.Help
 import com.cyclone.simbirsoftprobation.Presenter.Datas
 import com.cyclone.simbirsoftprobation.Presenter.HelpsAdapter
 import com.cyclone.simbirsoftprobation.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.help_fragment.*
 import kotlinx.android.synthetic.main.help_fragment.view.*
 
 class HelpFragment : Fragment(R.layout.help_fragment) {
