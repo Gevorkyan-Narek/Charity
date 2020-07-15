@@ -3,6 +3,8 @@ package com.cyclone.simbirsoftprobation.Presenter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Person
@@ -13,8 +15,8 @@ class FriendsAdapter(private var friends: MutableList<Person>) :
     RecyclerView.Adapter<FriendsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var avatarFriend = itemView.avatar_friend
-        var nameFriend = itemView.name_friend
+        var avatarFriend: ImageView = itemView.avatar_friend
+        var nameFriend: TextView = itemView.name_friend
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,6 +29,9 @@ class FriendsAdapter(private var friends: MutableList<Person>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameFriend.text = friends[position].fullName
-        Glide.with(holder.itemView).load(friends[position].iconUri).placeholder(R.drawable.user_icon).into(holder.avatarFriend)
+        Glide.with(holder.itemView)
+            .load(friends[position].iconUri)
+            .placeholder(R.drawable.user_icon)
+            .into(holder.avatarFriend)
     }
 }

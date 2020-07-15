@@ -14,7 +14,7 @@
         <item name="colorAccent">#7db354</item>
     </style>
 
-    <style name="TextStyle">
+    <style name="TitleCategory">
         <item name="android:textSize">15sp</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/light_olive_green</item>
@@ -34,7 +34,7 @@
         <item name="android:textColor">#b3000000</item>
     </style>
 
-    <style name="TextStyle5">
+    <style name="SubTitleTextStyle">
         <item name="fontFamily">Roboto-Regular</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/black87</item>

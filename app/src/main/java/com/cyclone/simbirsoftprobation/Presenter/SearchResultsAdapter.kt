@@ -3,6 +3,7 @@ package com.cyclone.simbirsoftprobation.Presenter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
@@ -11,8 +12,8 @@ import kotlinx.android.synthetic.main.search_result_item.view.*
 class SearchResultsAdapter(var results: MutableList<String>) :
     RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val resultName = itemView.result_name
-        val separator = itemView.separator
+        val resultName: TextView = itemView.result_name
+        val separator: View = itemView.separator
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

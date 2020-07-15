@@ -29,9 +29,9 @@ import kotlin.math.min
 class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
 
     companion object {
-        val PICK_PHOTO = 1
-        val CREATE_PHOTO = 2
-        val DELETE_PHOTO = 3
+        const val PICK_PHOTO = 1
+        const val CREATE_PHOTO = 2
+        const val DELETE_PHOTO = 3
     }
 
     override fun onCreateView(
@@ -40,6 +40,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.photo_dialog, null)
+
         view.choose_photo.setOnClickListener(this)
         view.create_photo.setOnClickListener(this)
         view.delete_photo.setOnClickListener(this)
@@ -50,9 +51,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.choose_photo -> {
-                val openGallery = Intent()
-                openGallery.type = "image/*"
-                openGallery.action = Intent.ACTION_PICK
+                val openGallery = Intent().setType("image/*").setAction(Intent.ACTION_PICK)
                 startActivityForResult(
                     Intent.createChooser(openGallery, "Выберите фото"),
                     PICK_PHOTO
@@ -96,8 +95,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
             PICK_PHOTO -> {
                 if (resultCode == RESULT_OK && data != null) {
                     try {
-                        val imageUri = data.data!!
-                        val intent = Intent().putExtra("photo", imageUri)
+                        val intent = Intent().putExtra("photo", data.data!!)
                         targetFragment?.onActivityResult(targetRequestCode, PICK_PHOTO, intent)
                         dismiss()
                     } catch (e: FileNotFoundException) {

@@ -48,7 +48,6 @@
                 android:id="@+id/avatar_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/toolbar"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/image_man" />
 
@@ -74,6 +73,7 @@
                 <TextView
                     android:id="@+id/label_birth_day"
                     app:layout_constraintTop_toBottomOf="@id/profile_name"
+                    app:layout_constraintStart_toStartOf="@id/profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -87,6 +87,7 @@
                 <TextView
                     android:id="@+id/birth_day"
                     app:layout_constraintTop_toBottomOf="@id/label_birth_day"
+                    app:layout_constraintStart_toStartOf="@id/label_birth_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -99,6 +100,7 @@
                 <TextView
                     android:id="@+id/label_profession"
                     app:layout_constraintTop_toBottomOf="@id/birth_day"
+                    app:layout_constraintStart_toStartOf="@id/birth_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -112,6 +114,7 @@
                 <TextView
                     android:id="@+id/profession"
                     app:layout_constraintTop_toBottomOf="@id/label_profession"
+                    app:layout_constraintStart_toStartOf="@id/label_profession"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -124,6 +127,7 @@
                 <TextView
                     android:id="@+id/label_push"
                     app:layout_constraintTop_toBottomOf="@id/profession"
+                    app:layout_constraintStart_toStartOf="@id/profession"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="28dp"
@@ -136,7 +140,7 @@
                 <Switch
                     android:id="@+id/push"
                     app:layout_constraintStart_toEndOf="@id/label_push"
-                    app:layout_constraintTop_toTopOf="@id/label_push"
+                    app:layout_constraintBaseline_toBaselineOf="@id/label_push"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="58dp"

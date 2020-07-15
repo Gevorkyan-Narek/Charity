@@ -34,7 +34,7 @@
 
             <TextView
                 android:id="@+id/label_kind_of_help"
-                style="@style/TextStyle5"
+                style="@style/SubTitleTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"

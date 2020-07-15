@@ -21,9 +21,6 @@ import kotlinx.android.synthetic.main.profile_fragment.view.*
 import java.time.format.DateTimeFormatter
 
 class ProfileFragment : Fragment(R.layout.profile_fragment) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     lateinit var profileData: Datas
 
@@ -35,14 +32,19 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         val view = super.onCreateView(inflater, container, savedInstanceState)!!
 
         profileData = Datas(resources)
-        Glide.with(context!!).load(profileData.person.iconUri).centerInside().into(view.avatar_profile)
+        Glide.with(context!!)
+            .load(profileData.person.iconUri)
+            .centerInside()
+            .into(view.avatar_profile)
+
         view.avatar_profile.setOnClickListener { v ->
             val photoDialogFragment = PhotoDialogFragment()
             photoDialogFragment.setTargetFragment(this, PhotoDialogFragment.PICK_PHOTO)
             photoDialogFragment.show(fragmentManager!!, "photoPicker")
         }
         view.profile_name.text = profileData.person.fullName
-        view.birth_day.text = profileData.person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+        view.birth_day.text =
+            profileData.person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
         view.profession.text = profileData.person.profession
         view.push.isChecked = profileData.person.push
 
@@ -58,37 +60,46 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
             PhotoDialogFragment.PICK_PHOTO -> {
                 val mCurrentPhotoPath = data?.extras?.get("photo") as Uri
                 val inputStream = context?.contentResolver?.openInputStream(mCurrentPhotoPath)
-                val bitmap = BitmapFactory.decodeStream(inputStream)
-                profileData.person.iconUri = bitmap
+                profileData.person.iconUri = BitmapFactory.decodeStream(inputStream)
             }
             PhotoDialogFragment.CREATE_PHOTO -> {
                 val mCurrentPhotoPath = data?.getStringExtra("path")
 
                 BitmapFactory.decodeFile(mCurrentPhotoPath).also { bitmap ->
                     val matrix = Matrix()
-                    val orientation = ExifInterface(mCurrentPhotoPath!!).getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
-                    matrix.postRotate(when (orientation) {
-                        ExifInterface.ORIENTATION_ROTATE_90 -> {
-                            90f
+                    val orientation = ExifInterface(mCurrentPhotoPath!!).getAttributeInt(
+                        ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_NORMAL
+                    )
+                    matrix.postRotate(
+                        when (orientation) {
+                            ExifInterface.ORIENTATION_ROTATE_90 -> {
+                                90f
+                            }
+                            ExifInterface.ORIENTATION_ROTATE_180 -> {
+                                180f
+                            }
+                            ExifInterface.ORIENTATION_ROTATE_270 -> {
+                                270f
+                            }
+                            else -> {
+                                0f
+                            }
                         }
-                        ExifInterface.ORIENTATION_ROTATE_180 -> {
-                            180f
-                        }
-                        ExifInterface.ORIENTATION_ROTATE_270 -> {
-                            270f
-                        }
-                        else -> { 0f }
-                    })
-                    val rotatedBitmap = Bitmap.createBitmap(
+                    )
+                    profileData.person.iconUri = Bitmap.createBitmap(
                         bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true
                     )
-                    profileData.person.iconUri = rotatedBitmap
                 }
             }
             PhotoDialogFragment.DELETE_PHOTO -> {
                 profileData.person.iconUri = null
             }
         }
-        Glide.with(context!!).load(profileData.person.iconUri).centerInside().placeholder(R.drawable.user_icon).into(avatar_profile)
+        Glide.with(context!!)
+            .load(profileData.person.iconUri)
+            .centerInside()
+            .placeholder(R.drawable.user_icon)
+            .into(avatar_profile)
     }
 }

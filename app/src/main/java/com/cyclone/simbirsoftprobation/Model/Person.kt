@@ -14,4 +14,4 @@ data class Person(
     var friends: MutableList<Person>,
     var iconUri: Bitmap?,
     var push: Boolean
-): Serializable
+)

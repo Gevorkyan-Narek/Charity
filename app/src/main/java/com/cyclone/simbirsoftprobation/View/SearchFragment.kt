@@ -12,12 +12,12 @@ import androidx.viewpager.widget.ViewPager
 import com.cyclone.simbirsoftprobation.Presenter.PagerAdapter
 import com.cyclone.simbirsoftprobation.R
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.android.synthetic.main.search_fragment.view.*
 
 class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var pagerAdapter: FragmentPagerAdapter
-    private lateinit var viewPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,16 +38,12 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         pagerAdapter = PagerAdapter(childFragmentManager)
-        viewPager = view.findViewById(R.id.pager)
-        viewPager.adapter = pagerAdapter
-        val tabLayout: TabLayout = view.findViewById(R.id.tab_layout)
-        tabLayout.setupWithViewPager(viewPager)
+        pager.adapter = pagerAdapter
+        tab_layout.setupWithViewPager(pager)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
         super.onCreateOptionsMenu(menu, inflater)
-        Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
         menu.clear()
         inflater.inflate(R.menu.search, menu)
         searchView.queryHint = "Введите название организации"
@@ -57,9 +53,6 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
             setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW)
             actionView = searchView
         }
-
-//        searchView.setOnQueryTextListener(this)
-
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

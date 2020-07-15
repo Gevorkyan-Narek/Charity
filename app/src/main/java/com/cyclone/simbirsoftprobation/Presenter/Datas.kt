@@ -2,6 +2,7 @@ package com.cyclone.simbirsoftprobation.Presenter
 
 import android.content.res.Resources
 import android.graphics.BitmapFactory
+import com.cyclone.simbirsoftprobation.Model.Help
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.R
 import java.time.LocalDate
@@ -10,7 +11,7 @@ class Datas(resources: Resources) {
 
     companion object {
 
-        val fullResultList = mutableListOf(
+        private val fullResultList = mutableListOf(
             "Благотворительный фонд Алины",
             "«Во имя жизни»",
             "Благотворительный фонд В. Потанина",
@@ -64,5 +65,13 @@ class Datas(resources: Resources) {
         friendsList,
         BitmapFactory.decodeResource(resources, R.drawable.image_man),
         true
+    )
+
+    val helps = mutableListOf(
+        Help("Дети", BitmapFactory.decodeResource(resources, R.drawable.children)),
+        Help("Взрослые", BitmapFactory.decodeResource(resources, R.drawable.man)),
+        Help("Пожилые", BitmapFactory.decodeResource(resources, R.drawable.grand)),
+        Help("Животные", BitmapFactory.decodeResource(resources, R.drawable.animals)),
+        Help("Мероприятия", BitmapFactory.decodeResource(resources, R.drawable.events))
     )
 }

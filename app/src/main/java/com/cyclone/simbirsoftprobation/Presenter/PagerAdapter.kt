@@ -7,12 +7,11 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.cyclone.simbirsoftprobation.View.SearchResultFragment
 
 
-
-class PagerAdapter(fm: FragmentManager) :
-    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class PagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     companion object {
         const val ARG_OBJECT = "object"
     }
+
     override fun getItem(position: Int): Fragment {
         val fragment = SearchResultFragment()
         fragment.arguments = Bundle().apply { putInt(ARG_OBJECT, position + 1) }

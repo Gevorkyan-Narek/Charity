@@ -12,14 +12,7 @@ import com.cyclone.simbirsoftprobation.Presenter.SearchResultsAdapter
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.search_object_fragment.*
 
-class SearchResultFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.search_object_fragment, container, false)
-    }
+class SearchResultFragment : Fragment(R.layout.search_object_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf { it.containsKey(PagerAdapter.ARG_OBJECT) }?.apply {
