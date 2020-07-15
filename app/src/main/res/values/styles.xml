@@ -21,13 +21,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextStyle2">
+    <style name="TitleTextStyle">
         <item name="android:textSize">21sp</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextStyle3">
+    <style name="SplashScreenTextStyle">
         <item name="fontFamily">Roboto-Regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">20sp</item>

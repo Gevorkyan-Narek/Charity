@@ -22,7 +22,7 @@
         android:theme="@style/ProgressBar" />
 
     <TextView
-        style="@style/TextStyle3"
+        style="@style/SplashScreenTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/circularProgressBar"

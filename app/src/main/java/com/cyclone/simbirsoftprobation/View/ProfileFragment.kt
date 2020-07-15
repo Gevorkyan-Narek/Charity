@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Person
+import com.cyclone.simbirsoftprobation.Presenter.Datas
 import com.cyclone.simbirsoftprobation.Presenter.FriendsAdapter
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,70 +23,27 @@ import kotlinx.android.synthetic.main.profile_fragment.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-class ProfileFragment : Fragment() {
-
-    lateinit var person: Person
-
+class ProfileFragment : Fragment(R.layout.profile_fragment) {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.profile_fragment, container, false)
-        val friendsList = mutableListOf(
-            Person(
-                2,
-                "Дмитрий Валерьевич",
-                LocalDate.of(1990, 5, 5),
-                "Стоматолог",
-                mutableListOf(),
-                BitmapFactory.decodeResource(resources, R.drawable.avatar_3),
-                false
-            ),
-            Person(
-                3,
-                "Евгений Александров",
-                LocalDate.of(1991, 6, 6),
-                "Патологоанатом",
-                mutableListOf(),
-                BitmapFactory.decodeResource(resources, R.drawable.avatar_2),
-                false
-            ),
-            Person(
-                4,
-                "Виктор Кузнецов",
-                LocalDate.of(1992, 7, 7),
-                "Терапевт",
-                mutableListOf(),
-                BitmapFactory.decodeResource(resources, R.drawable.avatar_1),
-                false
-            )
-        )
+        val view = super.onCreateView(inflater, container, savedInstanceState)!!
 
-        person = Person(
-            1,
-            "Константинов Денис",
-            LocalDate.of(1980, 2, 1),
-            "Хирургия, трамвотология",
-            friendsList,
-            BitmapFactory.decodeResource(resources, R.drawable.image_man),
-            true
-        )
-
-        Glide.with(context!!).load(person.iconUri).centerInside().into(view.avatar_profile)
+        Glide.with(context!!).load(Datas.person.iconUri).centerInside().into(view.avatar_profile)
         view.avatar_profile.setOnClickListener { v ->
             val photoDialogFragment = PhotoDialogFragment()
             photoDialogFragment.setTargetFragment(this, PhotoDialogFragment.PICK_PHOTO)
             photoDialogFragment.show(fragmentManager!!, "photoPicker")
         }
-        view.profile_name.text = person.fullName
-        view.birth_day.text = person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
-        view.profession.text = person.profession
-        view.push.isChecked = person.push
+        view.profile_name.text = Datas.person.fullName
+        view.birth_day.text = Datas.person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+        view.profession.text = Datas.person.profession
+        view.push.isChecked = Datas.person.push
 
-        val recyclerViewFriends = view.recycler_friends
-        recyclerViewFriends.layoutManager = LinearLayoutManager(context)
-        recyclerViewFriends.adapter = FriendsAdapter(friendsList)
+        view.recycler_friends.layoutManager = LinearLayoutManager(context)
+        view.recycler_friends.adapter = FriendsAdapter(Datas.friendsList)
         return view
     }
 

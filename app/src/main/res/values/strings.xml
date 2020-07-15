@@ -6,10 +6,10 @@
     <string name="help">Помочь</string>
     <string name="history">История</string>
     <string name="profile">Профиль</string>
-    <string name="birthday_label">Дата рождения</string>
-    <string name="profession_label">Сфера деятельности</string>
-    <string name="push_label">Получать push-уведомления</string>
-    <string name="friends_label">Ваши друзья</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="profession">Сфера деятельности</string>
+    <string name="push">Получать push-уведомления</string>
+    <string name="friends">Ваши друзья</string>
     <string name="exit_button">Выйти из аккаунта</string>
     <string name="profile_name">Фамилия Имя</string>
     <string name="choose_kind_of_help">Выберите категорию помощи</string>
