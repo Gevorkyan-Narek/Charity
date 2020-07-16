@@ -1,7 +1,7 @@
 package com.cyclone.simbirsoftprobation.Model
 
 import android.graphics.Bitmap
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 
 data class Person(
     var id: Int,

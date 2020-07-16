@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cyclone.simbirsoftprobation.R
+import com.jakewharton.threetenabp.AndroidThreeTen
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AndroidThreeTen.init(this)
 
         navigation.setOnNavigationItemSelectedListener { menuItem ->
             val transaction = supportFragmentManager.beginTransaction()
@@ -20,7 +22,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                     transaction.replace(R.id.main_view_fragment, HelpFragment())
                 }
                 R.id.search -> {
-//                    setTheme(R.style.AppTheme_LauncherWithActionBar)
                     transaction.replace(R.id.main_view_fragment, SearchFragment())
                 }
                 else -> {

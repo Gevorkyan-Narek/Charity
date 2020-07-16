@@ -13,11 +13,12 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.DialogFragment
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.photo_dialog.view.*
+import org.threeten.bp.Instant
+import org.threeten.bp.ZoneOffset
+import org.threeten.bp.format.DateTimeFormatter
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
 
@@ -115,7 +116,8 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
     @Throws(IOException::class)
     private fun createImageFile(): File {
         // Create an image file name
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+//        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val timeStamp: String = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss").withZone(ZoneOffset.UTC).format(Instant.now())
         val storageDir: File = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
         return File.createTempFile(
             "JPEG_${timeStamp}_", /* prefix */

@@ -2,10 +2,10 @@ package com.cyclone.simbirsoftprobation.Presenter
 
 import android.content.res.Resources
 import android.graphics.BitmapFactory
-import com.cyclone.simbirsoftprobation.Model.Help
+import com.cyclone.simbirsoftprobation.Model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.R
-import java.time.LocalDate
+import org.threeten.bp.LocalDate
 
 class Datas(resources: Resources) {
 
@@ -68,10 +68,10 @@ class Datas(resources: Resources) {
     )
 
     val helps = mutableListOf(
-        Help("Дети", BitmapFactory.decodeResource(resources, R.drawable.children)),
-        Help("Взрослые", BitmapFactory.decodeResource(resources, R.drawable.man)),
-        Help("Пожилые", BitmapFactory.decodeResource(resources, R.drawable.grand)),
-        Help("Животные", BitmapFactory.decodeResource(resources, R.drawable.animals)),
-        Help("Мероприятия", BitmapFactory.decodeResource(resources, R.drawable.events))
+        CategoryOfHelp("Дети", BitmapFactory.decodeResource(resources, R.drawable.children)),
+        CategoryOfHelp("Взрослые", BitmapFactory.decodeResource(resources, R.drawable.man)),
+        CategoryOfHelp("Пожилые", BitmapFactory.decodeResource(resources, R.drawable.grand)),
+        CategoryOfHelp("Животные", BitmapFactory.decodeResource(resources, R.drawable.animals)),
+        CategoryOfHelp("Мероприятия", BitmapFactory.decodeResource(resources, R.drawable.events))
     )
 }

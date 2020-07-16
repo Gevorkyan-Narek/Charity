@@ -18,7 +18,7 @@ import com.cyclone.simbirsoftprobation.Presenter.FriendsAdapter
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
-import java.time.format.DateTimeFormatter
+import org.threeten.bp.format.DateTimeFormatter
 
 class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
