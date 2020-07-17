@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/news_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/event_1"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:foreground="@drawable/fade"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/news_title"
+        style="@style/NewsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:maxLines="2"
+        android:paddingStart="39dp"
+        android:paddingEnd="38dp"
+        android:text="Спонсоры отремонтируют школу-интернат"
+        app:layout_constraintTop_toBottomOf="@id/news_avatar" />
+
+    <ImageView
+        android:id="@+id/decor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/decor"
+        app:layout_constraintTop_toBottomOf="@+id/news_title" />
+
+    <TextView
+        style="@style/ContentTextStyle"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:paddingStart="26dp"
+        android:paddingEnd="26dp"
+        android:text="Дубовская школа-интернат для детей  с ограниченными возможностями здоровья стала первой в области …"
+        app:layout_constraintTop_toBottomOf="@id/decor" />
+
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@id/content"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center">
+        
+        <ImageView
+            android:id="@+id/icon_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_calendar"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/icon_calendar"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="@android:color/white"
+            android:lineSpacingExtra="4sp"
+            tools:text="Октябрь 20, 2016"/>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

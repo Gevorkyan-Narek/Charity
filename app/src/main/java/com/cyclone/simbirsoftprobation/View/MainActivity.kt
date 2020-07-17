@@ -15,14 +15,17 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         navigation.setOnNavigationItemSelectedListener { menuItem ->
             val transaction = supportFragmentManager.beginTransaction()
             when (menuItem.itemId) {
-                R.id.profile -> {
-                    transaction.replace(R.id.main_view_fragment, ProfileFragment())
+                R.id.news -> {
+                    transaction.replace(R.id.main_view_fragment, NewsFragment())
+                }
+                R.id.search -> {
+                    transaction.replace(R.id.main_view_fragment, SearchFragment())
                 }
                 R.id.help -> {
                     transaction.replace(R.id.main_view_fragment, HelpFragment())
                 }
-                R.id.search -> {
-                    transaction.replace(R.id.main_view_fragment, SearchFragment())
+                R.id.profile -> {
+                    transaction.replace(R.id.main_view_fragment, ProfileFragment())
                 }
                 else -> {
                     Toast.makeText(this, "Yet not added", Toast.LENGTH_SHORT).show()

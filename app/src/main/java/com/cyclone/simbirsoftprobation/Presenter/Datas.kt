@@ -3,6 +3,7 @@ package com.cyclone.simbirsoftprobation.Presenter
 import android.content.res.Resources
 import android.graphics.BitmapFactory
 import com.cyclone.simbirsoftprobation.Model.CategoryOfHelp
+import com.cyclone.simbirsoftprobation.Model.Event
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.R
 import org.threeten.bp.LocalDate
@@ -25,6 +26,8 @@ class Datas(resources: Resources) {
             repeat(5) { results.add(fullResultList.random()) }
             return results
         }
+
+        val months = listOf("Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь")
     }
 
     val friendsList = mutableListOf(
@@ -73,5 +76,26 @@ class Datas(resources: Resources) {
         CategoryOfHelp("Пожилые", BitmapFactory.decodeResource(resources, R.drawable.grand)),
         CategoryOfHelp("Животные", BitmapFactory.decodeResource(resources, R.drawable.animals)),
         CategoryOfHelp("Мероприятия", BitmapFactory.decodeResource(resources, R.drawable.events))
+    )
+
+    val events = mutableListOf(
+        Event(
+            1,
+            "Спонсоры отремонтируют школу-интернат",
+            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области...",
+            LocalDate.of(2020, 9, 21),
+            LocalDate.of(2020, 10, 20),
+            BitmapFactory.decodeResource(resources, R.drawable.event_1),
+            mutableListOf(helps[0], helps[1], helps[2], helps[3])
+        ),
+        Event(
+            1,
+            "Конкурс по вокальному пению в детском доме №6",
+            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+            LocalDate.of(2016, 9, 20),
+            LocalDate.of(2016, 10, 20),
+            BitmapFactory.decodeResource(resources, R.drawable.event_2),
+            mutableListOf(helps[1], helps[2], helps[3], helps[4])
+        )
     )
 }
