@@ -22,8 +22,6 @@ import org.threeten.bp.format.DateTimeFormatter
 
 class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
-    lateinit var profileData: Datas
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,9 +29,9 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)!!
 
-        profileData = Datas(resources)
+        val person = Datas.getInstance().person
         Glide.with(context!!)
-            .load(profileData.person.iconUri)
+            .load(person.iconUri)
             .centerInside()
             .into(view.avatar_profile)
 
@@ -42,25 +40,25 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
             photoDialogFragment.setTargetFragment(this, PhotoDialogFragment.PICK_PHOTO)
             photoDialogFragment.show(fragmentManager!!, "photoPicker")
         }
-        view.profile_name.text = profileData.person.fullName
+        view.profile_name.text = person.fullName
         view.birth_day.text =
-            profileData.person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
-        view.profession.text = profileData.person.profession
-        view.push.isChecked = profileData.person.push
+            person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+        view.profession.text = person.profession
+        view.push.isChecked = person.push
 
         view.recycler_friends.layoutManager = LinearLayoutManager(context)
-        view.recycler_friends.adapter = FriendsAdapter(profileData.friendsList)
+        view.recycler_friends.adapter = FriendsAdapter(Datas.getInstance().friendsList)
         return view
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
+        val person = Datas.getInstance().person
         when (resultCode) {
             PhotoDialogFragment.PICK_PHOTO -> {
                 val mCurrentPhotoPath = data?.extras?.get("photo") as Uri
                 val inputStream = context?.contentResolver?.openInputStream(mCurrentPhotoPath)
-                profileData.person.iconUri = BitmapFactory.decodeStream(inputStream)
+                person.iconUri = BitmapFactory.decodeStream(inputStream)
             }
             PhotoDialogFragment.CREATE_PHOTO -> {
                 val mCurrentPhotoPath = data?.getStringExtra("path")
@@ -87,17 +85,17 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                             }
                         }
                     )
-                    profileData.person.iconUri = Bitmap.createBitmap(
+                    person.iconUri = Bitmap.createBitmap(
                         bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true
                     )
                 }
             }
             PhotoDialogFragment.DELETE_PHOTO -> {
-                profileData.person.iconUri = null
+                person.iconUri = null
             }
         }
         Glide.with(context!!)
-            .load(profileData.person.iconUri)
+            .load(person.iconUri)
             .centerInside()
             .placeholder(R.drawable.user_icon)
             .into(avatar_profile)

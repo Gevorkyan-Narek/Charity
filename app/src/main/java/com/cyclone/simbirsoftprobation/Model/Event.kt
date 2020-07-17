@@ -6,9 +6,13 @@ import org.threeten.bp.LocalDate
 data class Event(
     val id: Int,
     val title: String,
-    val content: String,
+    val shortDescription: String,
     val dateStart: LocalDate,
     val dateEnd: LocalDate,
-    val image: Bitmap,
-    val categoryOfHelp: MutableList<CategoryOfHelp>
+    val avatar: Bitmap,
+    val categoryOfHelp: MutableList<CategoryOfHelp>,
+    val fullDescription: String,
+    val images: MutableList<Bitmap>,
+    val address: String,
+    val tel: String
 )

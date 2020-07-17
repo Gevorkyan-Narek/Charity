@@ -13,4 +13,5 @@
     <string name="exit_button">Выйти из аккаунта</string>
     <string name="profile_name">Фамилия Имя</string>
     <string name="choose_kind_of_help">Выберите категорию помощи</string>
+    <string name="filter">Фильтр</string>
 </resources>

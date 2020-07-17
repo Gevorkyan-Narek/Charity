@@ -17,12 +17,14 @@
             <TextView
                 android:id="@+id/toolbar_title"
                 style="@style/TitleTextStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:gravity="center"
                 android:text="@string/profile" />
 
             <ImageButton
+                android:id="@+id/edit_profile"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
@@ -63,6 +65,8 @@
                     android:id="@+id/profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     android:fontFamily="sans-serif"
                     android:lineSpacingExtra="8sp"
                     android:text="@string/profile_name"

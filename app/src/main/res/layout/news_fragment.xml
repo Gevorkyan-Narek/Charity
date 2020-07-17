@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:gravity="top">
+        android:gravity="top"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,6 +26,7 @@
                 android:text="@string/news" />
 
             <ImageButton
+                android:id="@+id/filter"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
@@ -38,20 +40,20 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/news_toolbar"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        android:layout_marginEnd="8dp"
+        android:layout_below="@id/news_toolbar">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="57dp">
+            android:layout_marginBottom="107dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/news_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </RelativeLayout>
