@@ -34,11 +34,17 @@
                 android:ems="11"
                 android:gravity="center"
                 android:maxLines="1"
-                android:singleLine="true"
                 android:text="Спонсоры отремонитруют аовлаовла"
                 app:layout_constraintEnd_toStartOf="@id/share"
                 app:layout_constraintStart_toEndOf="@id/back"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/gradient"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toStartOf="@id/share"
+                android:background="@drawable/gradient_title"/>
 
             <ImageView
                 android:id="@+id/share"
@@ -399,10 +405,10 @@
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="2sp"
                 android:lines="2"
+                android:text="@string/become_volunteer"
                 android:textColor="@color/black40"
                 android:textSize="10sp"
-                android:textStyle="normal"
-                android:text="@string/become_volunteer" />
+                android:textStyle="normal" />
         </LinearLayout>
 
         <View
@@ -432,10 +438,10 @@
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="2sp"
                 android:lines="2"
+                android:text="@string/prof_help"
                 android:textColor="@color/black40"
                 android:textSize="10sp"
-                android:textStyle="normal"
-                android:text="@string/prof_help" />
+                android:textStyle="normal" />
         </LinearLayout>
 
         <View
@@ -465,10 +471,10 @@
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="2sp"
                 android:lines="2"
+                android:text="@string/help_with_money"
                 android:textColor="@color/black40"
                 android:textSize="10sp"
-                android:textStyle="normal"
-                android:text="@string/help_with_money" />
+                android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
