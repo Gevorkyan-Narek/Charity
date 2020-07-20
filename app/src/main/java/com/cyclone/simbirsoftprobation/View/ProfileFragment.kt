@@ -30,6 +30,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         val view = super.onCreateView(inflater, container, savedInstanceState)!!
 
         val person = Datas.getInstance().person
+
         Glide.with(context!!)
             .load(person.iconUri)
             .centerInside()

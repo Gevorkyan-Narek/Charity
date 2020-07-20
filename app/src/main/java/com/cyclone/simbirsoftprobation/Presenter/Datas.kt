@@ -3,7 +3,6 @@ package com.cyclone.simbirsoftprobation.Presenter
 import android.content.res.Resources
 import android.graphics.BitmapFactory
 import com.cyclone.simbirsoftprobation.Model.CategoryOfHelp
-import com.cyclone.simbirsoftprobation.Model.Event
 import com.cyclone.simbirsoftprobation.Model.Filter
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.R
@@ -99,44 +98,90 @@ class Datas(resources: Resources) {
     )
 
     val filter = categoriesOfHelp.map { Filter(it.name) }.toMutableList()
-    val events = mutableListOf(
-        Event(
-            0,
-            "Спонсоры отремонтируют школу-интернат",
-            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области...",
-            LocalDate.of(2020, 9, 21),
-            LocalDate.of(2020, 10, 20),
-            BitmapFactory.decodeResource(resources, R.drawable.event_1),
-            mutableListOf(categoriesOfHelp[0], categoriesOfHelp[1], categoriesOfHelp[2]),
-            "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.\n" +
-                    "При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
-            mutableListOf(
-                BitmapFactory.decodeResource(resources, R.drawable.cardimage_1),
-                BitmapFactory.decodeResource(resources, R.drawable.cardimage_2),
-                BitmapFactory.decodeResource(resources, R.drawable.cardimage_3)
-            ),
-            "Санкт-Петербург, Кирочная улица,д. 50А, каб. 208",
-            "+7 (937) 037 37-73\n+7 (937) 016 16-16",
-            "Благотворительный Фонд «Счастливый Мир»"
-        ),
-        Event(
-            1,
-            "Конкурс по вокальному пению в детском доме №6",
-            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
-            LocalDate.of(2016, 9, 20),
-            LocalDate.of(2016, 10, 20),
-            BitmapFactory.decodeResource(resources, R.drawable.event_2),
-            mutableListOf(categoriesOfHelp[2], categoriesOfHelp[3], categoriesOfHelp[4]),
-            "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.\n" +
-                    "При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
-            mutableListOf(
-                BitmapFactory.decodeResource(resources, R.drawable.cardimage_1),
-                BitmapFactory.decodeResource(resources, R.drawable.cardimage_2),
-                BitmapFactory.decodeResource(resources, R.drawable.cardimage_3)
-            ),
-            "Санкт-Петербург, Кирочная улица,д. 50А, каб. 208",
-            "+7 (937) 037 37-73\n+7 (937) 016 16-16",
-            "Благотворительный Фонд «Счастливый Мир»"
-        )
-    )
+
+
+
+//    val events = mutableListOf(
+//        Event(
+//            0,
+//            "Спонсоры отремонтируют школу-интернат",
+//            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области...",
+//            LocalDate.of(2020, 9, 21),
+//            LocalDate.of(2020, 10, 20),
+//            R.drawable.event_1,
+//            mutableListOf(categoriesOfHelp[0].name, categoriesOfHelp[1].name, categoriesOfHelp[2].name),
+//            "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.\n" +
+//                    "При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+//            mutableListOf(
+//                R.drawable.cardimage_1,
+//                R.drawable.cardimage_2,
+//                R.drawable.cardimage_3
+//            ),
+//            "Санкт-Петербург, Кирочная улица,д. 50А, каб. 208",
+//            "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+//            "Благотворительный Фонд «Счастливый Мир»"
+//        ),
+//        Event(
+//            1,
+//            "Конкурс по вокальному пению в детском доме №6",
+//            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+//            LocalDate.of(2016, 9, 20),
+//            LocalDate.of(2016, 10, 20),
+//            R.drawable.event_2,
+//            mutableListOf(categoriesOfHelp[2].name, categoriesOfHelp[3].name, categoriesOfHelp[4].name),
+//            "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.\n" +
+//                    "При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+//            mutableListOf(
+//                R.drawable.cardimage_1,
+//                R.drawable.cardimage_2,
+//                R.drawable.cardimage_3
+//            ),
+//            "Санкт-Петербург, Кирочная улица,д. 50А, каб. 208",
+//            "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+//            "Благотворительный Фонд «Счастливый Мир»"
+//        )
+//    )
+
+
+
+//    val events = mutableListOf(
+//        Event(
+//            0,
+//            "Спонсоры отремонтируют школу-интернат",
+//            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области...",
+//            LocalDate.of(2020, 9, 21),
+//            LocalDate.of(2020, 10, 20),
+//            BitmapFactory.decodeResource(resources, R.drawable.event_1),
+//            mutableListOf(categoriesOfHelp[0], categoriesOfHelp[1], categoriesOfHelp[2]),
+//            "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.\n" +
+//                    "При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+//            mutableListOf(
+//                BitmapFactory.decodeResource(resources, R.drawable.cardimage_1),
+//                BitmapFactory.decodeResource(resources, R.drawable.cardimage_2),
+//                BitmapFactory.decodeResource(resources, R.drawable.cardimage_3)
+//            ),
+//            "Санкт-Петербург, Кирочная улица,д. 50А, каб. 208",
+//            "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+//            "Благотворительный Фонд «Счастливый Мир»"
+//        ),
+//        Event(
+//            1,
+//            "Конкурс по вокальному пению в детском доме №6",
+//            "Дубовская школа-интернат для детей с ограниченными возможностями здоровья стала первой в области …",
+//            LocalDate.of(2016, 9, 20),
+//            LocalDate.of(2016, 10, 20),
+//            BitmapFactory.decodeResource(resources, R.drawable.event_2),
+//            mutableListOf(categoriesOfHelp[2], categoriesOfHelp[3], categoriesOfHelp[4]),
+//            "Участники и болельщики смогли весело и активно провести время на «Петербургском благотворительном марафоне» и при этом финансово поучаствовать в помощи детям.\n" +
+//                    "При этом финансово поучаствовать в помощи детям. При этом финансово поучаствовать в помощи детям.",
+//            mutableListOf(
+//                BitmapFactory.decodeResource(resources, R.drawable.cardimage_1),
+//                BitmapFactory.decodeResource(resources, R.drawable.cardimage_2),
+//                BitmapFactory.decodeResource(resources, R.drawable.cardimage_3)
+//            ),
+//            "Санкт-Петербург, Кирочная улица,д. 50А, каб. 208",
+//            "+7 (937) 037 37-73\n+7 (937) 016 16-16",
+//            "Благотворительный Фонд «Счастливый Мир»"
+//        )
+//    )
 }

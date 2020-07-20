@@ -12,9 +12,7 @@ import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Event
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.View.DetailActivity
-import com.cyclone.simbirsoftprobation.View.MainActivity
 import kotlinx.android.synthetic.main.item_news.view.*
-import org.threeten.bp.format.DateTimeFormatter
 
 class NewsAdapter(events: MutableList<Event>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
@@ -26,8 +24,8 @@ class NewsAdapter(events: MutableList<Event>) :
         val date: TextView = itemView.date
     }
 
-    var filteredEvents = events.filter { event -> DiffUtils.filterNews(event) }.toMutableList()
-        .ifEmpty { Datas.getInstance().events }
+    var filteredEvents = if (Datas.getInstance().filter.all { filter -> !filter.check }) events
+    else events.filter { event -> DiffUtils.filterNews(event) }.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
