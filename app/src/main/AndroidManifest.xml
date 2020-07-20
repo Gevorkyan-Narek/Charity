@@ -31,6 +31,7 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.DetailActivity"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

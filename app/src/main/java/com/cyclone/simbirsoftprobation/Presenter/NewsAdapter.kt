@@ -1,6 +1,7 @@
 package com.cyclone.simbirsoftprobation.Presenter
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Event
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.View.DetailActivity
+import com.cyclone.simbirsoftprobation.View.MainActivity
 import kotlinx.android.synthetic.main.item_news.view.*
 import org.threeten.bp.format.DateTimeFormatter
 
@@ -23,7 +26,8 @@ class NewsAdapter(events: MutableList<Event>) :
         val date: TextView = itemView.date
     }
 
-    var filteredEvents = events.filter { event -> DiffUtils.filterNews(event) }.toMutableList().ifEmpty { Datas.getInstance().events }
+    var filteredEvents = events.filter { event -> DiffUtils.filterNews(event) }.toMutableList()
+        .ifEmpty { Datas.getInstance().events }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
@@ -38,19 +42,11 @@ class NewsAdapter(events: MutableList<Event>) :
         Glide.with(holder.itemView).load(filteredEvents[position].avatar).into(holder.image)
         holder.title.text = filteredEvents[position].title
         holder.content.text = filteredEvents[position].shortDescription
-        if (DiffUtils.checkOfRelevance(filteredEvents[position].dateEnd)) {
-            holder.date.text =
-                "Осталось ${DiffUtils.remainingRelevance(filteredEvents[position].dateEnd)} дней " +
-                        "(${filteredEvents[position].dateStart.format(
-                            DateTimeFormatter.ofPattern(
-                                "dd.MM"
-                            )
-                        )} - " +
-                        "${filteredEvents[position].dateEnd.format(DateTimeFormatter.ofPattern("dd.MM"))})"
-        } else {
-            holder.date.text =
-                "${Datas.months[filteredEvents[position].dateEnd.monthValue - 1]} " +
-                        filteredEvents[position].dateEnd.format(DateTimeFormatter.ofPattern("dd, yyyy"))
+        holder.date.text = DiffUtils.getRelevance(filteredEvents[position])
+        holder.itemView.setOnClickListener {
+            val detailActivity = Intent(it.context, DetailActivity::class.java)
+            detailActivity.putExtra("event_id", filteredEvents[position].id)
+            it.context.startActivity(detailActivity)
         }
     }
 }

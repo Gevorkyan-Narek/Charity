@@ -14,5 +14,6 @@ data class Event(
     val fullDescription: String,
     val images: MutableList<Bitmap>,
     val address: String,
-    val tel: String
+    val tel: String,
+    val company: String
 )

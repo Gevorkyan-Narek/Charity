@@ -14,4 +14,10 @@
     <string name="profile_name">Фамилия Имя</string>
     <string name="choose_kind_of_help">Выберите категорию помощи</string>
     <string name="filter">Фильтр</string>
+    <string name="write_us"><u>Напишите нам</u></string>
+    <string name="go_to_company"><u>Перейти на сайт организации</u></string>
+    <string name="help_with_things">Помочь\nвещами</string>
+    <string name="become_volunteer">Стать\nволонтером</string>
+    <string name="prof_help">Проф\nпомощь</string>
+    <string name="help_with_money">Помочь\nденьгами</string>
 </resources>
