@@ -3,6 +3,7 @@ package com.cyclone.simbirsoftprobation.Presenter
 import android.content.res.Resources
 import android.graphics.BitmapFactory
 import com.cyclone.simbirsoftprobation.Model.CategoryOfHelp
+import com.cyclone.simbirsoftprobation.Model.Event
 import com.cyclone.simbirsoftprobation.Model.Filter
 import com.cyclone.simbirsoftprobation.Model.Person
 import com.cyclone.simbirsoftprobation.R
@@ -47,6 +48,8 @@ class Datas(resources: Resources) {
             "Ноябрь",
             "Декабрь"
         )
+
+        lateinit var events: MutableList<Event>
     }
 
     val friendsList = mutableListOf(

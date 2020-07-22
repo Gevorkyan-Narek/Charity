@@ -4,8 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.cyclone.simbirsoftprobation.Presenter.Datas
 import com.cyclone.simbirsoftprobation.Presenter.DiffUtils
-import com.cyclone.simbirsoftprobation.Presenter.JsonHelper
+import com.cyclone.simbirsoftprobation.Presenter.JsonHelperAsync
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.news_detail.*
 
@@ -15,8 +16,9 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val eventId = intent.extras?.getInt("event_id")!!
-        val event = JsonHelper(assets).getEvents()[eventId]
-
+//        val event = JsonHelperAsync(assets).getEvents()[eventId]
+//        val event = JsonHelperAsync(assets).execute().get()[eventId]
+        val event = Datas.events[eventId]
         toolbar_title.text = event.title
         event_title.text = event.title
         event_date.text = DiffUtils.getRelevance(event)
