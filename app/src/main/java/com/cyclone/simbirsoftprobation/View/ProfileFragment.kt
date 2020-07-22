@@ -32,7 +32,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         val person = Datas.getInstance().person
 
         Glide.with(context!!)
-            .load(person.iconUri)
+            .load(person.icon)
             .centerInside()
             .into(view.avatar_profile)
 
@@ -45,7 +45,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         view.birth_day.text =
             person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
         view.profession.text = person.profession
-        view.push.isChecked = person.push
+        view.push.isChecked = person.isPush
 
         view.recycler_friends.layoutManager = LinearLayoutManager(context)
         view.recycler_friends.adapter = FriendsAdapter(Datas.getInstance().friendsList)
@@ -59,14 +59,14 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
             PhotoDialogFragment.PICK_PHOTO -> {
                 val mCurrentPhotoPath = data?.extras?.get("photo") as Uri
                 val inputStream = context?.contentResolver?.openInputStream(mCurrentPhotoPath)
-                person.iconUri = BitmapFactory.decodeStream(inputStream)
+                person.icon = BitmapFactory.decodeStream(inputStream)
             }
             PhotoDialogFragment.CREATE_PHOTO -> {
-                val mCurrentPhotoPath = data?.getStringExtra("path")
+                val currentPhotoPath = data?.getStringExtra("path")
 
-                BitmapFactory.decodeFile(mCurrentPhotoPath).also { bitmap ->
+                BitmapFactory.decodeFile(currentPhotoPath).also { bitmap ->
                     val matrix = Matrix()
-                    val orientation = ExifInterface(mCurrentPhotoPath!!).getAttributeInt(
+                    val orientation = ExifInterface(currentPhotoPath!!).getAttributeInt(
                         ExifInterface.TAG_ORIENTATION,
                         ExifInterface.ORIENTATION_NORMAL
                     )
@@ -86,17 +86,17 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                             }
                         }
                     )
-                    person.iconUri = Bitmap.createBitmap(
+                    person.icon = Bitmap.createBitmap(
                         bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true
                     )
                 }
             }
             PhotoDialogFragment.DELETE_PHOTO -> {
-                person.iconUri = null
+                person.icon = null
             }
         }
         Glide.with(context!!)
-            .load(person.iconUri)
+            .load(person.icon)
             .centerInside()
             .placeholder(R.drawable.user_icon)
             .into(avatar_profile)
