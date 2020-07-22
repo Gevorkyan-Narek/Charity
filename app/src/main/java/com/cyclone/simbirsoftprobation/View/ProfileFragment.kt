@@ -33,7 +33,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
         profileData = Datas(resources)
         Glide.with(context!!)
-            .load(profileData.person.iconUri)
+            .load(profileData.person.icon)
             .centerInside()
             .into(view.avatar_profile)
 
@@ -46,7 +46,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         view.birth_day.text =
             profileData.person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
         view.profession.text = profileData.person.profession
-        view.push.isChecked = profileData.person.push
+        view.push.isChecked = profileData.person.isPush
 
         view.recycler_friends.layoutManager = LinearLayoutManager(context)
         view.recycler_friends.adapter = FriendsAdapter(profileData.friendsList)
@@ -60,14 +60,14 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
             PhotoDialogFragment.PICK_PHOTO -> {
                 val mCurrentPhotoPath = data?.extras?.get("photo") as Uri
                 val inputStream = context?.contentResolver?.openInputStream(mCurrentPhotoPath)
-                profileData.person.iconUri = BitmapFactory.decodeStream(inputStream)
+                profileData.person.icon = BitmapFactory.decodeStream(inputStream)
             }
             PhotoDialogFragment.CREATE_PHOTO -> {
-                val mCurrentPhotoPath = data?.getStringExtra("path")
+                val currentPhotoPath = data?.getStringExtra("path")
 
-                BitmapFactory.decodeFile(mCurrentPhotoPath).also { bitmap ->
+                BitmapFactory.decodeFile(currentPhotoPath).also { bitmap ->
                     val matrix = Matrix()
-                    val orientation = ExifInterface(mCurrentPhotoPath!!).getAttributeInt(
+                    val orientation = ExifInterface(currentPhotoPath!!).getAttributeInt(
                         ExifInterface.TAG_ORIENTATION,
                         ExifInterface.ORIENTATION_NORMAL
                     )
@@ -87,17 +87,17 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                             }
                         }
                     )
-                    profileData.person.iconUri = Bitmap.createBitmap(
+                    profileData.person.icon = Bitmap.createBitmap(
                         bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true
                     )
                 }
             }
             PhotoDialogFragment.DELETE_PHOTO -> {
-                profileData.person.iconUri = null
+                profileData.person.icon = null
             }
         }
         Glide.with(context!!)
-            .load(profileData.person.iconUri)
+            .load(profileData.person.icon)
             .centerInside()
             .placeholder(R.drawable.user_icon)
             .into(avatar_profile)
