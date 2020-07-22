@@ -96,7 +96,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
             CREATE_PHOTO -> {
                 if (resultCode == RESULT_OK) {
                     try {
-                        val intent = Intent().putExtra("path", mCurrentPhotoPath)
+                        val intent = Intent().putExtra("path", currentPhotoPath)
                         targetFragment?.onActivityResult(targetRequestCode, CREATE_PHOTO, intent)
                         dismiss()
                     } catch (e: FileNotFoundException) {
@@ -107,7 +107,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
         }
     }
 
-    lateinit var mCurrentPhotoPath: String
+    lateinit var currentPhotoPath: String
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
@@ -118,7 +118,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
             ".jpg",
             storageDir
         ).apply {
-            mCurrentPhotoPath = absolutePath
+            currentPhotoPath = absolutePath
         }
     }
 }

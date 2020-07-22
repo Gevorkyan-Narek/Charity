@@ -21,7 +21,6 @@ class NewsFragment : Fragment(R.layout.news_fragment) {
         val view = super.onCreateView(inflater, container, savedInstanceState)!!
         view.news_recycler.layoutManager = LinearLayoutManager(context)
         view.news_recycler.adapter = NewsAdapter(JsonHelper(activity?.assets!!).getEvents())
-//        view.news_recycler.adapter = NewsAdapter(Datas(resources).events)
         view.filter.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.main_view_fragment, FilterFragment())?.addToBackStack("filter")

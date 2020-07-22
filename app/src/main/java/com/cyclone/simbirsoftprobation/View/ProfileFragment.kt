@@ -34,6 +34,7 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         Glide.with(context!!)
             .load(person.icon)
             .centerInside()
+            .placeholder(R.drawable.user_icon)
             .into(view.avatar_profile)
 
         view.avatar_profile.setOnClickListener { v ->
