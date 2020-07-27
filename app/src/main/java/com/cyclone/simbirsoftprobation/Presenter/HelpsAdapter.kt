@@ -26,8 +26,6 @@ class HelpsAdapter(private var categories: MutableList<CategoryOfHelp>): Recycle
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameHelp.text = categories[position].name
-        Glide.with(holder.itemView)
-            .load(categories[position].image)
-            .into(holder.imageHelp)
+        holder.imageHelp.loadBitmap(holder.itemView.context, categories[position].image)
     }
 }

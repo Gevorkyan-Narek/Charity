@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Presenter.Datas
 import com.cyclone.simbirsoftprobation.Presenter.FriendsAdapter
+import com.cyclone.simbirsoftprobation.Presenter.loadBitmap
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
@@ -22,20 +23,10 @@ import org.threeten.bp.format.DateTimeFormatter
 
 class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)!!
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val person = Datas.getInstance().person
 
-        Glide.with(context!!)
-            .load(person.icon)
-            .centerInside()
-            .placeholder(R.drawable.user_icon)
-            .into(view.avatar_profile)
+        view.avatar_profile.loadBitmap(context!!, person.icon, R.drawable.user_icon)
 
         view.avatar_profile.setOnClickListener { v ->
             val photoDialogFragment = PhotoDialogFragment()
@@ -50,7 +41,6 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
 
         view.recycler_friends.layoutManager = LinearLayoutManager(context)
         view.recycler_friends.adapter = FriendsAdapter(Datas.getInstance().friendsList)
-        return view
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -96,10 +86,6 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
                 person.icon = null
             }
         }
-        Glide.with(context!!)
-            .load(person.icon)
-            .centerInside()
-            .placeholder(R.drawable.user_icon)
-            .into(avatar_profile)
+        avatar_profile.loadBitmap(context!!, person.icon, R.drawable.user_icon)
     }
 }

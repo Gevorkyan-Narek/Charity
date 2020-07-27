@@ -37,7 +37,7 @@ class NewsAdapter(events: MutableList<Event>) :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Glide.with(holder.itemView).load(filteredEvents[position].avatar).into(holder.image)
+        holder.image.loadDrawable(holder.itemView.context, filteredEvents[position].avatar)
         holder.title.text = filteredEvents[position].title
         holder.content.text = filteredEvents[position].shortDescription
         holder.date.text = DiffUtils.getRelevance(filteredEvents[position])

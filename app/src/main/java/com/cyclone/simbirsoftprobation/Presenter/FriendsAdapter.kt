@@ -29,9 +29,6 @@ class FriendsAdapter(private var friends: MutableList<Person>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameFriend.text = friends[position].fullName
-        Glide.with(holder.itemView)
-            .load(friends[position].icon)
-            .placeholder(R.drawable.user_icon)
-            .into(holder.avatarFriend)
+        holder.avatarFriend.loadBitmap(holder.itemView.context, friends[position].icon, R.drawable.user_icon)
     }
 }

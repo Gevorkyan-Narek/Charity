@@ -13,16 +13,8 @@ import kotlinx.android.synthetic.main.help_fragment.view.*
 
 class HelpFragment : Fragment(R.layout.help_fragment) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)!!
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.recycler_kind_of_help.layoutManager = GridLayoutManager(context, 2)
         view.recycler_kind_of_help.adapter = HelpsAdapter(Datas(resources).categoriesOfHelp)
-
-        return view
     }
 }

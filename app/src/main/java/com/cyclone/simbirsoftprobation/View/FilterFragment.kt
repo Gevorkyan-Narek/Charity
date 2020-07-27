@@ -12,13 +12,7 @@ import kotlinx.android.synthetic.main.filter_fragment.view.*
 
 class FilterFragment : Fragment(R.layout.filter_fragment) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)!!
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.filter_recycler.layoutManager = LinearLayoutManager(context)
         view.filter_recycler.adapter = FilterAdapter()
         view.accept.setOnClickListener {
@@ -27,7 +21,5 @@ class FilterFragment : Fragment(R.layout.filter_fragment) {
         view.back.setOnClickListener {
             fragmentManager?.popBackStack()
         }
-
-        return view
     }
 }

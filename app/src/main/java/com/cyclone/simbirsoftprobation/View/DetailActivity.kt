@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Presenter.Datas
 import com.cyclone.simbirsoftprobation.Presenter.DiffUtils
-import com.cyclone.simbirsoftprobation.Presenter.JsonHelperAsync
+import com.cyclone.simbirsoftprobation.Presenter.loadBitmap
+import com.cyclone.simbirsoftprobation.Presenter.loadDrawable
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.news_detail.*
 
@@ -25,9 +26,9 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
         company.text = event.company
         address.text = event.address
         phone.text = event.tel
-        Glide.with(this).load(event.images[0]).into(card_image_1)
-        Glide.with(this).load(event.images[1]).into(card_image_2)
-        Glide.with(this).load(event.images[2]).into(card_image_3)
+        card_image_1.loadDrawable(this, event.images[0])
+        card_image_2.loadDrawable(this, event.images[1])
+        card_image_3.loadDrawable(this, event.images[2])
         descr.text = event.fullDescription
         share.setOnClickListener {
             val sendIntent = Intent()
