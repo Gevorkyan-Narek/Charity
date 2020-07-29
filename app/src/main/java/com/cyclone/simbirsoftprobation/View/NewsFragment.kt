@@ -16,24 +16,35 @@ import com.cyclone.simbirsoftprobation.Presenter.*
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.news_fragment.view.*
 
-//lateinit var recyclerView: RecyclerView
-
 class NewsFragment : Fragment(R.layout.news_fragment) {
 
     lateinit var broadcastReceiver: MyBroadcastReceiver
+    var isLoaded = false
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)!!
+
+        if (savedInstanceState == null) {
+            Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+            // Async
+            JsonHelperAsync(view.context, view.news_recycler).execute()
+
+            // Executor
+//        JsonHelperExecutor().submit(view.context, view.news_recycler)
+
+            // IntentService
+//        JsonHelperIntentService().start(view.news_recycler.adapter as NewsAdapter, view.context)
+        }
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.news_recycler.layoutManager = LinearLayoutManager(context)
         view.news_recycler.adapter = NewsAdapter()
-
-        // Async
-//        JsonHelperAsync(view.context, view.news_recycler).execute()
-
-        // Executor
-//        JsonHelperExecutor().submit(view.context, view.news_recycler)
-
-        // IntentService
-//        JsonHelperIntentService().start(view.news_recycler.adapter as NewsAdapter, view.context)
 
         Toast.makeText(context, "toast", Toast.LENGTH_SHORT).show()
         view.filter.setOnClickListener {
@@ -56,6 +67,11 @@ class NewsFragment : Fragment(R.layout.news_fragment) {
     override fun onDestroy() {
         super.onDestroy()
         context?.unregisterReceiver(broadcastReceiver)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("isLoaded", true)
     }
 
 }

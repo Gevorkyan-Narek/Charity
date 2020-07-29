@@ -9,8 +9,10 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
+    val rotation = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         AndroidThreeTen.init(this)
         Datas.newInstance(resources)
 
@@ -36,8 +38,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             transaction.commit()
             true
         }
-        navigation.selectedItemId = R.id.help
+        if (savedInstanceState == null) {
+            navigation.selectedItemId = R.id.help
+        }
 
         floatingButton.setOnClickListener { navigation.selectedItemId = R.id.help }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("Rotation", !rotation)
     }
 }
