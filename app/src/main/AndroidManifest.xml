@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Launcher">
         <service android:name=".Presenter.JsonHelperIntentService"/>
+
         <activity android:name=".View.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +28,12 @@
         <activity android:name=".View.MainActivity">
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+                android:resource="@xml/searchable" />
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.DetailActivity"/>
+        <activity android:name=".View.DetailActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
