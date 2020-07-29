@@ -49,7 +49,7 @@ class Datas(resources: Resources) {
             "Декабрь"
         )
 
-        lateinit var events: MutableList<Event>
+        var events: MutableList<Event> = mutableListOf()
     }
 
     val friendsList = mutableListOf(

@@ -8,13 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.cyclone.simbirsoftprobation.Model.Event
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.View.DetailActivity
 import kotlinx.android.synthetic.main.item_news.view.*
 
-class NewsAdapter(events: MutableList<Event>) :
+class NewsAdapter :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,8 +22,7 @@ class NewsAdapter(events: MutableList<Event>) :
         val date: TextView = itemView.date
     }
 
-    var filteredEvents = if (Datas.getInstance().filter.all { filter -> !filter.check }) events
-    else events.filter { event -> DiffUtils.filterNews(event) }.toMutableList()
+    private var filteredEvents = getFilteredEvents()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =

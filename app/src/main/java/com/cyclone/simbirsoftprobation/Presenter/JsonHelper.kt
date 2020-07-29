@@ -1,5 +1,6 @@
 package com.cyclone.simbirsoftprobation.Presenter
 
+import android.content.Context
 import android.content.res.AssetManager
 import android.os.AsyncTask
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class JsonHelper(
-    var assets: AssetManager
+    var context: Context
 ) {
 
     val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
@@ -18,7 +19,7 @@ class JsonHelper(
         val events = mutableListOf<Event>()
         for (i in 1..2) {
             val jsonEvent =
-                assets.open("event$i.json").bufferedReader().use { it.readText() }
+                context.assets.open("event$i.json").bufferedReader().use { it.readText() }
             val event = eventsAdapter.fromJson(jsonEvent)!!
             events.add(event)
         }

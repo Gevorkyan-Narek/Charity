@@ -17,8 +17,6 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val eventId = intent.extras?.getInt("event_id")!!
-//        val event = JsonHelperAsync(assets).getEvents()[eventId]
-//        val event = JsonHelperAsync(assets).execute().get()[eventId]
         val event = Datas.events[eventId]
         toolbar_title.text = event.title
         event_title.text = event.title
