@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cyclone.simbirsoftprobation.Presenter.JsonHelperAsync
+import com.cyclone.simbirsoftprobation.Presenter.JsonHelperExecutor
 import com.cyclone.simbirsoftprobation.Presenter.JsonHelperIntentService
 import com.cyclone.simbirsoftprobation.Presenter.MyBroadcastReceiver
 import com.cyclone.simbirsoftprobation.R
@@ -27,7 +29,7 @@ class NewsFragment : Fragment(R.layout.news_fragment) {
 //            JsonHelperExecutor().submit(view.context, view.news_recycler, view.progressBarNews)
 
             // IntentService
-//            JsonHelperIntentService().start(view.news_recycler, view.context)
+            JsonHelperIntentService().start(view.news_recycler, view.context)
         }
 
         view.filter.setOnClickListener {
