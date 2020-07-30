@@ -37,7 +37,7 @@ class NewsAdapter :
         holder.image.loadDrawable(holder.itemView.context, filteredEvents[position].avatar)
         holder.title.text = filteredEvents[position].title
         holder.content.text = filteredEvents[position].shortDescription
-        holder.date.text = DiffUtils.getRelevance(filteredEvents[position])
+        holder.date.text = MyUtils.getRelevance(filteredEvents[position])
         holder.itemView.setOnClickListener {
             val detailActivity = Intent(it.context, DetailActivity::class.java)
             detailActivity.putExtra("event_id", filteredEvents[position].id)
