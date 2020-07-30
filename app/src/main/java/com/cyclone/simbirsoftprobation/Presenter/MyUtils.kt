@@ -5,7 +5,7 @@ import com.cyclone.simbirsoftprobation.Model.Filter
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
-class DiffUtils {
+class MyUtils {
     companion object {
         fun checkOfRelevance(dateEnd: LocalDate): Boolean = dateEnd.isAfter(LocalDate.now())
         fun remainingRelevance(dateEnd: LocalDate): Int =
@@ -13,9 +13,9 @@ class DiffUtils {
 
         fun filterNews(events: Event): Boolean {
             val filters = Datas.getInstance().filter.filter { filter -> filter.check }
-            for (event: String in events.categoryOfHelp) {
+            for (categoryOfHelp: String in events.categoryOfHelp) {
                 for (filter: Filter in filters) {
-                    if (event == filter.name) return true
+                    if (categoryOfHelp == filter.name) return true
                 }
             }
             return false

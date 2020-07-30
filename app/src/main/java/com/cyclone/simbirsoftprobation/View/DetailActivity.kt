@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.cyclone.simbirsoftprobation.Presenter.DiffUtils
+import com.cyclone.simbirsoftprobation.Presenter.MyUtils
 import com.cyclone.simbirsoftprobation.Presenter.JsonHelper
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.news_detail.*
@@ -19,7 +19,7 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
 
         toolbar_title.text = event.title
         event_title.text = event.title
-        event_date.text = DiffUtils.getRelevance(event)
+        event_date.text = MyUtils.getRelevance(event)
         company.text = event.company
         address.text = event.address
         phone.text = event.tel

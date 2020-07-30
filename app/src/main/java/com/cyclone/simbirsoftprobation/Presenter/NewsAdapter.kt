@@ -25,7 +25,7 @@ class NewsAdapter(events: MutableList<Event>) :
     }
 
     var filteredEvents = if (Datas.getInstance().filter.all { filter -> !filter.check }) events
-    else events.filter { event -> DiffUtils.filterNews(event) }.toMutableList()
+    else events.filter { event -> MyUtils.filterNews(event) }.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
@@ -40,7 +40,7 @@ class NewsAdapter(events: MutableList<Event>) :
         Glide.with(holder.itemView).load(filteredEvents[position].avatar).into(holder.image)
         holder.title.text = filteredEvents[position].title
         holder.content.text = filteredEvents[position].shortDescription
-        holder.date.text = DiffUtils.getRelevance(filteredEvents[position])
+        holder.date.text = MyUtils.getRelevance(filteredEvents[position])
         holder.itemView.setOnClickListener {
             val detailActivity = Intent(it.context, DetailActivity::class.java)
             detailActivity.putExtra("event_id", filteredEvents[position].id)
