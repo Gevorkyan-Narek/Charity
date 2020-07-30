@@ -4,6 +4,8 @@ import android.app.IntentService
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.view.View
+import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 
 class JsonHelperIntentService : IntentService("BackgroundIntentService") {
@@ -17,16 +19,17 @@ class JsonHelperIntentService : IntentService("BackgroundIntentService") {
     lateinit var adapter: NewsAdapter
 
     fun start(
-        adapter: NewsAdapter,
+        recyclerView: RecyclerView,
         context: Context
     ) {
-        this.adapter = adapter
+        adapter = NewsAdapter()
+        recyclerView.adapter = adapter
         val intentService = Intent(context, JsonHelperIntentService::class.java)
         context.startService(intentService)
     }
 
     override fun onHandleIntent(intent: Intent?) {
-//        Thread.sleep(5000)
+        Thread.sleep(5000)
         Datas.events = JsonHelper(this).getEvents()
         val response = Intent()
         response.action = ACTION
@@ -36,8 +39,9 @@ class JsonHelperIntentService : IntentService("BackgroundIntentService") {
     }
 }
 
-class MyBroadcastReceiver(val recyclerView: RecyclerView) : BroadcastReceiver() {
+class MyBroadcastReceiver(private val recyclerView: RecyclerView, private val progressBar: ProgressBar) : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
+        progressBar.visibility = View.GONE
         recyclerView.adapter = NewsAdapter()
     }
 }
