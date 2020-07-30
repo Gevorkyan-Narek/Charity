@@ -11,7 +11,8 @@ class SplashActivity : AppCompatActivity(R.layout.splash_screen) {
         super.onCreate(savedInstanceState)
         Handler().postDelayed({
             finish()
-            startActivity(Intent(this, MainActivity::class.java))
+//            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, AuthorizationActivity::class.java))
         }, 1000L)
     }
 }

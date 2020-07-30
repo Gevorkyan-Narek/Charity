@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.DetailActivity" />
-
+        <activity android:name=".View.AuthorizationActivity"/>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.simbirsoftprobation.fileprovider"
