@@ -2,9 +2,7 @@ package com.cyclone.simbirsoftprobation.Presenter
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
-import androidx.constraintlayout.widget.Placeholder
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Model.Event
 
@@ -43,5 +41,5 @@ fun ImageView.loadDrawable(
 fun getFilteredEvents(): MutableList<Event> {
     val events = Datas.events
     return if (Datas.getInstance().filter.all { filter -> !filter.check }) events
-    else events.filter { event -> DiffUtils.filterNews(event) }.toMutableList()
+    else events.filter { event -> MyUtils.filterNews(event) }.toMutableList()
 }

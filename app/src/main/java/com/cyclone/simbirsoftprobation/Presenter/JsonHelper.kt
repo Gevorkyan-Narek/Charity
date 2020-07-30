@@ -1,9 +1,6 @@
 package com.cyclone.simbirsoftprobation.Presenter
 
 import android.content.Context
-import android.content.res.AssetManager
-import android.os.AsyncTask
-import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.Model.Event
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

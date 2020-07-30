@@ -22,7 +22,7 @@ class JsonHelperIntentService : IntentService("BackgroundIntentService") {
         recyclerView: RecyclerView,
         context: Context
     ) {
-        adapter = NewsAdapter()
+        if (recyclerView.adapter == null) adapter = NewsAdapter()
         recyclerView.adapter = adapter
         val intentService = Intent(context, JsonHelperIntentService::class.java)
         context.startService(intentService)
@@ -39,7 +39,10 @@ class JsonHelperIntentService : IntentService("BackgroundIntentService") {
     }
 }
 
-class MyBroadcastReceiver(private val recyclerView: RecyclerView, private val progressBar: ProgressBar) : BroadcastReceiver() {
+class MyBroadcastReceiver(
+    private val recyclerView: RecyclerView,
+    private val progressBar: ProgressBar
+) : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         progressBar.visibility = View.GONE
         recyclerView.adapter = NewsAdapter()

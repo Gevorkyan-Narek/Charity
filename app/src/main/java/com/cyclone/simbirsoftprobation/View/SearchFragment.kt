@@ -3,9 +3,7 @@ package com.cyclone.simbirsoftprobation.View
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter

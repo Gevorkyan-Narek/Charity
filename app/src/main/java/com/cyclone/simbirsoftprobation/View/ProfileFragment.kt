@@ -7,12 +7,9 @@ import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Presenter.Datas
 import com.cyclone.simbirsoftprobation.Presenter.FriendsAdapter
 import com.cyclone.simbirsoftprobation.Presenter.loadBitmap

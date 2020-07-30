@@ -3,9 +3,9 @@ package com.cyclone.simbirsoftprobation.View
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.Presenter.Datas
 import com.cyclone.simbirsoftprobation.Presenter.MyUtils
+import com.cyclone.simbirsoftprobation.Presenter.loadDrawable
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.news_detail.*
 
