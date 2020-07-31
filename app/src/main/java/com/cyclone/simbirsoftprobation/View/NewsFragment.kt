@@ -23,13 +23,13 @@ class NewsFragment : Fragment(R.layout.news_fragment) {
 
         if (savedInstanceState == null) {
             // Async
-//            JsonHelperAsync(view.context, view.news_recycler, view.progressBarNews).execute()
+            JsonHelperAsync(view.context, view.news_recycler, view.progressBarNews).execute()
 
             // Executor
 //            JsonHelperExecutor().submit(view.context, view.news_recycler, view.progressBarNews)
 
             // IntentService
-            JsonHelperIntentService().start(view.news_recycler, view.context)
+//            JsonHelperIntentService().start(view.news_recycler, view.context)
         }
 
         view.filter.setOnClickListener {
