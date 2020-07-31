@@ -29,4 +29,7 @@
     <string name="registration"><u>Регистрация</u></string>
     <string name="authorization_label">Для участия в мероприятиях войдите в приложение через социальые сети</string>
     <string name="another_authorization_label">Или авторизуйтесь через приложение</string>
+    <string name="like_count">+102</string>
+    <string name="do_you_have_questions">У вас есть вопросы?</string>
+    <string name="password">Пароль</string>
 </resources>
