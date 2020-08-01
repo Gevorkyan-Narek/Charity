@@ -2,26 +2,19 @@ package com.cyclone.simbirsoftprobation.search.view
 
 import android.app.SearchManager
 import android.content.Context
-import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentPagerAdapter
-import com.cyclone.simbirsoftprobation.Model.Event
-import com.cyclone.simbirsoftprobation.Presenter.Datas
-import com.cyclone.simbirsoftprobation.Presenter.JsonHelper
-import com.cyclone.simbirsoftprobation.Presenter.JsonHelperAsync
-import com.cyclone.simbirsoftprobation.Presenter.PagerAdapter
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.json_helper.JsonHelper
 import com.cyclone.simbirsoftprobation.search.adapter.PagerAdapter
+import com.cyclone.simbirsoftprobation.storage.Datas
 import com.jakewharton.rxbinding.widget.RxSearchView
 import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.android.synthetic.main.search_fragment.view.*
-import kotlinx.android.synthetic.main.search_object_fragment.view.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
