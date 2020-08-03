@@ -7,15 +7,13 @@ import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.model.Event
 import com.cyclone.simbirsoftprobation.model.Filter
 import com.cyclone.simbirsoftprobation.storage.Datas
+import com.cyclone.simbirsoftprobation.storage.Datas.Companion.checkOfRelevance
+import com.cyclone.simbirsoftprobation.storage.Datas.Companion.remainingRelevance
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
 class MyUtils {
     companion object {
-        fun checkOfRelevance(dateEnd: LocalDate): Boolean = dateEnd.isAfter(LocalDate.now())
-        fun remainingRelevance(dateEnd: LocalDate): Int =
-            dateEnd.dayOfYear - LocalDate.now().dayOfYear
-
         fun filterNews(events: Event): Boolean {
             val filters = Datas.getInstance().filter.filter { filter -> filter.check }
             for (categoryOfHelp: String in events.categoryOfHelp) {

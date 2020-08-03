@@ -21,6 +21,11 @@ class Datas(resources: Resources) {
         fun getInstance(): Datas =
             instance
 
+
+        fun checkOfRelevance(dateEnd: LocalDate): Boolean = dateEnd.isAfter(LocalDate.now())
+        fun remainingRelevance(dateEnd: LocalDate): Int =
+            dateEnd.dayOfYear - LocalDate.now().dayOfYear
+
         private val fullResultList = mutableListOf(
             "Благотворительный фонд Алины",
             "«Во имя жизни»",

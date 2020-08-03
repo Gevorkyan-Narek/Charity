@@ -13,20 +13,16 @@ import com.cyclone.simbirsoftprobation.storage.Datas
 class JsonHelperIntentService : IntentService("BackgroundIntentService") {
 
     companion object {
-        val ACTION = "LOAD_FILES"
-        val EXTRA_KEY_OUT = "EXTRA_OUT"
-        val finished = "finished"
+        const val ACTION = "LOAD_FILES"
+        const val EXTRA_KEY_OUT = "EXTRA_OUT"
+        const val finished = "finished"
     }
 
     lateinit var adapter: NewsAdapter
 
     fun start(
-        recyclerView: RecyclerView,
         context: Context
     ) {
-        if (recyclerView.adapter == null) adapter =
-            NewsAdapter()
-        recyclerView.adapter = adapter
         val intentService = Intent(context, JsonHelperIntentService::class.java)
         context.startService(intentService)
     }
