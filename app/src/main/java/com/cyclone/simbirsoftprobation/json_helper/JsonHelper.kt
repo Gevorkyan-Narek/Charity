@@ -2,24 +2,24 @@ package com.cyclone.simbirsoftprobation.json_helper
 
 import android.content.Context
 import com.cyclone.simbirsoftprobation.model.Event
+import com.google.gson.JsonArray
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import java.lang.reflect.ParameterizedType
 
 class JsonHelper(
     var context: Context
 ) {
 
-    val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-    val eventsAdapter = moshi.adapter(Event::class.java)
+    private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    private val type = Types.newParameterizedType(List::class.java, Event::class.java)
+    private val eventsAdapter = moshi.adapter<List<Event>>(type)
 
     fun getEvents(): MutableList<Event> {
-        val events = mutableListOf<Event>()
-        for (i in 1..2) {
-            val jsonEvent =
-                context.assets.open("event$i.json").bufferedReader().use { it.readText() }
-            val event = eventsAdapter.fromJson(jsonEvent)!!
-            events.add(event)
-        }
-        return events
+        val jsonEvent =
+            context.assets.open("event.json").bufferedReader().use { it.readText() }
+        val events = eventsAdapter.fromJson(jsonEvent)!!
+        return events.toMutableList()
     }
 }

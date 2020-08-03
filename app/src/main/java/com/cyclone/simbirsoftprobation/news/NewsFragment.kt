@@ -10,11 +10,11 @@ import com.cyclone.simbirsoftprobation.json_helper.JsonHelperIntentService
 import com.cyclone.simbirsoftprobation.json_helper.MyBroadcastReceiver
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.filter.FilterFragment
-import com.cyclone.simbirsoftprobation.json_helper.JsonHelperAsync
-import com.cyclone.simbirsoftprobation.json_helper.JsonHelperExecutor
+import com.cyclone.simbirsoftprobation.json_helper.JsonHelperCallback
 import kotlinx.android.synthetic.main.news_fragment.view.*
+import java.lang.Exception
 
-class NewsFragment : Fragment(R.layout.news_fragment) {
+class NewsFragment : Fragment(R.layout.news_fragment), JsonHelperCallback<MutableList<Event>> {
 
     lateinit var broadcastReceiver: MyBroadcastReceiver
     var isLoaded = false
@@ -24,18 +24,19 @@ class NewsFragment : Fragment(R.layout.news_fragment) {
 
         if (savedInstanceState == null) {
             // Async
-            JsonHelperAsync(view.context, view.news_recycler, view.progressBarNews).execute()
+            JsonHelperAsync(view.context, this).execute()
 
             // Executor
 //            JsonHelperExecutor().submit(view.context, view.news_recycler, view.progressBarNews)
 
             // IntentService
-//            JsonHelperIntentService().start(view.news_recycler, view.context)
+//            JsonHelperIntentService().start(view.context)
         }
 
         view.filter.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.main_view_fragment,
+                ?.replace(
+                    R.id.main_view_fragment,
                     FilterFragment()
                 )?.addToBackStack("filter")
                 ?.commit()
@@ -62,4 +63,13 @@ class NewsFragment : Fragment(R.layout.news_fragment) {
         outState.putBoolean("isLoaded", true)
     }
 
+    override fun onSuccess(result: MutableList<Event>) {
+        Datas.events = result
+        view!!.progressBarNews.visibility = View.GONE
+        view!!.news_recycler.adapter = NewsAdapter()
+    }
+
+    override fun onFailure(e: Exception) {
+        e.printStackTrace()
+    }
 }
