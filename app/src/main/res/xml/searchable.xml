@@ -3,4 +3,5 @@
     android:hint="Введите название организации"
     android:label="@string/search"
     android:searchSuggestSelection=" ?"
-    android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"/>
+    android:imeOptions="actionSearch"
+    android:voiceSearchMode="showVoiceSearchButton|launchRecognizer" />

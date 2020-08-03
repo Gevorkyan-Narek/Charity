@@ -14,14 +14,12 @@ class Datas(resources: Resources) {
     companion object {
         private lateinit var instance: Datas
         fun newInstance(resources: Resources) {
-            instance =
-                Datas(resources)
+            instance = Datas(resources)
         }
 
-        fun getInstance(): Datas =
-            instance
+        fun getInstance(): Datas = instance
 
-        private val fullResultList = mutableListOf(
+        private val searchResultExamples = mutableListOf(
             "Благотворительный фонд Алины",
             "«Во имя жизни»",
             "Благотворительный фонд В. Потанина",
@@ -30,11 +28,13 @@ class Datas(resources: Resources) {
             "Благотворительный фонд Алины и Потанины"
         )
 
-        fun getResults(): MutableList<String> {
+        fun getSearchResultExamples(): MutableList<String> {
             val results = mutableListOf<String>()
-            repeat(5) { results.add(fullResultList.random()) }
+            repeat(5) { results.add(searchResultExamples.random()) }
             return results
         }
+
+        var searchResults = mutableListOf<String>()
 
         val months = listOf(
             "Январь",

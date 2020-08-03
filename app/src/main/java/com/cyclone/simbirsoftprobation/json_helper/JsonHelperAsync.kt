@@ -16,7 +16,7 @@ class JsonHelperAsync(
 ) : AsyncTask<Void, Int, MutableList<Event>>() {
 
     override fun doInBackground(vararg params: Void): MutableList<Event>? {
-        Thread.sleep(5000)
+//        Thread.sleep(5000)
         return JsonHelper(context).getEvents()
     }
 

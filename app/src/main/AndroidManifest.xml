@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Launcher">
-        <service android:name=".json_helper.JsonHelperIntentService"/>
+        <service android:name=".json_helper.JsonHelperIntentService" />
 
         <activity android:name=".main_view.SplashActivity">
             <intent-filter>
@@ -25,7 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main_view.MainActivity">
+        <activity
+            android:name=".main_view.MainActivity"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -34,7 +36,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".news.DetailActivity" />
-        <activity android:name=".auth.AuthorizationActivity"/>
+        <activity android:name=".auth.AuthorizationActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.simbirsoftprobation.fileprovider"

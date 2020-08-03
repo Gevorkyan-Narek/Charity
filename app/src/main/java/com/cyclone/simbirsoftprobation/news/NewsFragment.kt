@@ -10,6 +10,8 @@ import com.cyclone.simbirsoftprobation.json_helper.JsonHelperIntentService
 import com.cyclone.simbirsoftprobation.json_helper.MyBroadcastReceiver
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.filter.FilterFragment
+import com.cyclone.simbirsoftprobation.json_helper.JsonHelperAsync
+import com.cyclone.simbirsoftprobation.json_helper.JsonHelperExecutor
 import kotlinx.android.synthetic.main.news_fragment.view.*
 
 class NewsFragment : Fragment(R.layout.news_fragment) {
