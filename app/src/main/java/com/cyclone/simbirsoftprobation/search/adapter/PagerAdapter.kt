@@ -1,17 +1,12 @@
 package com.cyclone.simbirsoftprobation.search.adapter
 
 import android.os.Bundle
-import android.util.Log
 import android.util.SparseArray
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.fragment.app.FragmentStatePagerAdapter
-import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.search.view.SearchResultFragment
-import com.cyclone.simbirsoftprobation.storage.Datas
-import kotlinx.android.synthetic.main.search_object_fragment.*
 
 
 class PagerAdapter(fm: FragmentManager) :

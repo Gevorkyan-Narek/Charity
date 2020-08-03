@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.Switch
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.storage.Datas
 import kotlinx.android.synthetic.main.item_filter.view.*
 
 class FilterAdapter : RecyclerView.Adapter<FilterAdapter.ViewHolder>() {

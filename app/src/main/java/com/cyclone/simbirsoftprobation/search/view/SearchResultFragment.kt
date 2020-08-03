@@ -1,15 +1,13 @@
 package com.cyclone.simbirsoftprobation.search.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.search.adapter.PagerAdapter
 import com.cyclone.simbirsoftprobation.search.adapter.SearchResultsAdapter
+import com.cyclone.simbirsoftprobation.storage.Datas
 import kotlinx.android.synthetic.main.search_object_fragment.*
 
 class SearchResultFragment : Fragment(R.layout.search_object_fragment) {

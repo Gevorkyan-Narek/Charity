@@ -2,11 +2,11 @@ package com.cyclone.simbirsoftprobation.storage
 
 import android.content.res.Resources
 import android.graphics.BitmapFactory
+import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.model.Event
 import com.cyclone.simbirsoftprobation.model.Filter
 import com.cyclone.simbirsoftprobation.model.Person
-import com.cyclone.simbirsoftprobation.R
 import org.threeten.bp.LocalDate
 
 class Datas(resources: Resources) {
