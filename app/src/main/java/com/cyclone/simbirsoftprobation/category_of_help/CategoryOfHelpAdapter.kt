@@ -1,5 +1,6 @@
 package com.cyclone.simbirsoftprobation.category_of_help
 
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.utilities.loadBitmap
+import com.cyclone.simbirsoftprobation.utilities.loadDrawable
 import kotlinx.android.synthetic.main.item_kind_of_help.view.*
 
 class CategoryOfHelpAdapter(private var categories: MutableList<CategoryOfHelp>): RecyclerView.Adapter<CategoryOfHelpAdapter.ViewHolder>() {
@@ -28,6 +30,6 @@ class CategoryOfHelpAdapter(private var categories: MutableList<CategoryOfHelp>)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.nameHelp.text = categories[position].name
-        holder.imageHelp.loadBitmap(holder.itemView.context, categories[position].image)
+        holder.imageHelp.loadDrawable(holder.itemView.context, categories[position].image)
     }
 }

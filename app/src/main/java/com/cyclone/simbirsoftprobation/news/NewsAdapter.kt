@@ -24,8 +24,7 @@ class NewsAdapter :
         val date: TextView = itemView.date
     }
 
-    private var filteredEvents =
-        getFilteredEvents()
+    private var filteredEvents = getFilteredEvents()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
@@ -39,9 +38,9 @@ class NewsAdapter :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.image.loadDrawable(holder.itemView.context, filteredEvents[position].avatar)
-        holder.title.text = filteredEvents[position].title
-        holder.content.text = filteredEvents[position].shortDescription
+        holder.image.loadDrawable(holder.itemView.context, filteredEvents[position].photos[0])
+        holder.title.text = filteredEvents[position].name
+        holder.content.text = filteredEvents[position].description
         holder.date.text =
             MyUtils.getRelevance(
                 filteredEvents[position]

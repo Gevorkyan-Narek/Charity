@@ -25,7 +25,7 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
         )
     }
 
-    val filter = Datas.getInstance().filter
+    val filter = Datas.filter
     override fun getItemCount(): Int = filter.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
