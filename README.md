@@ -325,3 +325,46 @@
  - Если введенная в поиск строка не соответствует названию ни одного события, то отображаем пустой список результатов.
  - При повороте экрана, а также при перелистывании `ViewPager` на вкладку "По НКО" и обратно строка, введенная в поиске, список результатов и позиция списка должны сохраняться.
 4. Перенести карточку в Завершенные в Trello
+
+---
+## Работа с сетью
+---
+### Теоретическая часть
+**1. Базовые понятия**
++ [HTTP](https://ru.wikipedia.org/wiki/HTTP) **(\*\*\*)**
++ [HTTP codes](https://ru.wikipedia.org/wiki/Список_кодов_состояния_HTTP/) **(\*\*\*)**
++ [RESTful](https://habrahabr.ru/company/hexlet/blog/274675/) **(\*\*\*)**
++ [RESTful API — ложь](https://habrahabr.ru/post/265845/) **(\*)**
++ [WebSocket](https://stfalcon.com/ru/blog/post/android-websocket) **(\*\*)**
+
+**2. Библиотеки**
++ [OkHttp](http://square.github.io/okhttp/) **(\*\*\*\*)**
++ [Retrofit](http://square.github.io/retrofit/) **(\*\*\*\*)**
++ [Handling API calls using Retrofit 2 and RxJava 2](https://medium.com/3xplore/handling-api-calls-using-retrofit-2-and-rxjava-2-1871c891b6ae) **(\*\*\*\*)**
++ [OkHttp. Interceptors](https://github.com/square/okhttp/wiki/Interceptors) **(\*\*\*)**
++ [OkHttp which ignores all SSL errors](https://gist.github.com/chalup/8706740) **(\*\*\*)**
++ [Logging interceptor for okhttp](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) **(\*\*)**
+
+**4. Отладка. Перехват и подмена трафика мобильных устройств**
++ [Postman](https://habr.com/ru/company/kolesa/blog/351250/)  **(\*\*)**
++ [Fiddler](https://learn.javascript.ru/fiddler)  **(\*\*)**
++ [Charles](http://wormiks.ru/faq_po_programmam_wormix/11-charles_instrukcija_polzovatelja_i_faq.html)  **(\*\*)**
++ [Перехват и подмена трафика мобильных устройств](http://kb.simbirsoft/traffic-sniffers/)  **(\*)**
+
+**5. Codelabs**
++ [Android Network Security Configuration](https://codelabs.developers.google.com/codelabs/android-network-security-config/index.html?index=..%2F..index#0) **(\*\*)**
+
+### Практическое задание
+Работа должна производится в созданном ранее проекте.
+
+Все изменения должны быть закоммичены, а названия коммитов должны коротко и исчерпывающе описывать содержащие изменения. Каждый коммит должен быть рабочим, отправка некомпилирующегося кода недопустима. Для работы над этим заданием необходимо переключится на ветку `networking
+` и все изменения пушить в нее. После завершения работы над задачей в github необходимо создать merge request в ветку `develop`.
+Код должен быть читабельным и написан согласно code-style.
+
+1. Необходимо реализовать транспортный слой приложения, который будет осуществалять загрузку данных с [сервера](https://mobile-study.simbirsoft1.com). Запросы, реализуемые сервером, и формат ответов можно посмотреть открыв ссылку в браузере.
+ - Данные от сервера получать в виде Observable
+ - Все "тяжелые" операции должны быть реализованы в фоновом потоке
+ - На время выполнения фоновых операций пользователю должен быть показан Activity Indicator
+2. Заменить загрузку из файла на старте приложения на загрузку с сервера. В случае если ответ от сервера ошибочен - загрузить данные из файла.
+ - Все "тяжелые" операции должны быть реализованы в фоновом потоке
+ - На время выполнения фоновых операций пользователю должен быть показан Activity Indicator
