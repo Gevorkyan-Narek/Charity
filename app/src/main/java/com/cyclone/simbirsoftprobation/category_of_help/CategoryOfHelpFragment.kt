@@ -11,6 +11,7 @@ import com.cyclone.simbirsoftprobation.network.CategoriesFirebaseService
 import com.cyclone.simbirsoftprobation.network.RetrofitInstance
 import com.cyclone.simbirsoftprobation.storage.Datas
 import kotlinx.android.synthetic.main.help_fragment.view.*
+import org.threeten.bp.LocalDate
 import rx.android.schedulers.AndroidSchedulers
 
 class CategoryOfHelpFragment : Fragment(R.layout.help_fragment) {
@@ -19,7 +20,6 @@ class CategoryOfHelpFragment : Fragment(R.layout.help_fragment) {
         view.recycler_kind_of_help.layoutManager = GridLayoutManager(context, 2)
 
         RetrofitInstance.instance
-            .create(CategoriesFirebaseService::class.java)
             .getCategories()
             .onErrorReturn {
                 Datas.categoriesOfHelp
@@ -27,8 +27,7 @@ class CategoryOfHelpFragment : Fragment(R.layout.help_fragment) {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext { categories ->
                 view.progressBarCategoryHelp.visibility = View.GONE
-                view.recycler_kind_of_help.adapter =
-                    CategoryOfHelpAdapter(categories!!.toMutableList())
+                view.recycler_kind_of_help.adapter = CategoryOfHelpAdapter(categories!!.toMutableList())
                 Datas.filter = categories.map { Filter(it.id, it.name) }.toMutableList()
             }
             .subscribe()

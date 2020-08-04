@@ -20,8 +20,7 @@ class Datas(resources: Resources) {
         fun getInstance(): Datas = instance
 
         fun checkOfRelevance(dateEnd: Long): Boolean = LocalDate.ofEpochDay(dateEnd).isAfter(LocalDate.now())
-        fun remainingRelevance(dateEnd: Long): Long =
-            dateEnd - LocalDate.now().dayOfYear
+        fun remainingRelevance(dateEnd: Long): Int = LocalDate.ofEpochDay(dateEnd).dayOfYear - LocalDate.now().dayOfYear
 
         private val searchResultExamples = mutableListOf(
             "Благотворительный фонд Алины",

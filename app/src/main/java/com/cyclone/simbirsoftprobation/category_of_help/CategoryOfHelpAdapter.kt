@@ -1,6 +1,5 @@
 package com.cyclone.simbirsoftprobation.category_of_help
 
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.model.CategoryOfHelp
-import com.cyclone.simbirsoftprobation.utilities.loadBitmap
 import com.cyclone.simbirsoftprobation.utilities.loadDrawable
 import kotlinx.android.synthetic.main.item_kind_of_help.view.*
 

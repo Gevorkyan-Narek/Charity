@@ -2,7 +2,6 @@ package com.cyclone.simbirsoftprobation.utilities
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -25,13 +24,8 @@ class MyUtils {
         }
 
         fun getRelevance(events: Event): String {
-            return if (checkOfRelevance(
-                    events.endDate
-                )
-            ) {
-                "Осталось ${remainingRelevance(
-                    events.endDate
-                )} дней " +
+            return if (checkOfRelevance(events.endDate)) {
+                "Осталось ${remainingRelevance(events.endDate)} дней " +
                         "(${LocalDate.ofEpochDay(events.startDate).format(
                             DateTimeFormatter.ofPattern(
                                 "dd.MM"
@@ -40,12 +34,9 @@ class MyUtils {
                         "${LocalDate.ofEpochDay(events.endDate)
                             .format(DateTimeFormatter.ofPattern("dd.MM"))})"
             } else {
-//                "${Datas.months[events.dateEnd.monthValue - 1]} " +
-//                        events.dateEnd.format(DateTimeFormatter.ofPattern("dd, yyyy"))
-                LocalDate.ofEpochDay(events.createAt)
-                    .format(
-                        DateTimeFormatter.ofPattern("dd, yyyy")
-                    )
+                "${Datas.months[LocalDate.ofEpochDay(events.endDate).monthValue - 1]} " +
+                        LocalDate.ofEpochDay(events.createAt)
+                            .format(DateTimeFormatter.ofPattern("dd, yyyy"))
             }
         }
     }
@@ -93,8 +84,6 @@ fun getFilteredEvents(): MutableList<Event> {
     val events = Datas.events
     return if (Datas.filter.all { filter -> !filter.check }) events
     else events.filter { event ->
-        MyUtils.filterNews(
-            event
-        )
+        MyUtils.filterNews(event)
     }.toMutableList()
 }

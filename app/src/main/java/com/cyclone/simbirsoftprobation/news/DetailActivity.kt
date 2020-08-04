@@ -14,8 +14,8 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val eventId = intent.extras?.getInt("event_id")!!
-        val event = Datas.events[eventId]
+        val eventId = intent.extras?.getString("event_id")!!
+        val event = Datas.events.find { event -> event.id == eventId }!!
         toolbar_title.text = event.name
         event_title.text = event.name
         event_date.text = MyUtils.getRelevance(event)

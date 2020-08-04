@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.news.NewsAdapter
 import com.cyclone.simbirsoftprobation.storage.Datas
+import com.cyclone.simbirsoftprobation.utilities.getFilteredEvents
 
 class JsonHelperIntentService : IntentService("BackgroundIntentService") {
 
@@ -28,7 +29,7 @@ class JsonHelperIntentService : IntentService("BackgroundIntentService") {
     }
 
     override fun onHandleIntent(intent: Intent?) {
-        Thread.sleep(5000)
+//        Thread.sleep(5000)
         Datas.events = JsonHelper(this).getEvents()
         val response = Intent()
         response.action = ACTION
