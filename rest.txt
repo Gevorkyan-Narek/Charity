@@ -1,0 +1,38 @@
+API
+
+Category request
+type: GET
+path: /categories
+
+response
+{
+  id: String,
+  name_en: String,
+  name: String,
+  image: String
+}
+
+
+Events request
+type: POST
+path: /events
+
+body: {
+    "id": "categories->id or empty"
+}
+
+response
+{
+ id: String,
+ name: String,
+ startDate: Long,
+ endDate: Long,
+ description: String,
+ status: Long,
+ photos: [String],
+ category: String categories->id,
+ createAt: Long
+ phone: String
+ address: String
+ organisation: String
+}
