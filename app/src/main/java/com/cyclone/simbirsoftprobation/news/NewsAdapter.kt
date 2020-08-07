@@ -2,7 +2,6 @@ package com.cyclone.simbirsoftprobation.news
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.model.Event
 import com.cyclone.simbirsoftprobation.utilities.MyUtils
-import com.cyclone.simbirsoftprobation.utilities.getFilteredEvents
 import com.cyclone.simbirsoftprobation.utilities.loadDrawable
 import kotlinx.android.synthetic.main.item_news.view.*
 
-class NewsAdapter :
+class NewsAdapter(var filteredEvents: MutableList<Event>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,8 +23,6 @@ class NewsAdapter :
         val content: TextView = itemView.content
         val date: TextView = itemView.date
     }
-
-    private var filteredEvents = getFilteredEvents()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =

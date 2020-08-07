@@ -2,8 +2,8 @@ package com.cyclone.simbirsoftprobation.json_helper
 
 import android.content.Context
 import android.os.Handler
+import com.cyclone.simbirsoftprobation.db.EventDataBase
 import com.cyclone.simbirsoftprobation.model.Event
-import com.cyclone.simbirsoftprobation.storage.Datas
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
@@ -17,9 +17,12 @@ class JsonHelperExecutor {
         Handler {
             val executor = Executors.newSingleThreadExecutor()
 
+            lateinit var events: MutableList<Event>
+
             executor.submit {
 //                Thread.sleep(5000)
-                Datas.events = JsonHelper(context).getEvents()
+                events = JsonHelper(context).getEvents()
+                EventDataBase.getDataBase(context).eventDAO().insertEvents(events)
             }
 
             var exception: Exception? = null
@@ -31,10 +34,9 @@ class JsonHelperExecutor {
                 exception = e
             } finally {
                 if (!executor.isShutdown) executor.shutdownNow()
-                if (callback != null) {
-                    if (exception == null) {
-                        callback.onSuccess(Datas.events)
-                    } else callback.onFailure(exception)
+
+                if (callback != null && exception != null) {
+                    callback.onFailure(exception)
                 }
             }
 
