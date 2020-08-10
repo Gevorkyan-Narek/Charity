@@ -4,159 +4,206 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/avatar_profile"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/profile_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
-        android:src="@drawable/image_man" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relative_profile_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/avatar_profile"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/profile_name"
-            android:textColor="@color/black87"
-            android:textSize="24sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/label_birth_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="4sp"
-            android:text="@string/birthday"
-            android:textColor="@color/black38"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/profile_name" />
-
-        <TextView
-            android:id="@+id/birth_day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/birthday"
-            android:textColor="@color/black87"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/label_birth_day" />
-
-        <TextView
-            android:id="@+id/label_profession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="4sp"
-            android:text="@string/profession"
-            android:textColor="@color/black38"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/birth_day" />
-
-        <TextView
-            android:id="@+id/profession"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/profession"
-            android:textColor="@color/black87"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/label_profession" />
-
-        <TextView
-            android:id="@+id/label_push"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="sans-serif"
-            android:text="@string/push"
-            android:textColor="@color/black87"
-            android:textSize="16sp"
-            android:textStyle="normal"
-            app:layout_constraintTop_toBottomOf="@id/profession" />
-
-        <Switch
-            android:id="@+id/push"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="58dp"
-            android:checked="true"
-            app:layout_constraintStart_toEndOf="@id/label_push"
-            app:layout_constraintTop_toTopOf="@id/label_push" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/upper_separator"
-        android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_below="@id/relative_profile_info"
-        android:layout_marginTop="18dp"
-        android:background="@color/separator" />
-
-    <RelativeLayout
-        android:id="@+id/relative_friends"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/upper_separator"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/label_friends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:lineSpacingExtra="4sp"
-            android:text="@string/friends"
-            android:textColor="@color/black38"
-            android:textSize="12sp"
-            android:textStyle="normal" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_friends"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/label_friends"
-            android:layout_marginTop="6dp" />
-    </RelativeLayout>
+            android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/lower_separator"
+            <TextView
+                android:id="@+id/toolbar_title"
+                style="@style/TitleTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/profile" />
+
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="22dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/edit" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0.7dp"
-        android:layout_below="@id/relative_friends"
-        android:layout_marginTop="18dp"
-        android:background="@color/separator" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/profile_toolbar">
 
-    <Button
-        android:layout_width="166dp"
-        android:layout_height="36dp"
-        android:layout_below="@id/lower_separator"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorPrimaryGreen"
-        android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.04"
-        android:text="@string/exit_button"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:textStyle="normal" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/relative_profile_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="57dp">
 
+            <ImageView
+                android:id="@+id/avatar_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/image_man"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/profile_name"
+                android:textColor="@color/black87"
+                android:textSize="24sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/avatar_profile" />
+
+            <TextView
+                android:id="@+id/label_birth_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/birthday"
+                android:textColor="@color/black38"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@id/profile_name"
+                app:layout_constraintTop_toBottomOf="@id/profile_name" />
+
+            <TextView
+                android:id="@+id/birth_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/birthday"
+                android:textColor="@color/black87"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@id/label_birth_day"
+                app:layout_constraintTop_toBottomOf="@id/label_birth_day" />
+
+            <TextView
+                android:id="@+id/label_profession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/profession"
+                android:textColor="@color/black38"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@id/birth_day"
+                app:layout_constraintTop_toBottomOf="@id/birth_day" />
+
+            <TextView
+                android:id="@+id/profession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/profession"
+                android:textColor="@color/black87"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@id/label_profession"
+                app:layout_constraintTop_toBottomOf="@id/label_profession" />
+
+            <TextView
+                android:id="@+id/label_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/push"
+                android:textColor="@color/black87"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="@id/profession"
+                app:layout_constraintTop_toBottomOf="@id/profession" />
+
+            <Switch
+                android:id="@+id/push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="58dp"
+                android:checked="true"
+                app:layout_constraintBaseline_toBaselineOf="@id/label_push"
+                app:layout_constraintStart_toEndOf="@id/label_push" />
+
+            <View
+                android:id="@+id/upper_separator"
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_below="@id/relative_profile_info"
+                android:layout_marginTop="18dp"
+                android:background="@color/separator"
+                app:layout_constraintTop_toBottomOf="@id/push" />
+
+            <TextView
+                android:id="@+id/label_friends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif"
+                android:lineSpacingExtra="4sp"
+                android:text="@string/friends"
+                android:textColor="@color/black38"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/upper_separator" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_friends"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_friends" />
+
+            <View
+                android:id="@+id/lower_separator"
+                android:layout_width="match_parent"
+                android:layout_height="0.7dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/separator"
+                app:layout_constraintTop_toBottomOf="@id/recycler_friends" />
+
+            <Button
+                android:id="@+id/exit_button"
+                android:layout_width="166dp"
+                android:layout_height="36dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorPrimaryGreen"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.04"
+                android:text="@string/exit_button"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lower_separator" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>
