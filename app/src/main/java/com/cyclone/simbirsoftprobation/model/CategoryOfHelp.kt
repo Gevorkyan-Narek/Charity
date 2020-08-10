@@ -1,8 +1,8 @@
 package com.cyclone.simbirsoftprobation.model
 
-import android.graphics.Bitmap
-
 data class CategoryOfHelp (
+    val id: String,
+    val name_en: String,
     val name: String,
-    val image: Bitmap
+    val image: String
 )

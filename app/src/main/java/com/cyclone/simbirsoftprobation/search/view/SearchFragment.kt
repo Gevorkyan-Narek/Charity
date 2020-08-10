@@ -41,12 +41,12 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
                 if (it.isNotBlank()) {
                     Datas.searchResults = Datas.events.filter { event ->
-                        event.title.toUpperCase(Locale.getDefault()).contains(
+                        event.name.toUpperCase(Locale.getDefault()).contains(
                             it.toString().toUpperCase(
                                 Locale.getDefault()
                             )
                         )
-                    }.map { event -> event.title }.toMutableList()
+                    }.map { event -> event.name }.toMutableList()
                 }
             }
             .observeOn(AndroidSchedulers.mainThread()).doOnNext {

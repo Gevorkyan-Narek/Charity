@@ -14,18 +14,18 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val eventId = intent.extras?.getInt("event_id")!!
-        val event = Datas.events[eventId]
-        toolbar_title.text = event.title
-        event_title.text = event.title
+        val eventId = intent.extras?.getString("event_id")!!
+        val event = Datas.events.find { event -> event.id == eventId }!!
+        toolbar_title.text = event.name
+        event_title.text = event.name
         event_date.text = MyUtils.getRelevance(event)
-        company.text = event.company
+        company.text = event.organisation
         address.text = event.address
-        phone.text = event.tel
-        card_image_1.loadDrawable(this, event.images[0])
-        card_image_2.loadDrawable(this, event.images[1])
-        card_image_3.loadDrawable(this, event.images[2])
-        descr.text = event.fullDescription
+        phone.text = event.phone
+        card_image_1.loadDrawable(this, event.photos[0])
+        card_image_2.loadDrawable(this, event.photos[1])
+        card_image_3.loadDrawable(this, event.photos[2])
+        descr.text = event.description
         share.setOnClickListener {
             val sendIntent = Intent()
             sendIntent.action = Intent.ACTION_SEND

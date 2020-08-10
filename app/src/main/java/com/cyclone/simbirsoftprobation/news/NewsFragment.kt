@@ -3,6 +3,7 @@ package com.cyclone.simbirsoftprobation.news
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +11,12 @@ import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.filter.FilterFragment
 import com.cyclone.simbirsoftprobation.json_helper.*
 import com.cyclone.simbirsoftprobation.model.Event
+import com.cyclone.simbirsoftprobation.network.RetrofitInstance
+import com.cyclone.simbirsoftprobation.storage.Datas
+import com.cyclone.simbirsoftprobation.utilities.getFilteredEvents
 import kotlinx.android.synthetic.main.news_fragment.view.*
+import rx.android.schedulers.AndroidSchedulers
+import javax.security.auth.callback.Callback
 
 class NewsFragment : Fragment(R.layout.news_fragment), JsonHelperCallback<MutableList<Event>> {
 
@@ -21,14 +27,29 @@ class NewsFragment : Fragment(R.layout.news_fragment), JsonHelperCallback<Mutabl
         view.news_recycler.layoutManager = LinearLayoutManager(context)
 
         if (savedInstanceState == null) {
-            // Async
-            JsonHelperAsync(view.context, this).execute()
+            RetrofitInstance.instance
+                .getEvents()
+                .observeOn(AndroidSchedulers.mainThread())
+                .onErrorReturn { t ->
+                    // Async
+                    JsonHelperAsync(view.context, this).execute()
 
-            // Executor
-//            JsonHelperExecutor().submit(view.context, this)
+//                     Executor
+//                    JsonHelperExecutor().submit(view.context, this)
 
-            // IntentService
-//            JsonHelperIntentService().start(view.context)
+//                     IntentService
+//                    JsonHelperIntentService().start(view.context)
+
+                    null
+                }
+                .doOnError { t -> Log.d("Error", t.message!!) }
+                .doOnNext { t ->
+                    if (!t.isNullOrEmpty()) {
+                        Datas.events = t.toMutableList()
+                        view.progressBarNews.visibility = View.GONE
+                        view.news_recycler.adapter = NewsAdapter()
+                    }
+                }.subscribe()
         }
 
         view.filter.setOnClickListener {

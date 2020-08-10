@@ -2,11 +2,11 @@ package com.cyclone.simbirsoftprobation.storage
 
 import android.content.res.Resources
 import android.graphics.BitmapFactory
-import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.model.Event
 import com.cyclone.simbirsoftprobation.model.Filter
 import com.cyclone.simbirsoftprobation.model.Person
+import com.cyclone.simbirsoftprobation.R
 import org.threeten.bp.LocalDate
 
 class Datas(resources: Resources) {
@@ -19,10 +19,8 @@ class Datas(resources: Resources) {
 
         fun getInstance(): Datas = instance
 
-
-        fun checkOfRelevance(dateEnd: LocalDate): Boolean = dateEnd.isAfter(LocalDate.now())
-        fun remainingRelevance(dateEnd: LocalDate): Int =
-            dateEnd.dayOfYear - LocalDate.now().dayOfYear
+        fun checkOfRelevance(dateEnd: Long): Boolean = LocalDate.ofEpochDay(dateEnd).isAfter(LocalDate.now())
+        fun remainingRelevance(dateEnd: Long): Int = LocalDate.ofEpochDay(dateEnd).dayOfYear - LocalDate.now().dayOfYear
 
         private val searchResultExamples = mutableListOf(
             "Благотворительный фонд Алины",
@@ -56,7 +54,16 @@ class Datas(resources: Resources) {
             "Декабрь"
         )
 
+        val categoriesOfHelp = mutableListOf(
+            CategoryOfHelp("0", "Children", "Дети", "children"),
+            CategoryOfHelp("1", "Adults", "Взрослые", "man"),
+            CategoryOfHelp("2", "Aged", "Пожилые", "grand"),
+            CategoryOfHelp("3", "Animals", "Животные", "animals"),
+            CategoryOfHelp("4", "Events", "Мероприятия", "events")
+        )
+
         var events: MutableList<Event> = mutableListOf()
+        var filter = mutableListOf<Filter>()
     }
 
     val friendsList = mutableListOf(
@@ -98,14 +105,4 @@ class Datas(resources: Resources) {
         BitmapFactory.decodeResource(resources, R.drawable.image_man),
         true
     )
-
-    val categoriesOfHelp = mutableListOf(
-        CategoryOfHelp("Дети", BitmapFactory.decodeResource(resources, R.drawable.children)),
-        CategoryOfHelp("Взрослые", BitmapFactory.decodeResource(resources, R.drawable.man)),
-        CategoryOfHelp("Пожилые", BitmapFactory.decodeResource(resources, R.drawable.grand)),
-        CategoryOfHelp("Животные", BitmapFactory.decodeResource(resources, R.drawable.animals)),
-        CategoryOfHelp("Мероприятия", BitmapFactory.decodeResource(resources, R.drawable.events))
-    )
-
-    val filter = categoriesOfHelp.map { Filter(it.name) }.toMutableList()
 }

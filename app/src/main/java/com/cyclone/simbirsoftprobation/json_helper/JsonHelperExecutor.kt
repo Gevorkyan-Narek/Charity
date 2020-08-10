@@ -18,7 +18,7 @@ class JsonHelperExecutor {
             val executor = Executors.newSingleThreadExecutor()
 
             executor.submit {
-                Thread.sleep(5000)
+//                Thread.sleep(5000)
                 Datas.events = JsonHelper(context).getEvents()
             }
 
@@ -42,34 +42,4 @@ class JsonHelperExecutor {
 
         }.sendEmptyMessage(0)
     }
-//    fun submit(
-//        context: Context,
-//        newsRecycler: RecyclerView,
-//        progressBar: ProgressBar
-//    ) {
-//
-//        Handler {
-//            val executor = Executors.newSingleThreadExecutor()
-//
-//            executor.submit {
-//                Thread.sleep(5000)
-//                Datas.events = JsonHelper(context).getEvents()
-//            }
-//
-//            try {
-//                executor.shutdown()
-//                executor.awaitTermination(10, TimeUnit.SECONDS)
-//            } catch (e: InterruptedException) {
-//                e.printStackTrace()
-//            } finally {
-//                if (!executor.isShutdown) executor.shutdownNow()
-//                progressBar.visibility = View.GONE
-//                newsRecycler.adapter =
-//                    NewsAdapter()
-//            }
-//
-//            true
-//
-//        }.sendEmptyMessage(0)
-//    }
 }
