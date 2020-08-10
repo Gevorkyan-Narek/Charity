@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
-import kotlinx.android.synthetic.main.search_result_item.view.*
+import kotlinx.android.synthetic.main.item_search_result.view.*
 
 class SearchResultsAdapter(var results: MutableList<String>) :
     RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
@@ -17,7 +17,7 @@ class SearchResultsAdapter(var results: MutableList<String>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.search_result_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_search_result, parent, false)
         return ViewHolder(itemView)
     }
 

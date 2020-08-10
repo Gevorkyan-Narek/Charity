@@ -13,11 +13,12 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.DialogFragment
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.photo_dialog.view.*
+import org.threeten.bp.Instant
+import org.threeten.bp.ZoneOffset
+import org.threeten.bp.format.DateTimeFormatter
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
 
@@ -95,7 +96,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
             CREATE_PHOTO -> {
                 if (resultCode == RESULT_OK) {
                     try {
-                        val intent = Intent().putExtra("path", mCurrentPhotoPath)
+                        val intent = Intent().putExtra("path", currentPhotoPath)
                         targetFragment?.onActivityResult(targetRequestCode, CREATE_PHOTO, intent)
                         dismiss()
                     } catch (e: FileNotFoundException) {
@@ -106,18 +107,18 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
         }
     }
 
-    lateinit var mCurrentPhotoPath: String
+    lateinit var currentPhotoPath: String
 
     @Throws(IOException::class)
     private fun createImageFile(): File {
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val timeStamp: String = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss").withZone(ZoneOffset.UTC).format(Instant.now())
         val storageDir: File = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
         return File.createTempFile(
             "JPEG_${timeStamp}_",
             ".jpg",
             storageDir
         ).apply {
-            mCurrentPhotoPath = absolutePath
+            currentPhotoPath = absolutePath
         }
     }
 }

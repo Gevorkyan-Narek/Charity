@@ -27,7 +27,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SplashScreenTextStyle">
+    <style name="ContentTextStyle">
         <item name="fontFamily">Roboto-Regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">20sp</item>
@@ -38,5 +38,12 @@
         <item name="fontFamily">Roboto-Regular</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/black87</item>
+    </style>
+    
+    <style name="NewsTitle">
+        <item name="android:textSize">21sp</item>
+        <item name="lineHeight">23sp</item>
+        <item name="android:textColor">@color/blue_grey</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

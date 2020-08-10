@@ -21,7 +21,7 @@ class HelpFragment : Fragment(R.layout.help_fragment) {
         val view = super.onCreateView(inflater, container, savedInstanceState)!!
 
         view.recycler_kind_of_help.layoutManager = GridLayoutManager(context, 2)
-        view.recycler_kind_of_help.adapter = HelpsAdapter(Datas(resources).helps)
+        view.recycler_kind_of_help.adapter = HelpsAdapter(Datas(resources).categoriesOfHelp)
 
         return view
     }
