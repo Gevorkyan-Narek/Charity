@@ -33,20 +33,12 @@ class NewsFragment : Fragment(R.layout.news_fragment), JsonHelperCallback<Mutabl
             RetrofitInstance.instance
                 .getEvents()
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn { t ->
-                    // Async
+                .onErrorReturn {
                     JsonHelperAsync(view.context, this).execute()
-
-//                     Executor
-//                    JsonHelperExecutor().submit(view.context, this)
-
-//                     IntentService
-//                    JsonHelperIntentService().start(view.context)
-
                     null
                 }
                 .doOnError { t -> Log.d("Error", t.message!!) }
-                .doOnNext { t ->
+                .doOnSuccess { t ->
                     if (!t.isNullOrEmpty()) {
                         Datas.events = t.toMutableList()
                         view.progressBarNews.visibility = View.GONE
