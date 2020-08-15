@@ -11,7 +11,6 @@ import com.cyclone.simbirsoftprobation.presentation.presenter.search_fragment.Se
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.PagerAdapter
 import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.android.synthetic.main.search_fragment.view.*
-import kotlinx.android.synthetic.main.search_object_fragment.view.*
 import rx.android.schedulers.AndroidSchedulers
 
 class SearchFragment : Fragment(R.layout.search_fragment) {
@@ -31,13 +30,8 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
         SearchViewPresenter().setQueryTextChanges(view.search_view)
             .observeOn(AndroidSchedulers.mainThread()).doOnNext {
                 val adapter = (pager.adapter as PagerAdapter)
-                if (it.isNotBlank()) {
-                    adapter.updateResults(pager.currentItem)
-                    adapter.getRegisteredFragments(pager.currentItem).view!!.no_results_include.visibility =
-                        View.GONE
-                } else adapter.getRegisteredFragments(pager.currentItem).view!!.no_results_include.visibility =
-                    View.VISIBLE
-            }.subscribe()
+                adapter.updateResults(pager.currentItem, it.isNotBlank())
+            }
 
         val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
         view.search_view.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))

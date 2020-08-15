@@ -1,7 +1,6 @@
 package com.cyclone.simbirsoftprobation.data.db
 
 import androidx.room.TypeConverter
-import java.util.stream.Collectors
 
 class ListToStringConverter {
 
@@ -10,7 +9,7 @@ class ListToStringConverter {
         @TypeConverter
         @JvmStatic
         fun fromList(photos: List<String>): String {
-            return photos.stream().collect(Collectors.joining(","))
+            return photos.joinToString(",")
         }
 
         @TypeConverter

@@ -24,10 +24,10 @@ class CategoryOfHelpFragment : Fragment(R.layout.help_fragment) {
             .getInstance()
             .getCategories()
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { categories ->
-                view.recycler_kind_of_help.adapter =
-                    CategoryOfHelpAdapter(categories.toMutableList())
+            .doOnNext { categories ->
+                view.recycler_kind_of_help.adapter = CategoryOfHelpAdapter(categories.toMutableList())
                 view.progressBarCategoryHelp.visibility = View.GONE
             }
+            .subscribe()
     }
 }

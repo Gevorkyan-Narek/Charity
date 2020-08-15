@@ -10,32 +10,29 @@ import kotlinx.android.synthetic.main.activity_authorization.*
 import rx.Observable
 
 class AuthorizationActivity : AppCompatActivity(R.layout.activity_authorization) {
+
+    companion object {
+        const val MIN_LINE_LENGTH = 5
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         Observable.combineLatest(
             RxTextView.textChanges(input_email),
             RxTextView.textChanges(input_password)
-        ) { t1, t2 -> t1.length > 5 && t2.length > 5 }
-            .subscribe {
-                if (it) {
-                    enter.isEnabled = true
-                    enter.setBackgroundColor(
-                        resources.getColor(
-                            R.color.colorPrimaryGreen,
-                            theme
-                        )
+        ) { t1, t2 -> t1.length > MIN_LINE_LENGTH && t2.length > MIN_LINE_LENGTH }
+            .doOnNext {
+                enter.isEnabled = it
+                enter.setBackgroundColor(
+                    resources.getColor(
+                        if (it) R.color.colorPrimaryGreen
+                        else R.color.dark_gray,
+                        theme
                     )
-                } else {
-                    enter.isEnabled = false
-                    enter.setBackgroundColor(
-                        resources.getColor(
-                            R.color.dark_gray,
-                            theme
-                        )
-                    )
-                }
+                )
             }
+            .subscribe()
 
         enter.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))

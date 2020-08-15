@@ -13,13 +13,13 @@ interface EventDAO {
     @Query("select * from event order by createAt DESC")
     fun getEvents(): Flowable<List<Event>>
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertEvent(event: Event)
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertEvents(events: List<Event>)
 
-    @Update(onConflict = OnConflictStrategy.ABORT)
+    @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateEvent(event: Event)
 
     @Delete

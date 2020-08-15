@@ -39,9 +39,7 @@ class JsonHelperExecutor {
             } finally {
                 if (!executor.isShutdown) executor.shutdownNow()
 
-                if (callback != null && exception != null) {
-                    callback.onFailure(exception)
-                }
+                if (exception != null) callback?.onFailure(exception)
             }
 
             true
