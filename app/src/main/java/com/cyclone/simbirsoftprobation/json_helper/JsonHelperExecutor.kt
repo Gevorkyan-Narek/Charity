@@ -31,11 +31,8 @@ class JsonHelperExecutor {
                 exception = e
             } finally {
                 if (!executor.isShutdown) executor.shutdownNow()
-                if (callback != null) {
-                    if (exception == null) {
-                        callback.onSuccess(Datas.events)
-                    } else callback.onFailure(exception)
-                }
+                if (exception == null) callback?.onSuccess(Datas.events)
+                else callback?.onFailure(exception)
             }
 
             true
