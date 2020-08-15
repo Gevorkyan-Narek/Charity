@@ -13,7 +13,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-    val rotation = false
+    private val rotation = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,22 +24,26 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             val transaction = supportFragmentManager.beginTransaction()
             when (menuItem.itemId) {
                 R.id.news -> {
-                    transaction.replace(R.id.main_view_fragment,
+                    transaction.replace(
+                        R.id.main_view_fragment,
                         NewsFragment()
                     )
                 }
                 R.id.search -> {
-                    transaction.replace(R.id.main_view_fragment,
+                    transaction.replace(
+                        R.id.main_view_fragment,
                         SearchFragment()
                     )
                 }
                 R.id.help -> {
-                    transaction.replace(R.id.main_view_fragment,
+                    transaction.replace(
+                        R.id.main_view_fragment,
                         CategoryOfHelpFragment()
                     )
                 }
                 R.id.profile -> {
-                    transaction.replace(R.id.main_view_fragment,
+                    transaction.replace(
+                        R.id.main_view_fragment,
                         ProfileFragment()
                     )
                 }
@@ -50,6 +54,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             transaction.commit()
             true
         }
+
         if (savedInstanceState == null) {
             navigation.selectedItemId = R.id.help
         }

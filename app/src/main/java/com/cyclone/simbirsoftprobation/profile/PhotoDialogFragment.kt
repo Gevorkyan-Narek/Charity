@@ -112,7 +112,7 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
         }
     }
 
-    lateinit var currentPhotoPath: String
+    private lateinit var currentPhotoPath: String
 
     @Throws(IOException::class)
     private fun createImageFile(): File {

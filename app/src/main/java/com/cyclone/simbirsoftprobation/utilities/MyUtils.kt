@@ -2,16 +2,22 @@ package com.cyclone.simbirsoftprobation.utilities
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.util.Log
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.model.Event
 import com.cyclone.simbirsoftprobation.model.Filter
+import com.cyclone.simbirsoftprobation.network.FirebaseService
+import com.cyclone.simbirsoftprobation.network.RetrofitInstance
 import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.storage.Datas.Companion.checkOfRelevance
 import com.cyclone.simbirsoftprobation.storage.Datas.Companion.remainingRelevance
+import com.google.gson.GsonBuilder
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import rx.schedulers.Schedulers
 
 class MyUtils {
     companion object {
@@ -80,10 +86,21 @@ fun String.getDrawable(context: Context): Int {
     return context.resources.getIdentifier(this, "drawable", context.applicationContext.packageName)
 }
 
-fun getFilteredEvents(): MutableList<Event> {
-    val events = Datas.events
-    return if (Datas.filter.all { filter -> !filter.check }) events
+fun getFilteredEvents(events: List<Event>): MutableList<Event> {
+    return if (Datas.filter.all { filter -> !filter.check }) events.toMutableList()
     else events.filter { event ->
         MyUtils.filterNews(event)
     }.toMutableList()
+}
+
+fun Retrofit.Builder.connectFirebase(): FirebaseService {
+    return baseUrl(RetrofitInstance.FIREBASE_URL)
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().setLenient().create()
+            )
+        )
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.createWithScheduler(Schedulers.io()))
+        .build()
+        .create(FirebaseService::class.java)
 }

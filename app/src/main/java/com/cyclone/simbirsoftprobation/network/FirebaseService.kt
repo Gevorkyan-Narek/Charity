@@ -5,7 +5,7 @@ import com.cyclone.simbirsoftprobation.model.Event
 import retrofit2.http.GET
 import rx.Single
 
-interface CategoriesFirebaseService {
+interface FirebaseService {
 
     @GET("categories.json")
     fun getCategories(): Single<List<CategoryOfHelp>>
