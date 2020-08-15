@@ -28,7 +28,7 @@
             android:layout_height="1dp"
             android:layout_below="@id/hint"
             android:layout_marginTop="20dp"
-            android:background="@color/separator" />
+            android:background="?android:attr/listDivider" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_results_recycler"
@@ -36,13 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/upper_separator"
             android:background="#FFFFFF" />
-
-        <View
-            android:id="@+id/lower_separator"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/search_results_recycler"
-            android:background="@color/separator" />
     </RelativeLayout>
 
     <include
