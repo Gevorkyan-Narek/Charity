@@ -54,11 +54,11 @@ class EventsDataRepository : EventsRepository {
     }
 
     override fun deleteAll() {
-        Observable.just(
+        Observable.fromCallable {
             EventDataBase
                 .getDataBase()
                 .eventDAO()
-        )
+        }
             .doOnNext { t ->
                 t.deleteAll()
                 Log.d("Events", "Deleted")

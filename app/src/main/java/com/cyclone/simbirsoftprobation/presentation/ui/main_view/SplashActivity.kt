@@ -31,9 +31,6 @@ class SplashActivity : AppCompatActivity(R.layout.splash_screen) {
 
         EventDataBase.initDataBase(this)
 
-        EventsDataRepository.getInstance().deleteAll()
-        CategoriesDataRepository.getInstance().deleteCategories()
-
         RetrofitDataRepository.getInstance().fillCategoriesDB()
         RetrofitDataRepository.getInstance().fillEventsDB()
 

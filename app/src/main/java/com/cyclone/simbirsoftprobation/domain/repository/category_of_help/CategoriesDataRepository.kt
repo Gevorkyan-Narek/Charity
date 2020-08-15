@@ -42,14 +42,15 @@ class CategoriesDataRepository : CategoriesRepository {
     }
 
     override fun deleteCategories() {
-        Observable.just(
+        Observable.fromCallable {
             EventDataBase
                 .getDataBase()
                 .categoriesDAO()
-        ).subscribeOn(Schedulers.io())
+        }.subscribeOn(Schedulers.io())
             .doOnNext { t ->
                 t.deleteCategories()
-                Log.d("Categories", "Deleted") }
+                Log.d("Categories", "Deleted")
+            }
             .subscribe()
     }
 }
