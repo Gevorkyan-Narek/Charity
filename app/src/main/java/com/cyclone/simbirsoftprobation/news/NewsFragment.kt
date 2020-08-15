@@ -28,6 +28,24 @@ class NewsFragment : Fragment(R.layout.news_fragment) {
             }
             .subscribe()
 
+//        if (savedInstanceState == null) {
+//            RetrofitInstance.instance
+//                .getEvents()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .onErrorReturn {
+//                    JsonHelperAsync(view.context, this).execute()
+//                    null
+//                }
+//                .doOnError { t -> Log.d("Error", t.message!!) }
+//                .doOnSuccess { t ->
+//                    if (!t.isNullOrEmpty()) {
+//                        Datas.events = t.toMutableList()
+//                        view.progressBarNews.visibility = View.GONE
+//                        view.news_recycler.adapter = NewsAdapter()
+//                    }
+//                }.subscribe()
+//        }
+
         view.filter.setOnClickListener {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(

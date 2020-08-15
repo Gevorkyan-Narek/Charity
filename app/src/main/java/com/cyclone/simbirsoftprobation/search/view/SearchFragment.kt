@@ -13,10 +13,8 @@ import com.cyclone.simbirsoftprobation.storage.Datas
 import com.jakewharton.rxbinding.widget.RxSearchView
 import kotlinx.android.synthetic.main.search_fragment.*
 import kotlinx.android.synthetic.main.search_fragment.view.*
-import kotlinx.android.synthetic.main.search_object_fragment.view.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 class SearchFragment : Fragment(R.layout.search_fragment) {
@@ -41,21 +39,15 @@ class SearchFragment : Fragment(R.layout.search_fragment) {
 
                 if (it.isNotBlank()) {
                     Datas.searchResults = Datas.events.filter { event ->
-                        event.name.toUpperCase(Locale.getDefault()).contains(
-                            it.toString().toUpperCase(
-                                Locale.getDefault()
-                            )
-                        )
+                        event.name.contains(it, true)
                     }.map { event -> event.name }.toMutableList()
-                }
+                } else Datas.searchResults =
+                    Datas.events.map { event -> event.name }.toMutableList()
             }
-            .observeOn(AndroidSchedulers.mainThread()).doOnNext {
+            .observeOn(AndroidSchedulers.mainThread()).subscribe {
                 val adapter = (pager.adapter as PagerAdapter)
-                if (it.isNotBlank()) {
-                    adapter.updateResults(pager.currentItem)
-                    adapter.getRegisteredFragments(pager.currentItem).view!!.no_results_include.visibility = View.GONE
-                } else adapter.getRegisteredFragments(pager.currentItem).view!!.no_results_include.visibility = View.VISIBLE
-            }.subscribe()
+                adapter.updateResults(pager.currentItem, it.isNotBlank())
+            }
 
         val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
         view.search_view.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))

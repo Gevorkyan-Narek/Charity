@@ -25,10 +25,10 @@ class CategoryOfHelpFragment : Fragment(R.layout.help_fragment) {
                 Datas.filter = it.map { Filter(it.id, it.name) }.toMutableList()
             }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { categories ->
+            .doOnSuccess { categories ->
                 view.recycler_kind_of_help.adapter =
-                    CategoryOfHelpAdapter(categories = categories.toMutableList())
-                view.progressBarCategoryHelp.visibility = View.GONE
-            }
+                    CategoryOfHelpAdapter(categories.toMutableList())
+                view.progressBarCategoryHelp.visibility = View.GONE            }
+            .subscribe()
     }
 }
