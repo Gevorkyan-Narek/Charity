@@ -1,41 +1,61 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.news
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.arellomobile.mvp.MvpAppCompatFragment
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
 import com.cyclone.simbirsoftprobation.presentation.ui.filter.FilterFragment
 import com.cyclone.simbirsoftprobation.domain.utilities.getFilteredEvents
+import com.cyclone.simbirsoftprobation.presentation.presenter.NewsPresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
+import kotlinx.android.synthetic.main.news_fragment.*
 import kotlinx.android.synthetic.main.news_fragment.view.*
 
-class NewsFragment : Fragment(R.layout.news_fragment) {
+class NewsFragment : MvpAppCompatFragment(), NewsView {
+
+    @InjectPresenter
+    lateinit var newsPresenter: NewsPresenter
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.news_fragment, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        filter.setOnClickListener { showFilter() }
         view.news_recycler.layoutManager = LinearLayoutManager(context)
+    }
 
+    override fun getEvents() {
         EventsDataRepository
             .getInstance()
             .getEvents()
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext { events ->
-                view.news_recycler.adapter = NewsAdapter(getFilteredEvents(events))
+                news_recycler.adapter = NewsAdapter(getFilteredEvents(events))
             }
             .doAfterNext {
-                view.progressBarNews.visibility = View.GONE
+                progressBarNews.visibility = View.GONE
             }
             .subscribe()
+    }
 
-        view.filter.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(
-                    R.id.main_view_fragment,
-                    FilterFragment()
-                )?.addToBackStack("filter")
-                ?.commit()
-        }
+    override fun showFilter() {
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(
+                R.id.main_view_fragment,
+                FilterFragment()
+            )?.addToBackStack("filter")
+            ?.commit()
     }
 }

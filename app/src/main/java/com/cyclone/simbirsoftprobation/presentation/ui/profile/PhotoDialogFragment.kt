@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.cyclone.simbirsoftprobation.R
-import com.cyclone.simbirsoftprobation.presentation.presenter.profile.FilePresenter
+import com.cyclone.simbirsoftprobation.presentation.presenter.FilePresenter
 import kotlinx.android.synthetic.main.photo_dialog.view.*
 import java.io.FileNotFoundException
 

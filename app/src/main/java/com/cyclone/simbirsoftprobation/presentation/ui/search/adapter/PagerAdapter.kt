@@ -47,6 +47,6 @@ class PagerAdapter(fm: FragmentManager) :
     fun getRegisteredFragments(position: Int): SearchResultFragment = registeredFragments[position]
 
     fun updateResults(position: Int, isNotBlank: Boolean) {
-        registeredFragments[position].update(isNotBlank)
+        registeredFragments[position].searchResultPresenter.update(isNotBlank)
     }
 }

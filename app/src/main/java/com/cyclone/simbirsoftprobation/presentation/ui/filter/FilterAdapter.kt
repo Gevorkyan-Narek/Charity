@@ -20,9 +20,7 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_filter, parent, false)
-        return ViewHolder(
-            itemView
-        )
+        return ViewHolder(itemView)
     }
 
     val filter = Datas.filter
@@ -31,7 +29,7 @@ class FilterAdapter : RecyclerView.Adapter<FilterAdapter.ViewHolder>() {
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.filterName.text = filter[position].name
         holder.switcher.isChecked = filter[position].check
-        holder.switcher.setOnCheckedChangeListener { buttonView, isChecked ->
+        holder.switcher.setOnCheckedChangeListener { _, isChecked ->
             filter[position].check = isChecked
         }
     }

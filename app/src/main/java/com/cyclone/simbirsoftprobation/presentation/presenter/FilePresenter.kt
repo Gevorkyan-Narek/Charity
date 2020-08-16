@@ -1,4 +1,4 @@
-package com.cyclone.simbirsoftprobation.presentation.presenter.profile
+package com.cyclone.simbirsoftprobation.presentation.presenter
 
 import android.content.ContentResolver
 import android.graphics.Bitmap
