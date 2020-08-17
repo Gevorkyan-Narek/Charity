@@ -12,14 +12,15 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.domain.model.Person
 import com.cyclone.simbirsoftprobation.domain.utilities.loadBitmap
-import com.cyclone.simbirsoftprobation.presentation.presenter.ProfilePresenter
 import com.cyclone.simbirsoftprobation.presentation.presenter.FilePresenter
+import com.cyclone.simbirsoftprobation.presentation.presenter.ProfilePresenter
 import com.cyclone.simbirsoftprobation.storage.Datas
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
 import org.threeten.bp.format.DateTimeFormatter
+import javax.inject.Inject
 
-class ProfileFragment : MvpAppCompatFragment(), ProfileView {
+class ProfileFragment @Inject constructor() : MvpAppCompatFragment(), ProfileView {
 
     @InjectPresenter
     lateinit var profilePresenter: ProfilePresenter

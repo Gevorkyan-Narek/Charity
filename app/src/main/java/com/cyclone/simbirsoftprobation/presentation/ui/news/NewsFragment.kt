@@ -4,24 +4,27 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
-import com.cyclone.simbirsoftprobation.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
-import com.cyclone.simbirsoftprobation.presentation.ui.filter.FilterFragment
 import com.cyclone.simbirsoftprobation.domain.utilities.getFilteredEvents
 import com.cyclone.simbirsoftprobation.presentation.presenter.NewsPresenter
+import com.cyclone.simbirsoftprobation.presentation.ui.category_of_help.CategoryOfHelpFragment
+import com.cyclone.simbirsoftprobation.presentation.ui.filter.FilterFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.news_fragment.*
 import kotlinx.android.synthetic.main.news_fragment.view.*
+import javax.inject.Inject
 
-class NewsFragment : MvpAppCompatFragment(), NewsView {
+class NewsFragment @Inject constructor() : MvpAppCompatFragment(), NewsView {
 
     @InjectPresenter
     lateinit var newsPresenter: NewsPresenter
+
+    @Inject
+    lateinit var filterFragment: FilterFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,7 +57,7 @@ class NewsFragment : MvpAppCompatFragment(), NewsView {
         activity?.supportFragmentManager?.beginTransaction()
             ?.replace(
                 R.id.main_view_fragment,
-                FilterFragment()
+                filterFragment
             )?.addToBackStack("filter")
             ?.commit()
     }

@@ -15,8 +15,9 @@ import com.cyclone.simbirsoftprobation.presentation.presenter.SearchViewPresente
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.PagerAdapter
 import kotlinx.android.synthetic.main.search_fragment.*
 import rx.android.schedulers.AndroidSchedulers
+import javax.inject.Inject
 
-class SearchFragment : MvpAppCompatFragment(), SearchView {
+class SearchFragment @Inject constructor() : MvpAppCompatFragment(), SearchView {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +29,11 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
 
     @InjectPresenter
     lateinit var searchPresenter: SearchPresenter
+
     private lateinit var pagerAdapter: FragmentPagerAdapter
+
+    @Inject
+    lateinit var searchViewPresenter: SearchViewPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +47,7 @@ class SearchFragment : MvpAppCompatFragment(), SearchView {
     }
 
     override fun setSearchOptions() {
-        SearchViewPresenter()
+        searchViewPresenter
             .setQueryTextChanges(search_view)
             .observeOn(AndroidSchedulers.mainThread()).doOnNext {
                 searchPresenter.updateResults(it.isNotBlank())

@@ -1,7 +1,6 @@
 package com.cyclone.simbirsoftprobation.domain.repository.event
 
 import com.cyclone.simbirsoftprobation.domain.model.Event
-import io.reactivex.Flowable
 import io.reactivex.Observable
 
 interface EventsRepository {

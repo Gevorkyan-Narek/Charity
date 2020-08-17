@@ -1,14 +1,10 @@
 package com.cyclone.simbirsoftprobation.domain.interactors.search_fragment
 
-import android.util.Log
-import android.view.View
 import android.widget.SearchView
-import com.cyclone.simbirsoftprobation.data.json_helper.JsonHelper
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
 import com.cyclone.simbirsoftprobation.storage.Datas
 import com.jakewharton.rxbinding.widget.RxSearchView
-import kotlinx.android.synthetic.main.search_fragment.view.*
 import rx.Observable
 import rx.schedulers.Schedulers
 import java.util.*

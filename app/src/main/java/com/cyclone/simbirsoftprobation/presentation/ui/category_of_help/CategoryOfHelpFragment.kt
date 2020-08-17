@@ -2,7 +2,6 @@ package com.cyclone.simbirsoftprobation.presentation.ui.category_of_help
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +15,9 @@ import com.cyclone.simbirsoftprobation.presentation.presenter.CategoryOfHelpPres
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.help_fragment.*
 import kotlinx.android.synthetic.main.help_fragment.view.*
+import javax.inject.Inject
 
-class CategoryOfHelpFragment : MvpAppCompatFragment(),
+class CategoryOfHelpFragment @Inject constructor(): MvpAppCompatFragment(),
     CategoryOfHelpView {
 
     @InjectPresenter

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cyclone.simbirsoftprobation.R
-import com.cyclone.simbirsoftprobation.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
 import com.cyclone.simbirsoftprobation.domain.utilities.MyUtils
 import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable

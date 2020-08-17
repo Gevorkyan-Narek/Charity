@@ -6,18 +6,11 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import com.cyclone.simbirsoftprobation.domain.model.Filter
-import com.cyclone.simbirsoftprobation.domain.repository.network.FirebaseService
-import com.cyclone.simbirsoftprobation.domain.repository.network.RetrofitInstance
 import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.storage.Datas.Companion.checkOfRelevance
 import com.cyclone.simbirsoftprobation.storage.Datas.Companion.remainingRelevance
-import com.google.gson.GsonBuilder
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import rx.schedulers.Schedulers
 
 class MyUtils {
     companion object {

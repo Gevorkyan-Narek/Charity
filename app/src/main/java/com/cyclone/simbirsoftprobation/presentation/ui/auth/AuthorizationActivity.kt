@@ -2,7 +2,6 @@ package com.cyclone.simbirsoftprobation.presentation.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R

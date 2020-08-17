@@ -5,25 +5,36 @@ import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.domain.dagger.components.DaggerMainActivityComponent
+//import com.cyclone.simbirsoftprobation.domain.dagger.components.DaggerMainActivityComponent
 import com.cyclone.simbirsoftprobation.presentation.presenter.MainPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.category_of_help.CategoryOfHelpFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.news.NewsFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.profile.ProfileFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.search.view.SearchFragment
-import com.cyclone.simbirsoftprobation.storage.Datas
-import com.jakewharton.threetenabp.AndroidThreeTen
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : MvpAppCompatActivity(),
     MainView {
 
+    @Inject
+    lateinit var categoryOfHelpFragment: CategoryOfHelpFragment
+    @Inject
+    lateinit var newsFragment: NewsFragment
+    @Inject
+    lateinit var searchFragment: SearchFragment
+    @Inject
+    lateinit var profileFragment: ProfileFragment
+
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
-
     private val rotation = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        DaggerMainActivityComponent.create().inject(this)
 
         navigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -62,7 +73,7 @@ class MainActivity : MvpAppCompatActivity(),
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.main_view_fragment,
-                CategoryOfHelpFragment()
+                categoryOfHelpFragment
             )
             .commit()
     }
@@ -71,7 +82,7 @@ class MainActivity : MvpAppCompatActivity(),
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.main_view_fragment,
-                NewsFragment()
+                newsFragment
             )
             .commit()
     }
@@ -80,7 +91,7 @@ class MainActivity : MvpAppCompatActivity(),
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.main_view_fragment,
-                SearchFragment()
+                searchFragment
             )
             .commit()
     }
@@ -89,7 +100,7 @@ class MainActivity : MvpAppCompatActivity(),
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.main_view_fragment,
-                ProfileFragment()
+                profileFragment
             )
             .commit()
     }
