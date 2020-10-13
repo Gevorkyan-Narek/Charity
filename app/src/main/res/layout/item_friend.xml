@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="10dp">
+    android:layout_marginTop="@dimen/friendItemMargin"
+    tools:ignore="UseCompoundDrawables">
 
     <ImageView
         android:id="@+id/avatar_friend"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/avatar_1" />
+        android:src="@drawable/avatar_1"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/name_friend"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginStart="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="@dimen/friendTextMargin"
         android:layout_gravity="center_vertical"
         android:fontFamily="sans-serif"
-        android:text="Friend name"
+        android:text="@string/friend_name"
         android:textColor="@color/black87"
         android:textSize="16sp"
         android:textStyle="normal" />

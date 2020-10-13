@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Toolbar
+    <dimen name="toolbarButtonMargin">10dp</dimen>
+
+    // Recycler
+    <dimen name="recyclerMarginFilter">20dp</dimen>
+    <dimen name="recyclerMargin">8dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+
+    // Category
+    <dimen name="categoryIconMarginTop">12dp</dimen>
+    <dimen name="categoryTextMarginBottom">12dp</dimen>
+    <dimen name="categoryIconWidth">120dp</dimen>
+    <dimen name="categoryIconHeight">80dp</dimen>
+
+    // News
+    <dimen name="newsCardCorner">2dp</dimen>
+    <dimen name="newsIconMargin">4dp</dimen>
+    <dimen name="newsDecorIconMargin">8dp</dimen>
+    <dimen name="newsTextPadding">26dp</dimen>
+    <dimen name="newsTextMargin">10dp</dimen>
+
+    // Detail News
+    <dimen name="friendItemMargin">10dp</dimen>
+    <dimen name="friendTextMargin">20dp</dimen>
+    <dimen name="detailnewsTitleMargin">20dp</dimen>
+
+    // Filter
+    <dimen name="filterTextMargin">16dp</dimen>
+    <dimen name="filterSwitchButtonMargin">8dp</dimen>
+
+    // Search
+    <dimen name="searchResultMargin">20dp</dimen>
+
+    // Profile
+    <dimen name="profileFioTextMargin">20dp</dimen>
+
+</resources>

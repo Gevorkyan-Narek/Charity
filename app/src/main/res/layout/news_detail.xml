@@ -8,9 +8,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/event_toolbar_title"
+        style="@style/Toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,8 +20,8 @@
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/toolbarButtonMargin"
                 android:src="@drawable/back"
-                app:layout_constraintEnd_toStartOf="@id/toolbar_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
@@ -51,7 +50,7 @@
                 android:id="@+id/share"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="@dimen/toolbarButtonMargin"
                 android:src="@drawable/share"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -75,12 +74,13 @@
                 android:id="@+id/event_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="106dp"
+                android:layout_marginStart="@dimen/detailnewsTitleMargin"
+                android:layout_marginTop="@dimen/detailnewsTitleMargin"
+                android:layout_marginEnd="@dimen/detailnewsTitleMargin"
                 android:lineSpacingExtra="2sp"
                 android:textColor="@color/blue_grey"
                 android:textSize="21sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Спонсоры отремонтируют школу-интернат" />
@@ -89,7 +89,7 @@
                 android:id="@+id/icon_cal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="@dimen/detailnewsTitleMargin"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/icon_calendar"
                 android:tint="@color/dark_gray"
@@ -115,7 +115,7 @@
                 android:id="@+id/company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="@dimen/detailnewsTitleMargin"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif"
                 android:lineSpacingExtra="8sp"
@@ -130,7 +130,7 @@
                 android:id="@+id/nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="@dimen/detailnewsTitleMargin"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/nav"
                 app:layout_constraintEnd_toStartOf="@id/address"
@@ -158,7 +158,7 @@
                 android:id="@+id/ic_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="@dimen/detailnewsTitleMargin"
                 android:src="@drawable/phone"
                 app:layout_constraintEnd_toStartOf="@id/phone"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -178,17 +178,15 @@
                 android:textStyle="normal"
                 app:layout_constraintStart_toEndOf="@id/ic_phone"
                 app:layout_constraintTop_toBottomOf="@id/address"
-                tools:layout_editor_absoluteX="54dp"
                 tools:text="+7 (937) 037 37-73\n+7 (937) 016 16-16" />
 
             <ImageView
                 android:id="@+id/ic_mail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="@dimen/detailnewsTitleMargin"
                 android:src="@drawable/mail"
                 app:layout_constraintBottom_toBottomOf="@id/ask_question"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/ask_question" />
 
@@ -226,7 +224,7 @@
                 android:id="@+id/photo_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/detailnewsTitleMargin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ask_question">
 
@@ -264,7 +262,7 @@
                 android:id="@+id/descr"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/detailnewsTitleMargin"
                 android:fontFamily="sans-serif"
                 android:lineSpacingExtra="6sp"
                 android:textColor="@color/black70"
@@ -279,7 +277,7 @@
                 android:id="@+id/go_to_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/detailnewsTitleMargin"
                 android:fontFamily="sans-serif"
                 android:lineSpacingExtra="6sp"
                 android:paddingBottom="30dp"
@@ -294,16 +292,17 @@
                 android:id="@+id/likes_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/detailnewsTitleMargin"
+                android:layout_marginEnd="@dimen/detailnewsTitleMargin"
                 android:background="@color/light_gray_two"
                 android:gravity="center_vertical"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="@dimen/detailnewsTitleMargin"
+                android:paddingBottom="@dimen/detailnewsTitleMargin"
                 app:layout_constraintTop_toBottomOf="@id/go_to_company">
 
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_marginStart="20dp"
                     android:src="@drawable/avatar_3" />
 
                 <ImageView
@@ -346,6 +345,8 @@
         android:id="@+id/help_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_marginStart="@dimen/detailnewsTitleMargin"
+        android:layout_marginEnd="@dimen/detailnewsTitleMargin"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -355,18 +356,17 @@
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="9dp"
+            android:drawableTop="@drawable/shirt"
             android:drawablePadding="7dp"
-
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="2sp"
             android:lines="2"
+            android:paddingTop="9dp"
             android:text="@string/help_with_things"
             android:textColor="@color/black40"
             android:textSize="10sp"
-            android:textStyle="normal"
-            android:drawableTop="@drawable/shirt"/>
+            android:textStyle="normal" />
 
         <View
             android:id="@+id/become_volunteer"
@@ -378,18 +378,17 @@
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="9dp"
+            android:drawableTop="@drawable/hands"
             android:drawablePadding="7dp"
-
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="2sp"
             android:lines="2"
+            android:paddingTop="9dp"
             android:text="@string/become_volunteer"
             android:textColor="@color/black40"
             android:textSize="10sp"
-            android:textStyle="normal"
-            android:drawableTop="@drawable/hands"/>
+            android:textStyle="normal" />
 
         <View
             android:layout_width="1dp"
@@ -400,18 +399,17 @@
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="9dp"
+            android:drawableTop="@drawable/tools"
             android:drawablePadding="7dp"
-
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="2sp"
             android:lines="2"
+            android:paddingTop="9dp"
             android:text="@string/prof_help"
             android:textColor="@color/black40"
             android:textSize="10sp"
-            android:textStyle="normal"
-            android:drawableTop="@drawable/tools"/>
+            android:textStyle="normal" />
 
         <View
             android:layout_width="1dp"
@@ -432,6 +430,5 @@
             android:textColor="@color/black40"
             android:textSize="10sp"
             android:textStyle="normal" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

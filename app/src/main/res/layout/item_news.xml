@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="@dimen/recyclerMargin">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="2dp"
-        android:background="@android:color/white">
+        android:background="@android:color/white"
+        app:cardCornerRadius="@dimen/newsCardCorner">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,12 +20,13 @@
                 android:id="@+id/news_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="@dimen/newsIconMargin"
+                android:layout_marginTop="@dimen/newsIconMargin"
+                android:layout_marginEnd="@dimen/newsIconMargin"
                 android:foreground="@drawable/fade"
                 android:src="@drawable/event_1"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/news_title"
@@ -34,8 +35,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:maxLines="2"
-                android:paddingStart="39dp"
-                android:paddingEnd="38dp"
+                android:paddingStart="@dimen/newsTextPadding"
+                android:paddingEnd="@dimen/newsTextPadding"
                 app:layout_constraintTop_toBottomOf="@id/news_avatar"
                 tools:text="title" />
 
@@ -43,26 +44,27 @@
                 android:id="@+id/decor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/newsDecorIconMargin"
                 android:src="@drawable/decor"
-                app:layout_constraintTop_toBottomOf="@+id/news_title" />
+                app:layout_constraintTop_toBottomOf="@+id/news_title"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/content"
                 style="@style/ContentTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/newsTextMargin"
                 android:gravity="center_horizontal"
-                android:paddingStart="26dp"
-                android:paddingEnd="26dp"
+                android:paddingStart="@dimen/newsTextPadding"
+                android:paddingEnd="@dimen/newsTextPadding"
                 app:layout_constraintTop_toBottomOf="@id/decor"
                 tools:text="content" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/newsTextMargin"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/content">
@@ -72,14 +74,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/icon_calendar" />
+                    android:src="@drawable/icon_calendar"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/newsTextMargin"
                     android:layout_toEndOf="@id/icon_calendar"
                     android:fontFamily="sans-serif"
                     android:lineSpacingExtra="4sp"

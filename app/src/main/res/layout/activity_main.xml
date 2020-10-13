@@ -18,7 +18,8 @@
         android:layout_height="70dp"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/background_help" />
+        android:background="@drawable/background_help"
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
@@ -49,6 +50,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/heart"
         app:elevation="0dp"
-        app:layout_anchor="@id/bottom_app_bar" />
+        app:layout_anchor="@id/bottom_app_bar"
+        tools:ignore="ContentDescription" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

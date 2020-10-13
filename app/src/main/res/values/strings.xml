@@ -36,4 +36,10 @@
     <string name="hint_no_results">Напишите в строке поиска название мероприятия или ключевые слова.</string>
     <string name="for_example">Например,</string>
     <string name="master_class_help"><u>мастер-класс, помощь</u></string>
+    <string name="help_categories">Категории помощи:</string>
+    <string name="children">Дети</string>
+    <string name="friend_name">Friend name</string>
+    <string name="choose_photo">Выбрать фото</string>
+    <string name="create_photo">Сделать снимок</string>
+    <string name="delete">Удалить</string>
 </resources>
