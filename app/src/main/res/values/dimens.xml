@@ -35,5 +35,4 @@
 
     // Profile
     <dimen name="profileFioTextMargin">20dp</dimen>
-
 </resources>
