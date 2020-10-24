@@ -1,14 +1,29 @@
 package com.cyclone.simbirsoftprobation.presentation.presenter
 
-import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
+import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
 import com.cyclone.simbirsoftprobation.presentation.ui.news.NewsView
+import io.reactivex.android.schedulers.AndroidSchedulers
+import moxy.InjectViewState
+import moxy.MvpPresenter
 
 @InjectViewState
-class NewsPresenter: MvpPresenter<NewsView>() {
+class NewsPresenter : MvpPresenter<NewsView>() {
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-        viewState.getEvents()
+    init {
+        getEvents()
     }
+
+    private fun getEvents() {
+        EventsDataRepository
+            .getInstance()
+            .getEvents()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                viewState.setEvents(it)
+            },
+                {
+                    viewState.showEventsError()
+                })
+    }
+
 }

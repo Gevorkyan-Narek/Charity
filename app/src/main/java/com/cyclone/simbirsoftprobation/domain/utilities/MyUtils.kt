@@ -3,19 +3,20 @@ package com.cyclone.simbirsoftprobation.domain.utilities
 import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
+import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import com.cyclone.simbirsoftprobation.domain.model.Filter
-import com.cyclone.simbirsoftprobation.storage.Datas
-import com.cyclone.simbirsoftprobation.storage.Datas.Companion.checkOfRelevance
-import com.cyclone.simbirsoftprobation.storage.Datas.Companion.remainingRelevance
+import com.cyclone.simbirsoftprobation.data.storage.Storage
+import com.cyclone.simbirsoftprobation.data.storage.Storage.Companion.checkOfRelevance
+import com.cyclone.simbirsoftprobation.data.storage.Storage.Companion.remainingRelevance
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
 class MyUtils {
     companion object {
         fun filterNews(events: Event): Boolean {
-            val filters = Datas.filter.filter { filter -> filter.check }
+            val filters = Storage.filter.filter { filter -> filter.check }
             for (filter: Filter in filters) {
                 if (events.category == filter.id) return true
             }
@@ -33,7 +34,7 @@ class MyUtils {
                         "${LocalDate.ofEpochDay(events.endDate)
                             .format(DateTimeFormatter.ofPattern("dd.MM"))})"
             } else {
-                "${Datas.months[LocalDate.ofEpochDay(events.endDate).monthValue - 1]} " +
+                "${Storage.months[LocalDate.ofEpochDay(events.endDate).monthValue - 1]} " +
                         LocalDate.ofEpochDay(events.createAt)
                             .format(DateTimeFormatter.ofPattern("dd, yyyy"))
             }
@@ -49,7 +50,7 @@ fun ImageView.loadBitmap(
     if (placeholderDrawable != null)
         Glide.with(context)
             .load(bitmap)
-            .placeholder(resources.getDrawable(placeholderDrawable, context.theme))
+            .placeholder(ResourcesCompat.getDrawable(resources, placeholderDrawable, context.theme))
             .into(this)
     else
         Glide.with(context)
@@ -67,7 +68,7 @@ fun ImageView.loadDrawable(
     if (placeholderDrawable != null)
         Glide.with(context)
             .load(drawable)
-            .placeholder(resources.getDrawable(placeholderDrawable, context.theme))
+            .placeholder(ResourcesCompat.getDrawable(resources, placeholderDrawable, context.theme))
             .into(this)
     else
         Glide.with(context)
@@ -80,7 +81,7 @@ fun String.getDrawable(context: Context): Int {
 }
 
 fun getFilteredEvents(events: List<Event>): MutableList<Event> {
-    return if (Datas.filter.all { filter -> !filter.check }) events.toMutableList()
+    return if (Storage.filter.all { filter -> !filter.check }) events.toMutableList()
     else events.filter { event ->
         MyUtils.filterNews(
             event

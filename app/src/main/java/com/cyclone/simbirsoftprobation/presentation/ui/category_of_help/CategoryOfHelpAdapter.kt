@@ -12,6 +12,7 @@ import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
 import kotlinx.android.synthetic.main.item_kind_of_help.view.*
 
 class CategoryOfHelpAdapter(private var categories: MutableList<CategoryOfHelp>): RecyclerView.Adapter<CategoryOfHelpAdapter.ViewHolder>() {
+
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var imageHelp: ImageView = itemView.image_kind_of_help
         var nameHelp: TextView = itemView.name_kind_of_help
@@ -19,9 +20,7 @@ class CategoryOfHelpAdapter(private var categories: MutableList<CategoryOfHelp>)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_kind_of_help, parent, false)
-        return ViewHolder(
-            itemView
-        )
+        return ViewHolder(itemView)
     }
 
     override fun getItemCount(): Int = categories.size

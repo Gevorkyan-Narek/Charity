@@ -2,8 +2,8 @@ package com.cyclone.simbirsoftprobation.domain.repository.network
 
 import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.domain.model.Event
+import io.reactivex.Single
 import retrofit2.http.GET
-import rx.Single
 
 interface FirebaseService {
 

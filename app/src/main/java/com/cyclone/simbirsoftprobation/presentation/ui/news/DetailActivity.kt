@@ -16,7 +16,6 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val eventId = intent.extras?.getString("event_id")!!
-
         EventsDataRepository.getInstance().getEvent(eventId)
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext { event ->

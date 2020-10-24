@@ -1,6 +1,5 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.news
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,7 @@ import com.cyclone.simbirsoftprobation.domain.utilities.MyUtils
 import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
 import kotlinx.android.synthetic.main.item_news.view.*
 
-class NewsAdapter(var filteredEvents: MutableList<Event>) :
+class NewsAdapter(private var filteredEvents: MutableList<Event>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,7 +31,6 @@ class NewsAdapter(var filteredEvents: MutableList<Event>) :
 
     override fun getItemCount(): Int = filteredEvents.size
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.image.loadDrawable(holder.itemView.context, filteredEvents[position].photos[0])
         holder.title.text = filteredEvents[position].name

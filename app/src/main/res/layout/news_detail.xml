@@ -40,7 +40,6 @@
                 tools:text="Спонсоры отремонитруют аовлаовла" />
 
             <View
-                android:id="@+id/gradient"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/gradient_title"
@@ -59,7 +58,6 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/main_event_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/help_bottom_navigation"
@@ -74,9 +72,9 @@
                 android:id="@+id/event_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/detailnewsTitleMargin"
-                android:layout_marginTop="@dimen/detailnewsTitleMargin"
-                android:layout_marginEnd="@dimen/detailnewsTitleMargin"
+                android:layout_marginStart="@dimen/detailNewsTitleMargin"
+                android:layout_marginTop="@dimen/detailNewsTitleMargin"
+                android:layout_marginEnd="@dimen/detailNewsTitleMargin"
                 android:lineSpacingExtra="2sp"
                 android:textColor="@color/blue_grey"
                 android:textSize="21sp"
@@ -89,12 +87,12 @@
                 android:id="@+id/icon_cal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/detailnewsTitleMargin"
+                android:layout_marginStart="@dimen/detailNewsTitleMargin"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/icon_calendar"
-                android:tint="@color/dark_gray"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/event_title" />
+                app:layout_constraintTop_toBottomOf="@id/event_title"
+                app:tint="@color/dark_gray" />
 
             <TextView
                 android:id="@+id/event_date"
@@ -115,7 +113,7 @@
                 android:id="@+id/company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/detailnewsTitleMargin"
+                android:layout_marginStart="@dimen/detailNewsTitleMargin"
                 android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif"
                 android:lineSpacingExtra="8sp"
@@ -130,7 +128,7 @@
                 android:id="@+id/nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/detailnewsTitleMargin"
+                android:layout_marginStart="@dimen/detailNewsTitleMargin"
                 android:layout_marginTop="15dp"
                 android:src="@drawable/nav"
                 app:layout_constraintEnd_toStartOf="@id/address"
@@ -158,7 +156,7 @@
                 android:id="@+id/ic_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/detailnewsTitleMargin"
+                android:layout_marginStart="@dimen/detailNewsTitleMargin"
                 android:src="@drawable/phone"
                 app:layout_constraintEnd_toStartOf="@id/phone"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -184,7 +182,7 @@
                 android:id="@+id/ic_mail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/detailnewsTitleMargin"
+                android:layout_marginStart="@dimen/detailNewsTitleMargin"
                 android:src="@drawable/mail"
                 app:layout_constraintBottom_toBottomOf="@id/ask_question"
                 app:layout_constraintStart_toStartOf="parent"
@@ -224,7 +222,7 @@
                 android:id="@+id/photo_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/detailnewsTitleMargin"
+                android:layout_margin="@dimen/detailNewsTitleMargin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ask_question">
 
@@ -262,7 +260,7 @@
                 android:id="@+id/descr"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/detailnewsTitleMargin"
+                android:layout_margin="@dimen/detailNewsTitleMargin"
                 android:fontFamily="sans-serif"
                 android:lineSpacingExtra="6sp"
                 android:textColor="@color/black70"
@@ -277,7 +275,7 @@
                 android:id="@+id/go_to_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/detailnewsTitleMargin"
+                android:layout_margin="@dimen/detailNewsTitleMargin"
                 android:fontFamily="sans-serif"
                 android:lineSpacingExtra="6sp"
                 android:paddingBottom="30dp"
@@ -289,15 +287,14 @@
                 app:layout_constraintTop_toBottomOf="@id/descr" />
 
             <LinearLayout
-                android:id="@+id/likes_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/detailnewsTitleMargin"
-                android:paddingEnd="@dimen/detailnewsTitleMargin"
+                android:paddingStart="@dimen/detailNewsTitleMargin"
+                android:paddingEnd="@dimen/detailNewsTitleMargin"
                 android:background="@color/light_gray_two"
                 android:gravity="center_vertical"
-                android:paddingTop="@dimen/detailnewsTitleMargin"
-                android:paddingBottom="@dimen/detailnewsTitleMargin"
+                android:paddingTop="@dimen/detailNewsTitleMargin"
+                android:paddingBottom="@dimen/detailNewsTitleMargin"
                 app:layout_constraintTop_toBottomOf="@id/go_to_company">
 
                 <ImageView
@@ -345,8 +342,8 @@
         android:id="@+id/help_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginStart="@dimen/detailnewsTitleMargin"
-        android:layout_marginEnd="@dimen/detailnewsTitleMargin"
+        android:layout_marginStart="@dimen/detailNewsTitleMargin"
+        android:layout_marginEnd="@dimen/detailNewsTitleMargin"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -356,7 +353,6 @@
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:drawableTop="@drawable/shirt"
             android:drawablePadding="7dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
@@ -366,10 +362,10 @@
             android:text="@string/help_with_things"
             android:textColor="@color/black40"
             android:textSize="10sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:drawableTopCompat="@drawable/shirt" />
 
         <View
-            android:id="@+id/become_volunteer"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:background="@drawable/separator_2" />
@@ -378,7 +374,6 @@
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:drawableTop="@drawable/hands"
             android:drawablePadding="7dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
@@ -388,7 +383,8 @@
             android:text="@string/become_volunteer"
             android:textColor="@color/black40"
             android:textSize="10sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:drawableTopCompat="@drawable/hands" />
 
         <View
             android:layout_width="1dp"
@@ -399,7 +395,6 @@
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:drawableTop="@drawable/tools"
             android:drawablePadding="7dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
@@ -409,7 +404,8 @@
             android:text="@string/prof_help"
             android:textColor="@color/black40"
             android:textSize="10sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:drawableTopCompat="@drawable/tools" />
 
         <View
             android:layout_width="1dp"
@@ -419,7 +415,6 @@
         <TextView
             android:layout_width="90dp"
             android:layout_height="match_parent"
-            android:drawableTop="@drawable/coins"
             android:drawablePadding="5dp"
             android:fontFamily="sans-serif"
             android:gravity="center_horizontal"
@@ -429,6 +424,7 @@
             android:text="@string/help_with_money"
             android:textColor="@color/black40"
             android:textSize="10sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:drawableTopCompat="@drawable/coins" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

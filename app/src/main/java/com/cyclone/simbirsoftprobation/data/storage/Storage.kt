@@ -1,4 +1,4 @@
-package com.cyclone.simbirsoftprobation.storage
+package com.cyclone.simbirsoftprobation.data.storage
 
 import android.content.res.Resources
 import android.graphics.BitmapFactory
@@ -9,15 +9,15 @@ import com.cyclone.simbirsoftprobation.domain.model.Filter
 import com.cyclone.simbirsoftprobation.domain.model.Person
 import org.threeten.bp.LocalDate
 
-class Datas(resources: Resources) {
+class Storage(resources: Resources) {
 
     companion object {
-        private lateinit var instance: Datas
+        private lateinit var instance: Storage
         fun newInstance(resources: Resources) {
-            instance = Datas(resources)
+            instance = Storage(resources)
         }
 
-        fun getInstance(): Datas = instance
+        fun getInstance(): Storage = instance
 
         fun checkOfRelevance(dateEnd: Long): Boolean = LocalDate.ofEpochDay(dateEnd).isAfter(LocalDate.now())
         fun remainingRelevance(dateEnd: Long): Int = LocalDate.ofEpochDay(dateEnd).dayOfYear - LocalDate.now().dayOfYear

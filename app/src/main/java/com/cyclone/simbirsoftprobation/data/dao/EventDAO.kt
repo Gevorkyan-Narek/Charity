@@ -1,4 +1,4 @@
-package com.cyclone.simbirsoftprobation.dao
+package com.cyclone.simbirsoftprobation.data.dao
 
 import androidx.room.*
 import com.cyclone.simbirsoftprobation.domain.model.Event

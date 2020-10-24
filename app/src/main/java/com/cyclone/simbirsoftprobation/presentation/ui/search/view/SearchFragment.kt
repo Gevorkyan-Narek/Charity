@@ -3,37 +3,22 @@ package com.cyclone.simbirsoftprobation.presentation.ui.search.view
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.FragmentPagerAdapter
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.domain.interactors.search_fragment.SearchViewInteractor
 import com.cyclone.simbirsoftprobation.presentation.presenter.SearchPresenter
-import com.cyclone.simbirsoftprobation.presentation.presenter.SearchViewPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.PagerAdapter
 import kotlinx.android.synthetic.main.search_fragment.*
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
 import rx.android.schedulers.AndroidSchedulers
-import javax.inject.Inject
 
-class SearchFragment @Inject constructor() : MvpAppCompatFragment(), SearchView {
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.search_fragment, container, false)
-    }
+class SearchFragment : MvpAppCompatFragment(R.layout.search_fragment), SearchView {
 
     @InjectPresenter
     lateinit var searchPresenter: SearchPresenter
 
     private lateinit var pagerAdapter: FragmentPagerAdapter
-
-    @Inject
-    lateinit var searchViewPresenter: SearchViewPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +32,7 @@ class SearchFragment @Inject constructor() : MvpAppCompatFragment(), SearchView 
     }
 
     override fun setSearchOptions() {
-        searchViewPresenter
-            .setQueryTextChanges(search_view)
+        setQueryTextChanges(search_view)
             .observeOn(AndroidSchedulers.mainThread()).doOnNext {
                 searchPresenter.updateResults(it.isNotBlank())
             }.subscribe()
@@ -65,4 +49,7 @@ class SearchFragment @Inject constructor() : MvpAppCompatFragment(), SearchView 
         val adapter = (pager.adapter as PagerAdapter)
         adapter.updateResults(pager.currentItem, isNotBlank)
     }
+
+    private fun setQueryTextChanges(searchView: android.widget.SearchView) =
+        SearchViewInteractor.setQueryTextChanges(searchView)
 }

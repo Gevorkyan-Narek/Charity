@@ -18,7 +18,7 @@
         android:textSize="16sp"
         android:textStyle="normal" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/filter_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,6 @@
         android:src="@drawable/chevron_right" />
 
     <View
-        android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/filter_name"

@@ -1,8 +1,11 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.auth
 
-import com.arellomobile.mvp.MvpView
+import moxy.MvpView
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
+@StateStrategyType(AddToEndSingleStrategy::class)
 interface AuthorizationView: MvpView {
 
-    fun setEnterOptions()
+    fun buttonIsEnable(isEnable: Boolean)
 }

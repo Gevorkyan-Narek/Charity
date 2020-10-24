@@ -67,6 +67,7 @@
         android:layout_marginEnd="@dimen/recyclerMarginFilter"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/recyclerMarginFilter"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/label_kind_of_help" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

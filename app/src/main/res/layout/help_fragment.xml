@@ -60,6 +60,8 @@
                 app:layout_constraintTop_toBottomOf="@id/label_kind_of_help"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="@integer/columnCount"
                 android:layout_marginTop="@dimen/dp20" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

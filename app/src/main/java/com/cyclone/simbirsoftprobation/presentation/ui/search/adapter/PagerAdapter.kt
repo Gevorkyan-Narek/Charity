@@ -7,10 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.view.SearchResultFragment
-import javax.inject.Inject
 
 
-class PagerAdapter @Inject constructor(fm: FragmentManager) :
+class PagerAdapter(fm: FragmentManager) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val registeredFragments = SparseArray<SearchResultFragment>()
@@ -44,8 +43,6 @@ class PagerAdapter @Inject constructor(fm: FragmentManager) :
     }
 
     override fun getCount(): Int = 2
-
-    fun getRegisteredFragments(position: Int): SearchResultFragment = registeredFragments[position]
 
     fun updateResults(position: Int, isNotBlank: Boolean) {
         registeredFragments[position].searchResultPresenter.update(isNotBlank)

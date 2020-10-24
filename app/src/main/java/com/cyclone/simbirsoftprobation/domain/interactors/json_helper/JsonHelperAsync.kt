@@ -2,11 +2,11 @@ package com.cyclone.simbirsoftprobation.domain.interactors.json_helper
 
 import android.content.Context
 import android.os.AsyncTask
+import com.cyclone.simbirsoftprobation.data.db.EventDataBase
 import com.cyclone.simbirsoftprobation.data.json_helper.JsonHelper
-import com.cyclone.simbirsoftprobation.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.model.Event
 
-class JsonHelperAsync(var context: Context, var callback: JsonHelperCallback<MutableList<Event>>?) :
+class JsonHelperAsync(var context: Context, private var callback: JsonHelperCallback<MutableList<Event>>?) :
     AsyncTask<Void, Int, Boolean>() {
 
     private var exception: Exception? = null

@@ -3,7 +3,7 @@ package com.cyclone.simbirsoftprobation.domain.interactors.search_fragment
 import android.widget.SearchView
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
-import com.cyclone.simbirsoftprobation.storage.Datas
+import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.jakewharton.rxbinding.widget.RxSearchView
 import rx.Observable
 import rx.schedulers.Schedulers
@@ -21,7 +21,7 @@ class SearchViewInteractor {
                 .doOnNext {
                     if (it.isNotBlank()) {
                         EventsDataRepository.getInstance().getEvents().doOnNext { t: List<Event> ->
-                            Datas.searchResults = t.filter { event ->
+                            Storage.searchResults = t.filter { event ->
                                 event.name.toUpperCase(Locale.getDefault())
                                     .contains(it.toString().toUpperCase(Locale.getDefault()))
                             }.map { event -> event.name }.toMutableList()

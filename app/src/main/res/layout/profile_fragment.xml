@@ -24,7 +24,6 @@
                 android:text="@string/profile" />
 
             <ImageButton
-                android:id="@+id/edit_profile"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
@@ -140,7 +139,7 @@
                 app:layout_constraintStart_toStartOf="@id/profession"
                 app:layout_constraintTop_toBottomOf="@id/profession" />
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/push"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -193,7 +192,6 @@
                 app:layout_constraintTop_toBottomOf="@id/recycler_friends" />
 
             <Button
-                android:id="@+id/exit_button"
                 android:layout_width="166dp"
                 android:layout_height="36dp"
                 android:layout_centerHorizontal="true"

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.item_search_result.view.*
 
-class SearchResultsAdapter(var results: MutableList<String>) :
+class SearchResultsAdapter(private var results: MutableList<String>) :
     RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

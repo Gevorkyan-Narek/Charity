@@ -1,8 +1,8 @@
 package com.cyclone.simbirsoftprobation.presentation.presenter
 
-import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.view.SearchView
+import moxy.InjectViewState
+import moxy.MvpPresenter
 
 @InjectViewState
 class SearchPresenter: MvpPresenter<SearchView>() {

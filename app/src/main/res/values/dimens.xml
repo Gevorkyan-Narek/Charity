@@ -24,7 +24,7 @@
     // Detail News
     <dimen name="friendItemMargin">10dp</dimen>
     <dimen name="friendTextMargin">20dp</dimen>
-    <dimen name="detailnewsTitleMargin">20dp</dimen>
+    <dimen name="detailNewsTitleMargin">20dp</dimen>
 
     // Filter
     <dimen name="filterTextMargin">16dp</dimen>

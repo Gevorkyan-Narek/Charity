@@ -1,13 +1,13 @@
 package com.cyclone.simbirsoftprobation.domain.repository.network
 
 import android.util.Log
-import com.cyclone.simbirsoftprobation.db.EventDataBase
+import com.cyclone.simbirsoftprobation.data.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.executor.json_helper.JsonHelperStart
 import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.domain.model.Event
-import com.cyclone.simbirsoftprobation.storage.Datas
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+import com.cyclone.simbirsoftprobation.data.storage.Storage
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class RetrofitDataRepository : RetrofitRepository {
 
@@ -21,7 +21,7 @@ class RetrofitDataRepository : RetrofitRepository {
         connectFirebase()
             .getCategories()
             .onErrorReturn {
-                Datas.categoriesOfHelp
+                Storage.categoriesOfHelp
             }
             .subscribe { t: List<CategoryOfHelp>? ->
                 EventDataBase.getDataBase().categoriesDAO().insertCategories(t!!)

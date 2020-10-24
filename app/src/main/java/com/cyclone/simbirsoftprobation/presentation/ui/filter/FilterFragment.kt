@@ -1,38 +1,28 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.filter
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.presentation.presenter.FilterPresenter
+import com.cyclone.simbirsoftprobation.presentation.ui.main_view.MainActivity
 import kotlinx.android.synthetic.main.filter_fragment.*
-import kotlinx.android.synthetic.main.filter_fragment.view.*
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
 
-class FilterFragment : MvpAppCompatFragment(), FilterView {
+class FilterFragment : MvpAppCompatFragment(R.layout.filter_fragment), FilterView {
 
     @InjectPresenter
     lateinit var filterPresenter: FilterPresenter
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.filter_fragment, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.filter_recycler.layoutManager = LinearLayoutManager(context)
-        view.accept.setOnClickListener {
-            fragmentManager?.popBackStack()
+        accept.setOnClickListener {
+            (activity as MainActivity).mainPresenter.switchToNews()
         }
-        view.back.setOnClickListener {
-            fragmentManager?.popBackStack()
+
+        back.setOnClickListener {
+            (activity as MainActivity).mainPresenter.switchToNews()
         }
+
     }
 
     override fun getFilters() {

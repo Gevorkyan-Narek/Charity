@@ -1,10 +1,10 @@
 package com.cyclone.simbirsoftprobation.domain.repository.category_of_help
 
 import android.util.Log
-import com.cyclone.simbirsoftprobation.db.EventDataBase
+import com.cyclone.simbirsoftprobation.data.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.domain.model.Filter
-import com.cyclone.simbirsoftprobation.storage.Datas
+import com.cyclone.simbirsoftprobation.data.storage.Storage
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 
@@ -22,10 +22,10 @@ class CategoriesDataRepository : CategoriesRepository {
             .categoriesDAO()
             .getCategories()
             .doOnNext {
-                Datas.filter = it.map {
+                Storage.filter = it.map { category ->
                     Filter(
-                        it.id,
-                        it.name
+                        category.id,
+                        category.name
                     )
                 }.toMutableList()
             }

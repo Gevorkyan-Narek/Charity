@@ -1,10 +1,10 @@
 package com.cyclone.simbirsoftprobation.presentation.presenter
 
 import android.content.Intent
-import com.arellomobile.mvp.InjectViewState
-import com.arellomobile.mvp.MvpPresenter
 import com.cyclone.simbirsoftprobation.domain.model.Person
 import com.cyclone.simbirsoftprobation.presentation.ui.profile.ProfileView
+import moxy.InjectViewState
+import moxy.MvpPresenter
 
 @InjectViewState
 class ProfilePresenter: MvpPresenter<ProfileView>() {

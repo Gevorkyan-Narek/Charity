@@ -2,37 +2,21 @@ package com.cyclone.simbirsoftprobation.presentation.ui.category_of_help
 
 import android.graphics.Rect
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
-import com.cyclone.simbirsoftprobation.domain.repository.category_of_help.CategoriesDataRepository
-import com.cyclone.simbirsoftprobation.domain.repository.network.RetrofitDataRepository
+import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.presentation.presenter.CategoryOfHelpPresenter
-import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.help_fragment.*
-import javax.inject.Inject
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
 
-class CategoryOfHelpFragment @Inject constructor() : MvpAppCompatFragment(),
-    CategoryOfHelpView {
+class CategoryOfHelpFragment : MvpAppCompatFragment(R.layout.help_fragment), CategoryOfHelpView {
 
     @InjectPresenter
     lateinit var categoryOfHelpPresenter: CategoryOfHelpPresenter
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.help_fragment, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recycler_kind_of_help.layoutManager = GridLayoutManager(context, 2)
         val spaceItemDecoration = object : RecyclerView.ItemDecoration() {
             var spanCount = resources.getInteger(R.integer.columnCount)
             var spacing = resources.getInteger(R.integer.columnSpacing)
@@ -59,20 +43,9 @@ class CategoryOfHelpFragment @Inject constructor() : MvpAppCompatFragment(),
         recycler_kind_of_help.addItemDecoration(spaceItemDecoration)
     }
 
-    override fun showCategories() {
-        CategoriesDataRepository
-            .getInstance()
-            .getCategories()
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnNext { categories ->
-                recycler_kind_of_help.adapter =
-                    CategoryOfHelpAdapter(categories.toMutableList())
-                progressBarCategoryHelp.visibility = View.GONE
-            }
-            .subscribe()
-    }
-
-    override fun updateCategories() {
-        RetrofitDataRepository.getInstance().fillCategoriesDB()
+    override fun showCategories(categories: List<CategoryOfHelp>) {
+        recycler_kind_of_help.adapter =
+            CategoryOfHelpAdapter(categories.toMutableList())
+        progressBarCategoryHelp.visibility = View.GONE
     }
 }

@@ -1,5 +1,9 @@
 package com.cyclone.simbirsoftprobation.domain.repository.network
 
+import io.reactivex.schedulers.Schedulers
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+
 interface RetrofitRepository {
 
     fun fillCategoriesDB()
@@ -11,13 +15,13 @@ interface RetrofitRepository {
             .getInstance()
             .baseUrl(RetrofitInstance.FIREBASE_URL)
             .addConverterFactory(
-                retrofit2.converter.gson.GsonConverterFactory.create(
+                GsonConverterFactory.create(
                     com.google.gson.GsonBuilder().setLenient().create()
                 )
             )
             .addCallAdapterFactory(
-                retrofit2.adapter.rxjava.RxJavaCallAdapterFactory.createWithScheduler(
-                    rx.schedulers.Schedulers.io()
+                RxJava2CallAdapterFactory.createWithScheduler(
+                    Schedulers.io()
                 )
             )
             .build()

@@ -1,30 +1,20 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.search.view
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.arellomobile.mvp.MvpAppCompatFragment
-import com.arellomobile.mvp.presenter.InjectPresenter
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.presentation.presenter.SearchResultPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.PagerAdapter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.SearchResultsAdapter
-import com.cyclone.simbirsoftprobation.storage.Datas
+import com.cyclone.simbirsoftprobation.data.storage.Storage
 import kotlinx.android.synthetic.main.search_object_fragment.*
+import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
 
-class SearchResultFragment : MvpAppCompatFragment(), SearchResultView {
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.search_object_fragment, container, false)
-    }
+class SearchResultFragment : MvpAppCompatFragment(R.layout.search_object_fragment), SearchResultView {
 
     @InjectPresenter
     lateinit var searchResultPresenter: SearchResultPresenter
@@ -45,13 +35,13 @@ class SearchResultFragment : MvpAppCompatFragment(), SearchResultView {
             search_results_recycler.addItemDecoration(mDividerItemDecoration)
             search_results_recycler.adapter =
                 SearchResultsAdapter(
-                    if (Datas.searchResults.isEmpty()) Datas.getSearchResultExamples() else Datas.searchResults
+                    if (Storage.searchResults.isEmpty()) Storage.getSearchResultExamples() else Storage.searchResults
                 )
         }
     }
 
     override fun update(isNotBlank: Boolean) {
         no_results_include.visibility = if (isNotBlank) View.GONE else View.VISIBLE
-        search_results_recycler.adapter = SearchResultsAdapter(Datas.searchResults)
+        search_results_recycler.adapter = SearchResultsAdapter(Storage.searchResults)
     }
 }

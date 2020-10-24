@@ -1,7 +1,7 @@
 package com.cyclone.simbirsoftprobation.domain.repository.event
 
 import android.util.Log
-import com.cyclone.simbirsoftprobation.db.EventDataBase
+import com.cyclone.simbirsoftprobation.data.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers

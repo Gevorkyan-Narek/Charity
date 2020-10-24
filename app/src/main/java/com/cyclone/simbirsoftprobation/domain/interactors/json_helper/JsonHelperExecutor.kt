@@ -2,8 +2,8 @@ package com.cyclone.simbirsoftprobation.domain.interactors.json_helper
 
 import android.content.Context
 import android.os.Handler
+import com.cyclone.simbirsoftprobation.data.db.EventDataBase
 import com.cyclone.simbirsoftprobation.data.json_helper.JsonHelper
-import com.cyclone.simbirsoftprobation.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit

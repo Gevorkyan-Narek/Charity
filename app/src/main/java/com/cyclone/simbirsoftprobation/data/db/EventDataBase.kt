@@ -1,13 +1,12 @@
-package com.cyclone.simbirsoftprobation.db
+package com.cyclone.simbirsoftprobation.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.cyclone.simbirsoftprobation.dao.CategoryOfHelpDAO
-import com.cyclone.simbirsoftprobation.dao.EventDAO
-import com.cyclone.simbirsoftprobation.data.db.ListToStringConverter
+import com.cyclone.simbirsoftprobation.data.dao.CategoryOfHelpDAO
+import com.cyclone.simbirsoftprobation.data.dao.EventDAO
 import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.domain.model.Event
 

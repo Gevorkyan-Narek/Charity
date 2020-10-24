@@ -1,9 +1,12 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.profile
 
 import android.content.Intent
-import com.arellomobile.mvp.MvpView
 import com.cyclone.simbirsoftprobation.domain.model.Person
+import moxy.MvpView
+import moxy.viewstate.strategy.AddToEndSingleStrategy
+import moxy.viewstate.strategy.StateStrategyType
 
+@StateStrategyType(AddToEndSingleStrategy::class)
 interface ProfileView : MvpView {
 
     fun showPhotoDialogFragment()
