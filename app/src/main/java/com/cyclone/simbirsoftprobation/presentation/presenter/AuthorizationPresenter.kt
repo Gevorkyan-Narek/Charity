@@ -11,7 +11,7 @@ import rx.Observable
 class AuthorizationPresenter : MvpPresenter<AuthorizationView>() {
 
     companion object {
-        const val MIN_LINE_LENGTH = 5
+        private const val MIN_LINE_LENGTH = 5
     }
 
     fun loginListener(email: TextView, password: TextView) {

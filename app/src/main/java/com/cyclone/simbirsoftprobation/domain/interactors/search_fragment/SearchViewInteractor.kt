@@ -9,6 +9,7 @@ import rx.Observable
 import rx.schedulers.Schedulers
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 class SearchViewInteractor {
 

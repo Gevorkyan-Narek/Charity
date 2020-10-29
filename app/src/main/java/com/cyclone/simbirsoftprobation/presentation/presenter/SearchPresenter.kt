@@ -7,8 +7,7 @@ import moxy.MvpPresenter
 @InjectViewState
 class SearchPresenter: MvpPresenter<SearchView>() {
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
+    init {
         viewState.setPager()
         viewState.setSearchOptions()
         viewState.setSearchManager()

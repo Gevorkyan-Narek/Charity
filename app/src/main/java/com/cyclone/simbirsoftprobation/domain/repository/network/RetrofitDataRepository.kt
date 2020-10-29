@@ -2,34 +2,38 @@ package com.cyclone.simbirsoftprobation.domain.repository.network
 
 import android.util.Log
 import com.cyclone.simbirsoftprobation.data.db.EventDataBase
-import com.cyclone.simbirsoftprobation.domain.executor.json_helper.JsonHelperStart
-import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
-import com.cyclone.simbirsoftprobation.domain.model.Event
 import com.cyclone.simbirsoftprobation.data.storage.Storage
+import com.cyclone.simbirsoftprobation.domain.dagger.App
+import com.cyclone.simbirsoftprobation.domain.executor.json_helper.JsonHelperStart
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class RetrofitDataRepository : RetrofitRepository {
+class RetrofitDataRepository @Inject constructor() {
 
-    companion object {
-        private val instance = RetrofitDataRepository()
+    @Inject
+    lateinit var firebaseService: FirebaseService
 
-        fun getInstance(): RetrofitDataRepository = instance
+    init {
+        App.getRetrofitComponent().inject(this)
+        fillCategoriesDB()
+        fillEventsDB()
     }
 
-    override fun fillCategoriesDB() {
-        connectFirebase()
+    fun fillCategoriesDB() {
+        firebaseService
             .getCategories()
             .onErrorReturn {
                 Storage.categoriesOfHelp
             }
-            .subscribe { t: List<CategoryOfHelp>? ->
-                EventDataBase.getDataBase().categoriesDAO().insertCategories(t!!)
+            .doOnSuccess {
+                EventDataBase.getDataBase().categoriesDAO().insertCategories(it)
             }
+            .subscribe()
     }
 
-    override fun fillEventsDB() {
-        connectFirebase()
+    private fun fillEventsDB() {
+        firebaseService
             .getEvents()
             .observeOn(AndroidSchedulers.mainThread())
             .onErrorReturn {
@@ -46,10 +50,8 @@ class RetrofitDataRepository : RetrofitRepository {
                 null
             }
             .observeOn(Schedulers.io())
-            .subscribe { t: List<Event>? ->
-                if (t != null)
-                    EventDataBase.getDataBase().eventDAO().insertEvents(t)
-            }
+            .doOnSuccess { EventDataBase.getDataBase().eventDAO().insertEvents(it) }
+            .subscribe()
     }
 
 }

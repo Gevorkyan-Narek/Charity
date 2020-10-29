@@ -11,7 +11,7 @@ import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
 import kotlinx.android.synthetic.main.item_kind_of_help.view.*
 
-class CategoryOfHelpAdapter(private var categories: MutableList<CategoryOfHelp>): RecyclerView.Adapter<CategoryOfHelpAdapter.ViewHolder>() {
+class CategoryOfHelpAdapter(private var categories: List<CategoryOfHelp>): RecyclerView.Adapter<CategoryOfHelpAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var imageHelp: ImageView = itemView.image_kind_of_help

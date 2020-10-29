@@ -1,12 +1,22 @@
 package com.cyclone.simbirsoftprobation.domain.repository.event
 
-import android.util.Log
-import com.cyclone.simbirsoftprobation.data.db.EventDataBase
+import com.cyclone.simbirsoftprobation.data.dao.EventDAO
+import com.cyclone.simbirsoftprobation.domain.dagger.App
 import com.cyclone.simbirsoftprobation.domain.model.Event
+import io.reactivex.Flowable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class EventsDataRepository : EventsRepository {
+class EventsDataRepository @Inject constructor() : EventsRepository {
+
+    @Inject
+    lateinit var eventDAO: EventDAO
+
+    init {
+        App.getComponent().inject(this)
+    }
 
     companion object {
         private val instance = EventsDataRepository()
@@ -14,53 +24,38 @@ class EventsDataRepository : EventsRepository {
         fun getInstance(): EventsDataRepository = instance
     }
 
-    override fun getEvent(id: String): Observable<Event> {
-        return EventDataBase
-            .getDataBase()
-            .eventDAO()
-            .getEvent(id)
-            .subscribeOn(Schedulers.io())
-            .toObservable()
+    override fun getEvent(id: String): Single<Event> {
+        return eventDAO.getEvent(id).subscribeOn(Schedulers.io())
     }
 
-    override fun getEvents(): Observable<List<Event>> {
-        return EventDataBase
-            .getDataBase()
-            .eventDAO()
-            .getEvents()
-            .subscribeOn(Schedulers.io())
-            .toObservable()
+    override fun getEvents(): Flowable<List<Event>> {
+        return eventDAO.getEvents()
     }
 
     override fun insertEvent(event: Event) {
-        EventDataBase.getDataBase().eventDAO().insertEvent(event)
+        eventDAO.insertEvent(event)
     }
 
     override fun insertEvents(events: List<Event>) {
-        EventDataBase.getDataBase().eventDAO().insertEvents(events)
+        eventDAO.insertEvents(events)
     }
 
     override fun updateEvent(event: Event) {
-        EventDataBase.getDataBase().eventDAO().updateEvent(event)
+        eventDAO.updateEvent(event)
     }
 
     override fun deleteEvent(event: Event) {
-        EventDataBase.getDataBase().eventDAO().deleteEvent(event)
+        eventDAO.deleteEvent(event)
     }
 
     override fun deleteEventById(id: String) {
-        EventDataBase.getDataBase().eventDAO().deleteEventById(id)
+        eventDAO.deleteEventById(id)
     }
 
     override fun deleteAll() {
-        Observable.fromCallable {
-            EventDataBase
-                .getDataBase()
-                .eventDAO()
-        }
+        Observable.fromCallable { eventDAO }
             .doOnNext { t ->
                 t.deleteAll()
-                Log.d("Events", "Deleted")
             }
             .subscribeOn(Schedulers.io())
             .subscribe()

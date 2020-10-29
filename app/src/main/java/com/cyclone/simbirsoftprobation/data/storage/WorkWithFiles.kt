@@ -14,7 +14,7 @@ import org.threeten.bp.format.DateTimeFormatter
 import java.io.File
 import java.io.IOException
 
-class WorkWithFiles : AppCompatActivity() {
+class WorkWithFiles: AppCompatActivity() {
 
     companion object {
         private val instance = WorkWithFiles()

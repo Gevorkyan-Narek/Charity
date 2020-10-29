@@ -4,22 +4,27 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.domain.dagger.App
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
 import com.cyclone.simbirsoftprobation.domain.utilities.MyUtils
 import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.news_detail.*
+import javax.inject.Inject
 
 
 class DetailActivity : AppCompatActivity(R.layout.news_detail) {
 
+    @Inject
+    lateinit var eventsDataRepository: EventsDataRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        App.getComponent().inject(this)
         val eventId = intent.extras?.getString("event_id")!!
-        EventsDataRepository.getInstance().getEvent(eventId)
+        eventsDataRepository.getEvent(eventId)
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnNext { event ->
-                if (event != null) {
+            .doOnSuccess { event ->
                     toolbar_title.text = event.name
                     event_title.text = event.name
                     event_date.text = MyUtils.getRelevance(event)
@@ -30,7 +35,6 @@ class DetailActivity : AppCompatActivity(R.layout.news_detail) {
                     card_image_2.loadDrawable(this, event.photos[1])
                     card_image_3.loadDrawable(this, event.photos[2])
                     descr.text = event.description
-                }
             }
             .subscribe()
 

@@ -45,7 +45,7 @@ class CategoryOfHelpFragment : MvpAppCompatFragment(R.layout.help_fragment), Cat
 
     override fun showCategories(categories: List<CategoryOfHelp>) {
         recycler_kind_of_help.adapter =
-            CategoryOfHelpAdapter(categories.toMutableList())
+            CategoryOfHelpAdapter(categories)
         progressBarCategoryHelp.visibility = View.GONE
     }
 }

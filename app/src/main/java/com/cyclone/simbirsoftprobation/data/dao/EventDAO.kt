@@ -3,12 +3,13 @@ package com.cyclone.simbirsoftprobation.data.dao
 import androidx.room.*
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface EventDAO {
 
     @Query("select * from event where id = :id")
-    fun getEvent(id: String): Flowable<Event>
+    fun getEvent(id: String): Single<Event>
 
     @Query("select * from event order by createAt DESC")
     fun getEvents(): Flowable<List<Event>>

@@ -10,11 +10,9 @@ import com.cyclone.simbirsoftprobation.domain.model.Event
 class JsonHelperStart : AppCompatActivity(), JsonHelperCallback<MutableList<Event>> {
 
     companion object {
-        private val instance =
-            JsonHelperStart()
+        private val instance = JsonHelperStart()
 
-        fun getInstance(): JsonHelperStart =
-            instance
+        fun getInstance() = instance
     }
 
     fun startAsync() {

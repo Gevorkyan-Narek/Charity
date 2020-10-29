@@ -8,27 +8,27 @@ import com.cyclone.simbirsoftprobation.data.db.EventDataBase
 import com.cyclone.simbirsoftprobation.domain.repository.network.RetrofitDataRepository
 import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationActivity
 import com.cyclone.simbirsoftprobation.data.storage.Storage
+import com.cyclone.simbirsoftprobation.domain.dagger.App
 import com.jakewharton.threetenabp.AndroidThreeTen
 import moxy.MvpAppCompatActivity
+import javax.inject.Inject
 
 class SplashActivity : MvpAppCompatActivity(R.layout.splash_screen) {
+
+    @Inject
+    lateinit var retrofitDataRepository: RetrofitDataRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         init()
-        download()
         startMain()
+        App.getComponent().inject(this)
     }
 
     private fun init() {
         EventDataBase.initDataBase(this)
         AndroidThreeTen.init(this)
         Storage.newInstance(resources)
-    }
-
-    private fun download() {
-        RetrofitDataRepository.getInstance().fillCategoriesDB()
-        RetrofitDataRepository.getInstance().fillEventsDB()
     }
 
     private fun startMain() {
