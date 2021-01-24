@@ -41,15 +41,14 @@
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/navigation_items" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
         android:src="@drawable/heart"
-        app:elevation="0dp"
         app:layout_anchor="@id/bottom_app_bar"
         tools:ignore="ContentDescription" />
 

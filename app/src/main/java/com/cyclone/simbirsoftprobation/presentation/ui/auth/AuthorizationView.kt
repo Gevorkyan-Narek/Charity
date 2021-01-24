@@ -8,4 +8,6 @@ import moxy.viewstate.strategy.StateStrategyType
 interface AuthorizationView: MvpView {
 
     fun buttonIsEnable(isEnable: Boolean)
+
+    fun signIn()
 }

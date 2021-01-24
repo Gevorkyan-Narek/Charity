@@ -1,15 +1,14 @@
 package com.cyclone.simbirsoftprobation.domain.interactors.search_fragment
 
 import android.widget.SearchView
+import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
-import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.jakewharton.rxbinding.widget.RxSearchView
 import rx.Observable
 import rx.schedulers.Schedulers
 import java.util.*
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 class SearchViewInteractor {
 

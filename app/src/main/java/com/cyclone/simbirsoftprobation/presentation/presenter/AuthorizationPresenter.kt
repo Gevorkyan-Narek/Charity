@@ -2,6 +2,7 @@ package com.cyclone.simbirsoftprobation.presentation.presenter
 
 import android.widget.TextView
 import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationView
+import com.firebase.ui.auth.AuthUI
 import com.jakewharton.rxbinding.widget.RxTextView
 import moxy.InjectViewState
 import moxy.MvpPresenter
@@ -25,4 +26,5 @@ class AuthorizationPresenter : MvpPresenter<AuthorizationView>() {
             .subscribe()
     }
 
+    fun signInGoogle() = viewState.signIn()
 }
