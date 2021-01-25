@@ -38,7 +38,7 @@ class PagerAdapter(fm: FragmentManager) :
         super.destroyItem(container, position, `object`)
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
+    override fun getPageTitle(position: Int): CharSequence {
         return if (position == 1) "По НКО" else "По мероприятиям"
     }
 

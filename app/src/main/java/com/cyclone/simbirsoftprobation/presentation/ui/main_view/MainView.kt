@@ -12,4 +12,8 @@ interface MainView : MvpView {
     fun showSearch()
     fun showProfile()
     fun showFilter()
+    fun showAuth()
+
+    fun visibleBottomBar()
+    fun invisibleBottomBar()
 }

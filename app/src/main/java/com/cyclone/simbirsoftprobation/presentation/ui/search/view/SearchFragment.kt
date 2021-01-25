@@ -3,36 +3,49 @@ package com.cyclone.simbirsoftprobation.presentation.ui.search.view
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.FragmentPagerAdapter
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.databinding.SearchFragmentBinding
 import com.cyclone.simbirsoftprobation.domain.interactors.search_fragment.SearchViewInteractor
 import com.cyclone.simbirsoftprobation.presentation.presenter.SearchPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.PagerAdapter
-import kotlinx.android.synthetic.main.search_fragment.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import rx.android.schedulers.AndroidSchedulers
 
-class SearchFragment : MvpAppCompatFragment(R.layout.search_fragment), SearchView {
+class SearchFragment : MvpAppCompatFragment(), SearchView {
 
     @InjectPresenter
     lateinit var searchPresenter: SearchPresenter
 
     private lateinit var pagerAdapter: FragmentPagerAdapter
+    private lateinit var binding: SearchFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = SearchFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     override fun setPager() {
         pagerAdapter = PagerAdapter(childFragmentManager)
-        pager.adapter = pagerAdapter
-        tab_layout.setupWithViewPager(pager)
+        binding.pager.adapter = pagerAdapter
+        binding.tabLayout.setupWithViewPager(binding.pager)
     }
 
     override fun setSearchOptions() {
-        setQueryTextChanges(search_view)
+        setQueryTextChanges(binding.searchView)
             .observeOn(AndroidSchedulers.mainThread()).doOnNext {
                 searchPresenter.updateResults(it.isNotBlank())
             }.subscribe()
@@ -40,14 +53,14 @@ class SearchFragment : MvpAppCompatFragment(R.layout.search_fragment), SearchVie
 
     override fun setSearchManager() {
         val searchManager = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        search_view.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
-        search_view.clearFocus()
-        search_view.isIconifiedByDefault = false
+        binding.searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
+        binding.searchView.clearFocus()
+        binding.searchView.isIconifiedByDefault = false
     }
 
     override fun updateResults(isNotBlank: Boolean) {
-        val adapter = (pager.adapter as PagerAdapter)
-        adapter.updateResults(pager.currentItem, isNotBlank)
+        val adapter = (binding.pager.adapter as PagerAdapter)
+        adapter.updateResults(binding.pager.currentItem, isNotBlank)
     }
 
     private fun setQueryTextChanges(searchView: android.widget.SearchView) =

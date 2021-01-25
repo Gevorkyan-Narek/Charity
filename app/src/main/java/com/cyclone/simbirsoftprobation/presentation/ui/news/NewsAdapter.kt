@@ -2,31 +2,28 @@ package com.cyclone.simbirsoftprobation.presentation.ui.news
 
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.databinding.ItemNewsBinding
 import com.cyclone.simbirsoftprobation.domain.model.Event
 import com.cyclone.simbirsoftprobation.domain.utilities.MyUtils
 import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
-import kotlinx.android.synthetic.main.item_news.view.*
 
 class NewsAdapter(private var filteredEvents: MutableList<Event>) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image: ImageView = itemView.news_avatar
-        val title: TextView = itemView.news_title
-        val content: TextView = itemView.content
-        val date: TextView = itemView.date
+    class ViewHolder(binding: ItemNewsBinding) : RecyclerView.ViewHolder(binding.root) {
+        val image: ImageView = binding.newsAvatar
+        val title: TextView = binding.newsTitle
+        val content: TextView = binding.content
+        val date: TextView = binding.date
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
-        return ViewHolder(itemView)
+        val binding = ItemNewsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int = filteredEvents.size

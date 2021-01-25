@@ -1,23 +1,35 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.search.view
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.data.storage.Storage
+import com.cyclone.simbirsoftprobation.databinding.SearchObjectFragmentBinding
 import com.cyclone.simbirsoftprobation.presentation.presenter.SearchResultPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.PagerAdapter
 import com.cyclone.simbirsoftprobation.presentation.ui.search.adapter.SearchResultsAdapter
-import com.cyclone.simbirsoftprobation.data.storage.Storage
-import kotlinx.android.synthetic.main.search_object_fragment.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 
-class SearchResultFragment : MvpAppCompatFragment(R.layout.search_object_fragment), SearchResultView {
+class SearchResultFragment : MvpAppCompatFragment(), SearchResultView {
 
     @InjectPresenter
     lateinit var searchResultPresenter: SearchResultPresenter
+    private lateinit var binding: SearchObjectFragmentBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = SearchObjectFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         searchResultPresenter.setAdapter(arguments?.containsKey(PagerAdapter.ARG_OBJECT) == true)
@@ -25,15 +37,15 @@ class SearchResultFragment : MvpAppCompatFragment(R.layout.search_object_fragmen
 
     override fun setAdapter(key: Boolean) {
         if (key) {
-            search_results_recycler.layoutManager = LinearLayoutManager(context)
+            binding.searchResultsRecycler.layoutManager = LinearLayoutManager(context)
 
             val mDividerItemDecoration = DividerItemDecoration(
-                search_results_recycler.context,
+                binding.searchResultsRecycler.context,
                 VERTICAL
             )
 
-            search_results_recycler.addItemDecoration(mDividerItemDecoration)
-            search_results_recycler.adapter =
+            binding.searchResultsRecycler.addItemDecoration(mDividerItemDecoration)
+            binding.searchResultsRecycler.adapter =
                 SearchResultsAdapter(
                     if (Storage.searchResults.isEmpty()) Storage.getSearchResultExamples() else Storage.searchResults
                 )
@@ -41,7 +53,7 @@ class SearchResultFragment : MvpAppCompatFragment(R.layout.search_object_fragmen
     }
 
     override fun update(isNotBlank: Boolean) {
-        no_results_include.visibility = if (isNotBlank) View.GONE else View.VISIBLE
-        search_results_recycler.adapter = SearchResultsAdapter(Storage.searchResults)
+        binding.noResultsInclude.root.visibility = if (isNotBlank) View.GONE else View.VISIBLE
+        binding.searchResultsRecycler.adapter = SearchResultsAdapter(Storage.searchResults)
     }
 }

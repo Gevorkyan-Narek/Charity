@@ -8,12 +8,13 @@
     tools:context=".presentation.ui.main_view.MainActivity">
 
     <FrameLayout
-        android:id="@+id/main_view_fragment"
+        android:id="@+id/mainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="54dp" />
 
     <ImageView
+        android:id="@+id/buttonBackground"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="bottom|center_horizontal"
@@ -21,16 +22,26 @@
         android:background="@drawable/background_help"
         tools:ignore="ContentDescription" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
+        android:backgroundTint="@color/colorAccent"
+        android:src="@drawable/heart"
+        app:layout_anchor="@id/bottomAppBar"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:contentInsetStart="0dp">
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@color/gray">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/navigation"
@@ -40,16 +51,7 @@
                 android:background="@android:color/white"
                 app:labelVisibilityMode="labeled"
                 app:menu="@menu/navigation_items" />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </FrameLayout>
     </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorAccent"
-        android:src="@drawable/heart"
-        app:layout_anchor="@id/bottom_app_bar"
-        tools:ignore="ContentDescription" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,7 +1,7 @@
 package com.cyclone.simbirsoftprobation.domain.dagger.components
 
 import com.cyclone.simbirsoftprobation.domain.dagger.modules.GoogleSignInModule
-import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationActivity
+import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -9,5 +9,5 @@ import javax.inject.Singleton
 @Singleton
 interface GoogleAuthComponent {
 
-    fun inject(authorizationActivity: AuthorizationActivity)
+    fun inject(authorizationFragment: AuthorizationFragment)
 }

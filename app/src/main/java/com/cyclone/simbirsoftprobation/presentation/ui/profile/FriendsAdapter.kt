@@ -1,28 +1,26 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.profile
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.databinding.ItemFriendBinding
 import com.cyclone.simbirsoftprobation.domain.model.Person
 import com.cyclone.simbirsoftprobation.domain.utilities.loadBitmap
-import kotlinx.android.synthetic.main.item_friend.view.*
 
 class FriendsAdapter(private var friends: MutableList<Person>) :
     RecyclerView.Adapter<FriendsAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var avatarFriend: ImageView = itemView.avatar_friend
-        var nameFriend: TextView = itemView.name_friend
+    class ViewHolder(binding: ItemFriendBinding) : RecyclerView.ViewHolder(binding.root) {
+        var avatarFriend: ImageView = binding.avatarFriend
+        var nameFriend: TextView = binding.nameFriend
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_friend, parent, false)
-        return ViewHolder(itemView)
+        val binding = ItemFriendBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int = friends.size

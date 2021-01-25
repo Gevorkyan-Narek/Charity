@@ -3,32 +3,42 @@ package com.cyclone.simbirsoftprobation.presentation.ui.profile
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.view.ViewGroup
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.data.storage.Storage
+import com.cyclone.simbirsoftprobation.databinding.ProfileFragmentBinding
 import com.cyclone.simbirsoftprobation.domain.model.Person
 import com.cyclone.simbirsoftprobation.domain.utilities.loadBitmap
 import com.cyclone.simbirsoftprobation.presentation.presenter.FilePresenter
 import com.cyclone.simbirsoftprobation.presentation.presenter.ProfilePresenter
-import com.cyclone.simbirsoftprobation.data.storage.Storage
-import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationActivity
-import kotlinx.android.synthetic.main.profile_fragment.*
-import kotlinx.android.synthetic.main.profile_fragment.view.*
+import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationFragment
+import com.cyclone.simbirsoftprobation.presentation.ui.main_view.MainActivity
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import org.threeten.bp.format.DateTimeFormatter
 
-class ProfileFragment : MvpAppCompatFragment(R.layout.profile_fragment), ProfileView {
+class ProfileFragment : MvpAppCompatFragment(), ProfileView {
 
     @InjectPresenter
     lateinit var profilePresenter: ProfilePresenter
+    private lateinit var binding: ProfileFragmentBinding
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ProfileFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
         profilePresenter.setProfile(Storage.getInstance().person)
-
-        view.avatar_profile.setOnClickListener { showPhotoDialogFragment() }
-        view.recycler_friends.layoutManager = LinearLayoutManager(context)
-        signOut.setOnClickListener { profilePresenter.signOut() }
+        binding.avatarProfile.setOnClickListener { showPhotoDialogFragment() }
+        binding.signOut.setOnClickListener { profilePresenter.signOut() }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -43,15 +53,15 @@ class ProfileFragment : MvpAppCompatFragment(R.layout.profile_fragment), Profile
     }
 
     override fun setProfile(person: Person) {
-        avatar_profile.loadBitmap(context!!, person.icon, R.drawable.user_icon)
-        profile_name.text = person.fullName
-        birth_day.text = person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
-        profession.text = person.profession
-        push.isChecked = person.isPush
+        binding.avatarProfile.loadBitmap(context!!, person.icon, R.drawable.user_icon)
+        binding.profileName.text = person.fullName
+        binding.birthDay.text = person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
+        binding.profession.text = person.profession
+        binding.push.isChecked = person.isPush
     }
 
     override fun getFriends() {
-        recycler_friends.adapter = FriendsAdapter(Storage.getInstance().friendsList)
+        binding.recyclerFriends.adapter = FriendsAdapter(Storage.getInstance().friendsList)
     }
 
     override fun getPhotoPickResult(resultCode: Int, data: Intent?) {
@@ -71,11 +81,10 @@ class ProfileFragment : MvpAppCompatFragment(R.layout.profile_fragment), Profile
                 profilePresenter.person.icon = null
             }
         }
-        avatar_profile.loadBitmap(context!!, profilePresenter.person.icon, R.drawable.user_icon)
+        binding.avatarProfile.loadBitmap(context!!, profilePresenter.person.icon, R.drawable.user_icon)
     }
 
     override fun signOut() {
-        activity?.finish()
-        startActivity(Intent(context, AuthorizationActivity::class.java))
+        (activity as MainActivity).mainPresenter.switchToAuth()
     }
 }

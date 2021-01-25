@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.databinding.PhotoDialogBinding
 import com.cyclone.simbirsoftprobation.presentation.presenter.FilePresenter
-import kotlinx.android.synthetic.main.photo_dialog.view.*
 import java.io.FileNotFoundException
 
 class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
@@ -22,18 +22,20 @@ class PhotoDialogFragment : DialogFragment(), View.OnClickListener {
         const val DELETE_PHOTO = 3
     }
 
+    private lateinit var binding: PhotoDialogBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.photo_dialog, container)
+    ): View {
+        binding = PhotoDialogBinding.inflate(inflater, container, false)
 
-        view.choose_photo.setOnClickListener(this)
-        view.create_photo.setOnClickListener(this)
-        view.delete_photo.setOnClickListener(this)
+        binding.choosePhoto.setOnClickListener(this)
+        binding.createPhoto.setOnClickListener(this)
+        binding.deletePhoto.setOnClickListener(this)
 
-        return view
+        return binding.root
     }
 
     override fun onClick(v: View?) {

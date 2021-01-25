@@ -40,7 +40,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.cyclone.simbirsoftprobation.presentation.ui.news.DetailActivity" />
-        <activity android:name=".presentation.ui.auth.AuthorizationActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

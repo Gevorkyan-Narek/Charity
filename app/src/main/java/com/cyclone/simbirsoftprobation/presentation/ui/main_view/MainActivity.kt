@@ -1,28 +1,34 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.main_view
 
+import android.opengl.Visibility
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.databinding.ActivityMainBinding
 import com.cyclone.simbirsoftprobation.presentation.presenter.MainPresenter
+import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.category_of_help.CategoryOfHelpFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.filter.FilterFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.news.NewsFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.profile.ProfileFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.search.view.SearchFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
 
-class MainActivity : MvpAppCompatActivity(R.layout.activity_main),
+class MainActivity : MvpAppCompatActivity(),
     MainView {
 
     @InjectPresenter
     lateinit var mainPresenter: MainPresenter
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        navigation.setOnNavigationItemSelectedListener { menuItem ->
+        binding.navigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.news -> mainPresenter.switchToNews()
                 R.id.search -> mainPresenter.switchToSearch()
@@ -32,13 +38,13 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main),
             }
             true
         }
-        floatingButton.setOnClickListener { navigation.selectedItemId = R.id.help }
+        binding.floatingButton.setOnClickListener { binding.navigation.selectedItemId = R.id.help }
     }
 
     override fun showCategoryOfHelp() {
         supportFragmentManager.beginTransaction()
             .replace(
-                R.id.main_view_fragment,
+                R.id.mainFragment,
                 CategoryOfHelpFragment()
             )
             .commit()
@@ -47,7 +53,7 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main),
     override fun showNews() {
         supportFragmentManager.beginTransaction()
             .replace(
-                R.id.main_view_fragment,
+                R.id.mainFragment,
                 NewsFragment()
             )
             .commit()
@@ -56,7 +62,7 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main),
     override fun showSearch() {
         supportFragmentManager.beginTransaction()
             .replace(
-                R.id.main_view_fragment,
+                R.id.mainFragment,
                 SearchFragment()
             )
             .commit()
@@ -65,7 +71,7 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main),
     override fun showProfile() {
         supportFragmentManager.beginTransaction()
             .replace(
-                R.id.main_view_fragment,
+                R.id.mainFragment,
                 ProfileFragment()
             )
             .commit()
@@ -74,9 +80,30 @@ class MainActivity : MvpAppCompatActivity(R.layout.activity_main),
     override fun showFilter() {
         supportFragmentManager.beginTransaction()
             .replace(
-                R.id.main_view_fragment,
+                R.id.mainFragment,
                 FilterFragment()
             ).addToBackStack("filter")
             .commit()
+    }
+
+    override fun showAuth() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.mainFragment,
+                AuthorizationFragment()
+            ).addToBackStack("auth")
+            .commit()
+    }
+
+    override fun visibleBottomBar() {
+        binding.buttonBackground.visibility = View.VISIBLE
+        binding.bottomAppBar.visibility = View.VISIBLE
+        binding.floatingButton.visibility = View.VISIBLE
+    }
+
+    override fun invisibleBottomBar() {
+        binding.buttonBackground.visibility = View.GONE
+        binding.bottomAppBar.visibility = View.GONE
+        binding.floatingButton.visibility = View.GONE
     }
 }

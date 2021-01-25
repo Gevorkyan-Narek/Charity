@@ -2,19 +2,31 @@ package com.cyclone.simbirsoftprobation.presentation.ui.category_of_help
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.databinding.HelpFragmentBinding
 import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.presentation.presenter.CategoryOfHelpPresenter
-import kotlinx.android.synthetic.main.help_fragment.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 
-class CategoryOfHelpFragment : MvpAppCompatFragment(R.layout.help_fragment), CategoryOfHelpView {
+class CategoryOfHelpFragment : MvpAppCompatFragment(), CategoryOfHelpView {
 
     @InjectPresenter
     lateinit var categoryOfHelpPresenter: CategoryOfHelpPresenter
+    private lateinit var binding: HelpFragmentBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = HelpFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val spaceItemDecoration = object : RecyclerView.ItemDecoration() {
@@ -40,12 +52,12 @@ class CategoryOfHelpFragment : MvpAppCompatFragment(R.layout.help_fragment), Cat
 
             }
         }
-        recycler_kind_of_help.addItemDecoration(spaceItemDecoration)
+        binding.recyclerKindOfHelp.addItemDecoration(spaceItemDecoration)
     }
 
     override fun showCategories(categories: List<CategoryOfHelp>) {
-        recycler_kind_of_help.adapter =
+        binding.recyclerKindOfHelp.adapter =
             CategoryOfHelpAdapter(categories)
-        progressBarCategoryHelp.visibility = View.GONE
+        binding.progressBarCategoryHelp.visibility = View.GONE
     }
 }
