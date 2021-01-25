@@ -13,4 +13,5 @@ interface ProfileView : MvpView {
     fun setProfile(person: Person)
     fun getFriends()
     fun getPhotoPickResult(resultCode: Int, data: Intent?)
+    fun signOut()
 }

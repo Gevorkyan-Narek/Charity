@@ -9,6 +9,7 @@ import com.cyclone.simbirsoftprobation.domain.repository.network.RetrofitDataRep
 import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationActivity
 import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.cyclone.simbirsoftprobation.domain.dagger.App
+import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.threetenabp.AndroidThreeTen
 import moxy.MvpAppCompatActivity
 import javax.inject.Inject
@@ -33,8 +34,12 @@ class SplashActivity : MvpAppCompatActivity(R.layout.splash_screen) {
 
     private fun startMain() {
         Handler().postDelayed({
+            if (FirebaseAuth.getInstance().currentUser != null)
+                startActivity(Intent(this, MainActivity::class.java))
+            else
+                startActivity(Intent(this, AuthorizationActivity::class.java))
+
             finish()
-            startActivity(Intent(this, AuthorizationActivity::class.java))
         }, 1000L)
     }
 }

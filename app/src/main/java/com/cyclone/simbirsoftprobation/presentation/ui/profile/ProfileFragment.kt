@@ -11,6 +11,7 @@ import com.cyclone.simbirsoftprobation.domain.utilities.loadBitmap
 import com.cyclone.simbirsoftprobation.presentation.presenter.FilePresenter
 import com.cyclone.simbirsoftprobation.presentation.presenter.ProfilePresenter
 import com.cyclone.simbirsoftprobation.data.storage.Storage
+import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationActivity
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
 import moxy.MvpAppCompatFragment
@@ -27,6 +28,7 @@ class ProfileFragment : MvpAppCompatFragment(R.layout.profile_fragment), Profile
 
         view.avatar_profile.setOnClickListener { showPhotoDialogFragment() }
         view.recycler_friends.layoutManager = LinearLayoutManager(context)
+        signOut.setOnClickListener { profilePresenter.signOut() }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -70,5 +72,10 @@ class ProfileFragment : MvpAppCompatFragment(R.layout.profile_fragment), Profile
             }
         }
         avatar_profile.loadBitmap(context!!, profilePresenter.person.icon, R.drawable.user_icon)
+    }
+
+    override fun signOut() {
+        activity?.finish()
+        startActivity(Intent(context, AuthorizationActivity::class.java))
     }
 }

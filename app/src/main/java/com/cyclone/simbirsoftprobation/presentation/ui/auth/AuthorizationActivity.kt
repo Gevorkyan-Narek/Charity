@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.domain.dagger.App
 import com.cyclone.simbirsoftprobation.presentation.presenter.AuthorizationPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.main_view.MainActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -15,6 +16,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_authorization.*
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
+import javax.inject.Inject
 
 class AuthorizationActivity : MvpAppCompatActivity(R.layout.activity_authorization), AuthorizationView {
 
@@ -26,7 +28,8 @@ class AuthorizationActivity : MvpAppCompatActivity(R.layout.activity_authorizati
     lateinit var authorizationPresenter: AuthorizationPresenter
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var googleSignInClient: GoogleSignInClient
+    @Inject
+    lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +39,8 @@ class AuthorizationActivity : MvpAppCompatActivity(R.layout.activity_authorizati
             finish()
         }
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
+        App.getAuthComponent().inject(this)
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
         auth = FirebaseAuth.getInstance()
 
         google.setOnClickListener { authorizationPresenter.signInGoogle() }
