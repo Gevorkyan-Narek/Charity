@@ -2,6 +2,7 @@ package com.cyclone.simbirsoftprobation.domain.utilities
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.net.Uri
 import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
@@ -26,13 +27,17 @@ class MyUtils {
         fun getRelevance(events: Event): String {
             return if (checkOfRelevance(events.endDate)) {
                 "Осталось ${remainingRelevance(events.endDate)} дней " +
-                        "(${LocalDate.ofEpochDay(events.startDate).format(
-                            DateTimeFormatter.ofPattern(
-                                "dd.MM"
+                        "(${
+                            LocalDate.ofEpochDay(events.startDate).format(
+                                DateTimeFormatter.ofPattern(
+                                    "dd.MM"
+                                )
                             )
-                        )} - " +
-                        "${LocalDate.ofEpochDay(events.endDate)
-                            .format(DateTimeFormatter.ofPattern("dd.MM"))})"
+                        } - " +
+                        "${
+                            LocalDate.ofEpochDay(events.endDate)
+                                .format(DateTimeFormatter.ofPattern("dd.MM"))
+                        })"
             } else {
                 "${Storage.months[LocalDate.ofEpochDay(events.endDate).monthValue - 1]} " +
                         LocalDate.ofEpochDay(events.createAt)
@@ -40,6 +45,16 @@ class MyUtils {
             }
         }
     }
+}
+
+fun ImageView.loadUri(
+    context: Context,
+    uri: Uri?
+) {
+    Glide.with(context)
+        .load(uri)
+        .circleCrop()
+        .into(this)
 }
 
 fun ImageView.loadBitmap(

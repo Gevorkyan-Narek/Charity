@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/things"
+        android:icon="@drawable/shirt"
+        android:title="@string/help_with_things"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/volunteer"
+        android:icon="@drawable/hands"
+        android:title="@string/become_volunteer"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/prof_help"
+        android:icon="@drawable/tools"
+        android:title="@string/prof_help"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/money"
+        android:icon="@drawable/coins"
+        android:title="@string/help_with_money"
+        app:showAsAction="ifRoom" />
+</menu>

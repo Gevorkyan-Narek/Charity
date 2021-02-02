@@ -11,10 +11,12 @@ import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.cyclone.simbirsoftprobation.databinding.ProfileFragmentBinding
 import com.cyclone.simbirsoftprobation.domain.model.Person
 import com.cyclone.simbirsoftprobation.domain.utilities.loadBitmap
+import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
+import com.cyclone.simbirsoftprobation.domain.utilities.loadUri
 import com.cyclone.simbirsoftprobation.presentation.presenter.FilePresenter
 import com.cyclone.simbirsoftprobation.presentation.presenter.ProfilePresenter
-import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.main_view.MainActivity
+import com.google.firebase.auth.FirebaseAuth
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import org.threeten.bp.format.DateTimeFormatter
@@ -53,8 +55,10 @@ class ProfileFragment : MvpAppCompatFragment(), ProfileView {
     }
 
     override fun setProfile(person: Person) {
-        binding.avatarProfile.loadBitmap(context!!, person.icon, R.drawable.user_icon)
-        binding.profileName.text = person.fullName
+        FirebaseAuth.getInstance().currentUser?.let {
+            binding.avatarProfile.loadUri(context!!, it.photoUrl)
+            binding.profileName.text = it.displayName
+        }
         binding.birthDay.text = person.date.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"))
         binding.profession.text = person.profession
         binding.push.isChecked = person.isPush
