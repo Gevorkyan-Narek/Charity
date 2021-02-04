@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.item_search_result.view.*
 
 class SearchResultsAdapter(var results: MutableList<String>) :
     RecyclerView.Adapter<SearchResultsAdapter.ViewHolder>() {
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val resultName: TextView = itemView.result_name
-        val separator: View = itemView.separator
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,6 +27,5 @@ class SearchResultsAdapter(var results: MutableList<String>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.resultName.text = results[position]
-        if(position == results.lastIndex) holder.separator.visibility = View.INVISIBLE
     }
 }

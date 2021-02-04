@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.utilities.MyUtils
 import com.cyclone.simbirsoftprobation.utilities.getFilteredEvents
 import com.cyclone.simbirsoftprobation.utilities.loadDrawable
-import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.item_news.view.*
 
 class NewsAdapter :

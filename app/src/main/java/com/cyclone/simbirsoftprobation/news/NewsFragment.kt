@@ -6,16 +6,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cyclone.simbirsoftprobation.json_helper.JsonHelperIntentService
-import com.cyclone.simbirsoftprobation.json_helper.MyBroadcastReceiver
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.filter.FilterFragment
 import com.cyclone.simbirsoftprobation.json_helper.JsonHelperAsync
 import com.cyclone.simbirsoftprobation.json_helper.JsonHelperCallback
+import com.cyclone.simbirsoftprobation.json_helper.JsonHelperIntentService
+import com.cyclone.simbirsoftprobation.json_helper.MyBroadcastReceiver
 import com.cyclone.simbirsoftprobation.model.Event
-import com.cyclone.simbirsoftprobation.storage.Datas
 import kotlinx.android.synthetic.main.news_fragment.view.*
-import java.lang.Exception
 
 class NewsFragment : Fragment(R.layout.news_fragment), JsonHelperCallback<MutableList<Event>> {
 
@@ -24,12 +22,13 @@ class NewsFragment : Fragment(R.layout.news_fragment), JsonHelperCallback<Mutabl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.news_recycler.layoutManager = LinearLayoutManager(context)
+
         if (savedInstanceState == null) {
             // Async
             JsonHelperAsync(view.context, this).execute()
 
             // Executor
-//            JsonHelperExecutor().submit(view.context, view.news_recycler, view.progressBarNews)
+//            JsonHelperExecutor().submit(view.context, this)
 
             // IntentService
 //            JsonHelperIntentService().start(view.context)
@@ -66,7 +65,6 @@ class NewsFragment : Fragment(R.layout.news_fragment), JsonHelperCallback<Mutabl
     }
 
     override fun onSuccess(result: MutableList<Event>) {
-        Datas.events = result
         view!!.progressBarNews.visibility = View.GONE
         view!!.news_recycler.adapter = NewsAdapter()
     }

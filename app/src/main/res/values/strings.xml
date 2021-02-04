@@ -20,4 +20,20 @@
     <string name="become_volunteer">Стать\nволонтером</string>
     <string name="prof_help">Проф\nпомощь</string>
     <string name="help_with_money">Помочь\nденьгами</string>
+    <string name="authorization">Авторизация</string>
+    <string name="email">E-mail</string>
+    <string name="input_email">Введите e-mail</string>
+    <string name="input_password">Введите пароль</string>
+    <string name="come_in">ВОЙТИ</string>
+    <string name="forget_password"><u>Забыли пароль?</u></string>
+    <string name="registration"><u>Регистрация</u></string>
+    <string name="authorization_label">Для участия в мероприятиях войдите в приложение через социальые сети</string>
+    <string name="another_authorization_label">Или авторизуйтесь через приложение</string>
+    <string name="like_count">+102</string>
+    <string name="do_you_have_questions">У вас есть вопросы?</string>
+    <string name="password">Пароль</string>
+    <string name="key_word_label">Ключевые слова: мастер-класс, помощь Результаты поиска: 109 мероприятий</string>
+    <string name="hint_no_results">Напишите в строке поиска название мероприятия или ключевые слова.</string>
+    <string name="for_example">Например,</string>
+    <string name="master_class_help"><u>мастер-класс, помощь</u></string>
 </resources>

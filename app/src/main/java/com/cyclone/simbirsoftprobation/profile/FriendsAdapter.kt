@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.model.Person
 import com.cyclone.simbirsoftprobation.utilities.loadBitmap
-import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.item_friend.view.*
 
 class FriendsAdapter(private var friends: MutableList<Person>) :

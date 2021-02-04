@@ -5,8 +5,8 @@ import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.R
+import com.cyclone.simbirsoftprobation.storage.Datas
 import kotlinx.android.synthetic.main.help_fragment.view.*
 
 class CategoryOfHelpFragment : Fragment(R.layout.help_fragment) {

@@ -10,9 +10,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.utilities.loadBitmap
-import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.profile_fragment.view.*
 import org.threeten.bp.format.DateTimeFormatter

@@ -1,43 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray_two">
 
-    <TextView
-        android:id="@+id/hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="72dp"
-        android:fontFamily="sans-serif"
-        android:lineSpacingExtra="6sp"
-        android:text="Ключевые слова: мастер-класс, помощь
-Результаты поиска: 109 мероприятий"
-        android:textColor="@color/black54"
-        android:textSize="14sp"
-        android:textStyle="normal" />
-
-    <View
-        android:id="@+id/upper_separator"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/hint"
-        android:layout_marginTop="20dp"
-        android:background="@color/separator" />
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_results_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:layout_below="@id/upper_separator" />
+        <TextView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="72dp"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="6sp"
+            android:text="@string/key_word_label"
+            android:textColor="@color/black54"
+            android:textSize="14sp"
+            android:textStyle="normal" />
 
-    <View
-        android:id="@+id/lower_separator"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/search_results_recycler"
-        android:background="@color/separator" />
-</RelativeLayout>
+        <View
+            android:id="@+id/upper_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/hint"
+            android:layout_marginTop="20dp"
+            android:background="?android:attr/listDivider" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_results_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/upper_separator"
+            android:background="#FFFFFF" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/no_results_include"
+        layout="@layout/search_noresults_fragment" />
+
+</FrameLayout>

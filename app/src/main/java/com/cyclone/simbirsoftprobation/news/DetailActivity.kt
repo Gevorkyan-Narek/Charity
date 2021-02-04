@@ -3,10 +3,10 @@ package com.cyclone.simbirsoftprobation.news
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.utilities.MyUtils
 import com.cyclone.simbirsoftprobation.utilities.loadDrawable
-import com.cyclone.simbirsoftprobation.R
 import kotlinx.android.synthetic.main.news_detail.*
 
 

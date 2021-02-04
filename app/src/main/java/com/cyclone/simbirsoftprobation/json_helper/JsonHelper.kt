@@ -2,11 +2,9 @@ package com.cyclone.simbirsoftprobation.json_helper
 
 import android.content.Context
 import com.cyclone.simbirsoftprobation.model.Event
-import com.google.gson.JsonArray
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import java.lang.reflect.ParameterizedType
 
 class JsonHelper(
     var context: Context

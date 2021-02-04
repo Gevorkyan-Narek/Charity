@@ -9,7 +9,6 @@ import com.cyclone.simbirsoftprobation.model.Filter
 import com.cyclone.simbirsoftprobation.storage.Datas
 import com.cyclone.simbirsoftprobation.storage.Datas.Companion.checkOfRelevance
 import com.cyclone.simbirsoftprobation.storage.Datas.Companion.remainingRelevance
-import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
 class MyUtils {
