@@ -3,12 +3,14 @@ package com.cyclone.simbirsoftprobation.presentation.ui.news
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.databinding.NewsDetailBinding
 import com.cyclone.simbirsoftprobation.domain.dagger.App
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
 import com.cyclone.simbirsoftprobation.domain.utilities.MyUtils
 import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
+import com.cyclone.simbirsoftprobation.presentation.ui.dialog_fragments.HelpVolunteer
+import com.cyclone.simbirsoftprobation.presentation.ui.dialog_fragments.HelpWithMoney
+import com.cyclone.simbirsoftprobation.presentation.ui.dialog_fragments.HelpWithText
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
@@ -53,6 +55,21 @@ class DetailActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(sendIntent, "Поделиться"))
         }
         binding.back.setOnClickListener { finish() }
+
+        binding.helpMoney.setOnClickListener {
+            HelpWithMoney().show(supportFragmentManager, "money")
+        }
+        binding.profHelp.setOnClickListener {
+            val dialog = HelpWithText()
+            dialog.arguments = Bundle().apply { putBoolean("isThings", false) }
+            dialog.show(supportFragmentManager, "prof")
+        }
+        binding.helpItems.setOnClickListener {
+            val dialog = HelpWithText()
+            dialog.arguments = Bundle().apply { putBoolean("isThings", true) }
+            dialog.show(supportFragmentManager, "items")
+        }
+        binding.becomeVolunteer.setOnClickListener { HelpVolunteer().show(supportFragmentManager, "volunteer") }
     }
 
 }

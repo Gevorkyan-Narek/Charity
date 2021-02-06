@@ -42,4 +42,18 @@
     <string name="choose_photo">Выбрать фото</string>
     <string name="create_photo">Сделать снимок</string>
     <string name="delete">Удалить</string>
+    <string name="_100">100 ₽</string>
+    <string name="_500">500 ₽</string>
+    <string name="_1000">1000 ₽</string>
+    <string name="_5000">5000 ₽</string>
+    <string name="thanks">Спасибо за решение помочь</string>
+    <string name="select_donation_amount">Выберите размер пожертвования</string>
+    <string name="or_write_your_sum">или введите нужную сумму</string>
+    <string name="write_sum">Введите сумму</string>
+    <string name="cancel">ОТМЕНА</string>
+    <string name="dismiss">ПЕРЕВЕСТИ</string>
+    <string name="send">ОТПРАВИТЬ</string>
+    <string name="what_thing_you_want_to_send">Напишите, какую вещь вы бы хотели передать</string>
+    <string name="what_help_you_can_do">Напишите, какую проф. помощь вы можете оказать</string>
+    <string name="write_phone">Введите номер телефона</string>
 </resources>
