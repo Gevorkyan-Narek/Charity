@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.cyclone.simbirsoftprobation.databinding.SearchObjectFragmentBinding
 import com.cyclone.simbirsoftprobation.presentation.presenter.SearchResultPresenter

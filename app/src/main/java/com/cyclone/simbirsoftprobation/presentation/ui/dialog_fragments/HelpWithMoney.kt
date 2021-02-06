@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import com.cyclone.simbirsoftprobation.databinding.HelpWithMoneyBinding
+import moxy.MvpAppCompatDialogFragment
 
-class HelpWithMoney : DialogFragment() {
+class HelpWithMoney : MvpAppCompatDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

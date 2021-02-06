@@ -1,7 +1,6 @@
 package com.cyclone.simbirsoftprobation.domain.repository.category_of_help
 
 import com.cyclone.simbirsoftprobation.data.dao.CategoryOfHelpDAO
-import com.cyclone.simbirsoftprobation.data.db.EventDataBase
 import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.cyclone.simbirsoftprobation.domain.dagger.App
 import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp

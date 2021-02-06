@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentPagerAdapter
-import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.databinding.SearchFragmentBinding
 import com.cyclone.simbirsoftprobation.domain.interactors.search_fragment.SearchViewInteractor
 import com.cyclone.simbirsoftprobation.presentation.presenter.SearchPresenter

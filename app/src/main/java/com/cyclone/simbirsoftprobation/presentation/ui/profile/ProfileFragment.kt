@@ -11,7 +11,6 @@ import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.cyclone.simbirsoftprobation.databinding.ProfileFragmentBinding
 import com.cyclone.simbirsoftprobation.domain.model.Person
 import com.cyclone.simbirsoftprobation.domain.utilities.loadBitmap
-import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable
 import com.cyclone.simbirsoftprobation.domain.utilities.loadUri
 import com.cyclone.simbirsoftprobation.presentation.presenter.FilePresenter
 import com.cyclone.simbirsoftprobation.presentation.presenter.ProfilePresenter

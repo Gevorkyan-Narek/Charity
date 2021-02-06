@@ -29,6 +29,8 @@ class MainPresenter : MvpPresenter<MainView>() {
 
     fun switchToFilter() = viewState.showFilter()
 
+    fun switchToHistory() = viewState.switchHistory()
+
     fun switchToAuth() {
         viewState.invisibleBottomBar()
         viewState.showAuth()

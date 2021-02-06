@@ -1,15 +1,14 @@
 package com.cyclone.simbirsoftprobation.presentation.ui.main_view
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.databinding.ActivityMainBinding
 import com.cyclone.simbirsoftprobation.presentation.presenter.MainPresenter
 import com.cyclone.simbirsoftprobation.presentation.ui.auth.AuthorizationFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.category_of_help.CategoryOfHelpFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.filter.FilterFragment
+import com.cyclone.simbirsoftprobation.presentation.ui.history.HistoryFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.news.NewsFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.profile.ProfileFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.search.view.SearchFragment
@@ -34,7 +33,7 @@ class MainActivity : MvpAppCompatActivity(),
                 R.id.search -> mainPresenter.switchToSearch()
                 R.id.help -> mainPresenter.switchToCategories()
                 R.id.profile -> mainPresenter.switchToProfile()
-                else -> Toast.makeText(this, "Yet not added", Toast.LENGTH_SHORT).show()
+                R.id.history -> mainPresenter.switchToHistory()
             }
             true
         }
@@ -105,5 +104,14 @@ class MainActivity : MvpAppCompatActivity(),
         binding.buttonBackground.visibility = View.GONE
         binding.bottomAppBar.visibility = View.GONE
         binding.floatingButton.visibility = View.GONE
+    }
+
+    override fun switchHistory() {
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.mainFragment,
+                HistoryFragment()
+            ).addToBackStack("history")
+            .commit()
     }
 }

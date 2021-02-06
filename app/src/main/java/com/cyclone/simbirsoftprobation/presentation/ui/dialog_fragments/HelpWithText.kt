@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.databinding.HelpWithTextBinding
+import moxy.MvpAppCompatDialogFragment
 
-class HelpWithText : DialogFragment() {
+class HelpWithText : MvpAppCompatDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

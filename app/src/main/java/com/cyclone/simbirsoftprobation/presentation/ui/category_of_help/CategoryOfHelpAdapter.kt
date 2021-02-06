@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.cyclone.simbirsoftprobation.R
 import com.cyclone.simbirsoftprobation.databinding.ItemKindOfHelpBinding
 import com.cyclone.simbirsoftprobation.domain.model.CategoryOfHelp
 import com.cyclone.simbirsoftprobation.domain.utilities.loadDrawable

@@ -6,6 +6,7 @@ import com.cyclone.simbirsoftprobation.domain.repository.category_of_help.Catego
 import com.cyclone.simbirsoftprobation.domain.repository.event.EventsDataRepository
 import com.cyclone.simbirsoftprobation.presentation.presenter.CategoryOfHelpPresenter
 import com.cyclone.simbirsoftprobation.presentation.presenter.NewsPresenter
+import com.cyclone.simbirsoftprobation.presentation.ui.history.HistoryFragment
 import com.cyclone.simbirsoftprobation.presentation.ui.main_view.SplashActivity
 import com.cyclone.simbirsoftprobation.presentation.ui.news.DetailActivity
 import dagger.Component
@@ -21,4 +22,5 @@ interface RepositoryComponents {
     fun inject(detailActivity: DetailActivity)
     fun inject(eventsDataRepository: EventsDataRepository)
     fun inject(categoriesDataRepository: CategoriesDataRepository)
+    fun inject(history: HistoryFragment)
 }

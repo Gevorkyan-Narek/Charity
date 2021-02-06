@@ -16,4 +16,5 @@ interface MainView : MvpView {
 
     fun visibleBottomBar()
     fun invisibleBottomBar()
+    fun switchHistory()
 }

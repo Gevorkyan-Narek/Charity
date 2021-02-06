@@ -6,11 +6,11 @@ import android.net.Uri
 import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
-import com.cyclone.simbirsoftprobation.domain.model.Event
-import com.cyclone.simbirsoftprobation.domain.model.Filter
 import com.cyclone.simbirsoftprobation.data.storage.Storage
 import com.cyclone.simbirsoftprobation.data.storage.Storage.Companion.checkOfRelevance
 import com.cyclone.simbirsoftprobation.data.storage.Storage.Companion.remainingRelevance
+import com.cyclone.simbirsoftprobation.domain.model.Event
+import com.cyclone.simbirsoftprobation.domain.model.Filter
 import org.threeten.bp.LocalDate
 import org.threeten.bp.format.DateTimeFormatter
 
